@@ -10,13 +10,14 @@
 #include "clsArchivoSocio.h"
 #include"clsArchivoSede.h"
 #include"clsArchivoCuota.h"
-#include"clsArchivoActividadesSede.h"
+#include"clsArchivoActividadesSocio.h"
 #include"clsArchivoActividades.h"
 void menuPrincipal();
 void menuSocios();
 void menuActividades();
 void menuCuota();
 void menuSedes();
+void listados();
 
 void altaSocio();
 void bajaSocio();
@@ -38,7 +39,17 @@ void bajaCuota();
 void modificarCuota();
 void listarCuota();
 
-/**
-falta poner el cargar cadena y fecha
-*/
+void listadoSociosApellido();
+void listadoSociosTipo();
+void listadoCuotaSocio();
+void listadoCuotaMonto();
+void listadoSedeXid();
+void listadoActividadXid();
+void listadoParticipacionesSocio();
+void listadoParticipacionesActividad();
+
+void recaudacionAnual();
+void listarActividadesDeSocio();
+actividad buscarActividadPorId(int idActividad);
+
 #endif // FUNCIONES_H_INCLUDED
