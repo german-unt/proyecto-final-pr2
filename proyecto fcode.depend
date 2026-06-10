@@ -1,19 +1,46 @@
 # depslib dependency file v1.0
-1779972046 source:/home/facu/Escritorio/proyecto fcode/main.cpp
+1780506955 source:/home/facu/Escritorio/proyecto fcode/main.cpp
+	<iostream>
+	"funciones.h"
 	<iostream>
 	"funciones.h"
 
 1779959910 .h"
 
-1779971818 source:/home/facu/Escritorio/proyecto fcode/funciones.cpp
+1780505173 source:/home/facu/Escritorio/proyecto fcode/funciones.cpp
 	<iostream>
 	"clsActividad.h"
+	<iostream>
+	"funciones.h"
+	"clsActividad.h"
+	"clsSocio.h"
+	"clsSede.h"
+	"clsCuota.h"
+	"clsActividad.h"
+	"cargarCadena.h"
+	"clsFecha.h"
+	"clsArchivoSocio.h"
+	"clsArchivoSede.h"
+	"clsArchivoCuota.h"
+	"clsArchivoActividadesSede.h"
+	"clsArchivoActividades.h"
 
 1779971818 dad.h"
 
-1779955590 /home/facu/Escritorio/proyecto fcode/clsActividad.h
+1780506140 /home/facu/Escritorio/proyecto fcode/clsActividad.h
 
-1779971550 /home/facu/Escritorio/proyecto fcode/funciones.h
+1780496879 /home/facu/Escritorio/proyecto fcode/funciones.h
+	"funciones.h"
+	"clsActividad.h"
+	"clsSocio.h"
+	"clsSede.h"
+	"clsCuota.h"
+	"clsActividad.h"
+	"clsArchivoSocio.h"
+	"clsArchivoSede.h"
+	"clsArchivoCuota.h"
+	"clsArchivoActividadesSede.h"
+	"clsArchivoActividades.h"
 
 1779959910 source:c:\users\oem\desktop\proyecto fcode\main.cpp
 	<iostream>
@@ -36,10 +63,6 @@
 
 1780506920 /home/facu/Escritorio/proyecto fcode/clsCuota.h
 
-1780506955 source:/home/facu/Escritorio/proyecto fcode/main.cpp
-	<iostream>
-	"funciones.h"
-
 1776857685 source:/home/facu/Escritorio/proyecto fcode/cargarCadena.cpp
 	<iostream>
 	<cstring>
@@ -49,8 +72,6 @@
 	"clsActividad.h"
 	"cargarCadena.h"
 	<cstring>
-
-1780506140 /home/facu/Escritorio/proyecto fcode/clsActividad.h
 
 1776857685 /home/facu/Escritorio/proyecto fcode/cargarCadena.h
 
@@ -63,19 +84,6 @@
 	"clsFecha.h"
 
 1776857685 /home/facu/Escritorio/proyecto fcode/clsFecha.h
-
-1780496879 /home/facu/Escritorio/proyecto fcode/funciones.h
-	"funciones.h"
-	"clsActividad.h"
-	"clsSocio.h"
-	"clsSede.h"
-	"clsCuota.h"
-	"clsActividad.h"
-	"clsArchivoSocio.h"
-	"clsArchivoSede.h"
-	"clsArchivoCuota.h"
-	"clsArchivoActividadesSede.h"
-	"clsArchivoActividades.h"
 
 1780495127 source:/home/facu/Escritorio/proyecto fcode/clsArchivoCuota.cpp
 	<iostream>
@@ -144,19 +152,112 @@
 	<cstring>
 	"clsArchivoSocio.h"
 
-1780505173 source:/home/facu/Escritorio/proyecto fcode/funciones.cpp
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\cargarcadena.cpp
 	<iostream>
+	<cstring>
+
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\clsactividadsede.cpp
+	<iostream>
+	"clsActividadSede.h"
+	"funciones.h"
+
+1781094328 c:\users\alumno\desktop\proyecto-final-pr2\clsactividadsede.h
+	"clsFecha.h"
+
+1781094328 c:\users\alumno\desktop\proyecto-final-pr2\clsfecha.h
+
+1781099890 c:\users\alumno\desktop\proyecto-final-pr2\funciones.h
 	"funciones.h"
 	"clsActividad.h"
 	"clsSocio.h"
 	"clsSede.h"
 	"clsCuota.h"
 	"clsActividad.h"
-	"cargarCadena.h"
-	"clsFecha.h"
 	"clsArchivoSocio.h"
 	"clsArchivoSede.h"
 	"clsArchivoCuota.h"
-	"clsArchivoActividadesSede.h"
 	"clsArchivoActividades.h"
+
+1781099918 c:\users\alumno\desktop\proyecto-final-pr2\clsactividad.h
+	<cstring>
+
+1781094328 c:\users\alumno\desktop\proyecto-final-pr2\clssocio.h
+	"clsFecha.h"
+
+1781094328 c:\users\alumno\desktop\proyecto-final-pr2\clssede.h
+
+1781094328 c:\users\alumno\desktop\proyecto-final-pr2\clscuota.h
+
+1781094328 c:\users\alumno\desktop\proyecto-final-pr2\clsarchivosocio.h
+	"clsSocio.h"
+
+1781094328 c:\users\alumno\desktop\proyecto-final-pr2\clsarchivosede.h
+	"clsSede.h"
+
+1781094328 c:\users\alumno\desktop\proyecto-final-pr2\clsarchivocuota.h
+	"funciones.h"
+	"clsCuota.h"
+
+1781094328 c:\users\alumno\desktop\proyecto-final-pr2\clsarchivoactividades.h
+	"funciones.h"
+	"clsActividad.h"
+
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\clsarchivoactividades.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoActividades.h"
+	"funciones.h"
+
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\clsarchivoactividadessede.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoActividadesSede.h"
+
+1781094328 c:\users\alumno\desktop\proyecto-final-pr2\clsarchivoactividadessede.h
+	"funciones.h"
+	"clsActividadSede.h"
+
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\clsarchivocuota.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoCuota.h"
+
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\clsarchivosede.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoSede.h"
+
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\clsarchivosocio.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoSocio.h"
+
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\clscouta.cpp
+	<iostream>
+	"clsCuota.h"
+	"funciones.h"
+
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\clsfecha.cpp
+	<iostream>
+	"clsFecha.h"
+	"funciones.h"
+
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\clssede.cpp
+	<iostream>
+	"cargarCadena.h"
+	<cstring>
+	"clsSede.h"
+
+1781094328 c:\users\alumno\desktop\proyecto-final-pr2\cargarcadena.h
+
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\clssocio.cpp
+	<iostream>
+	"clsSocio.h"
+	<cstring>
+	"funciones.h"
+	"cargarCadena.h"
+
+1781094328 source:c:\users\alumno\desktop\proyecto-final-pr2\main.cpp
+	<iostream>
+	"funciones.h"
 

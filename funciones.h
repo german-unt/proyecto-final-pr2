@@ -10,7 +10,7 @@
 #include "clsArchivoSocio.h"
 #include"clsArchivoSede.h"
 #include"clsArchivoCuota.h"
-#include"clsArchivoActividadesSocio.h"
+#include"clsArchivoActividadesSede.h"
 #include"clsArchivoActividades.h"
 void menuPrincipal();
 void menuSocios();
@@ -48,8 +48,21 @@ void listadoActividadXid();
 void listadoParticipacionesSocio();
 void listadoParticipacionesActividad();
 
+
+
+void consultas();
+void consultasSocios();
+void consultasActividades();
+void consultasDeEstado();
+void rangoDeFechas();
+void consultaXidDeSocio();
+
+void informes();
 void recaudacionAnual();
 void listarActividadesDeSocio();
 actividad buscarActividadPorId(int idActividad);
-
+void recaudacionXActividad();
+void porcentajeInscripciones();
+void ranking();
+void deudores();
 #endif // FUNCIONES_H_INCLUDED

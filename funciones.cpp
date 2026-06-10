@@ -11,7 +11,7 @@
 #include "clsArchivoSocio.h"
 #include"clsArchivoSede.h"
 #include"clsArchivoCuota.h"
-#include"clsArchivoActividadesSocio.h"
+#include"clsArchivoActividadesSede.h"
 #include"clsArchivoActividades.h"
 
 using namespace std;
@@ -28,6 +28,7 @@ void menuPrincipal(){
         cout<<"4 - CUOTA"<<endl;
         cout<<"5 - LISTADOS "<<endl;
         cout<<"6 - INFORMES"<<endl;
+        cout<<"7 - CONSULTAS"<<endl;
         cout<<"0 - SALIR"<<endl;
         cout<<"======================="<<endl;
         cout<<"INGRESE UNA OPCION: ";
@@ -50,7 +51,10 @@ void menuPrincipal(){
                 listados();
                 break;
             case 6:
-
+                informes();
+                break;
+            case 7:
+                consultas();
                 break;
             case 0:
                 return;
@@ -261,6 +265,104 @@ void listados(){
         system("pause");
     }
 }
+void consultas(){
+    int opc;
+
+    while(true){
+        system("cls");
+
+        cout<<"MENU CONSULTAS"<<endl;
+        cout<<"=========================="<<endl;
+        cout<<"1 - CONSULTA DE SOCIOS"<<endl;
+        cout<<"2 - CONSULTA DE JORNADAS"<<endl;
+        cout<<"3 - CONSULTA DE ESTADO"<<endl;
+
+        cin>>opc;
+        system("cls");
+
+        switch(opc){
+        case 1:
+            consultasSocios();
+            break;
+
+        case 2:
+            consultasActividades();
+            break;
+
+        case 3:
+            consultasDeEstado();
+            break;
+
+        case 0:
+            break;
+            return;
+        }
+        system("pause");
+    }
+}
+void consultasSocios(){
+
+    int opc;
+      while(true){
+        system("cls");
+
+        cout<<"CONSULTAS SOCIOS"<<endl;
+        cout<<"=========================="<<endl;
+        cout<<"1 - CONSULTA POR RANGO DE FECHAS"<<endl;
+        cout<<"2 - CONSULTA POR ID DE SOCIO"<<endl;
+
+        cin>>opc;
+        system("cls");
+
+        switch(opc){
+        case 1:
+            rangoDeFechas();
+            break;
+
+        case 2:
+            consultaXidDeSocio();
+            break;
+
+        case 0:
+            break;
+            return;
+        }
+        system("pause");
+
+}
+}
+
+void consultasActividades(){
+
+    int opc;
+      while(true){
+        system("cls");
+
+        cout<<"CONSULTAS DE ACTIVIDADES"<<endl;
+        cout<<"=========================="<<endl;
+        cout<<"1 - CONSULTA POR ACTIVIDAD"<<endl;
+        cout<<"2 - CONSULTA POR RESUMEN"<<endl;
+
+        cin>>opc;
+        system("cls");
+
+        switch(opc){
+        case 1:
+            consultaXActividad();
+            break;
+
+        case 2:
+            consultaXResumen();
+            ///recuadacion mensual total (de todo el club).
+            break;
+
+        case 0:
+            break;
+            return;
+        }
+        system("pause");
+      }
+    }
 
 ///////////////////////////////////
 
@@ -950,4 +1052,59 @@ void recaudacionAnual(){
     }
 
     cout<<"RECAUDACION ANUAL: $"<<total<<endl;
+}
+
+
+void informes(){
+    int opc;
+
+    while(true){
+        system("cls");
+
+        cout<<"MENU INFORMES"<<endl;
+        cout<<"=========================="<<endl;
+        cout<<"1 - Recaudacion anual"<<endl;
+        cout<<"2 - Recaudacion por actividad"<<endl;
+        cout<<"3 - Porcentaje de inscripciones por cada actividad"<<endl;
+        cout<<"4 - Listar todas las actividades de un socio"<<endl;
+        cout<<"5 - Ranking de actividades"<<endl;
+        cout<<"6 - Listar socios con deudas pendientes"<<endl;
+        cout<<"0 - Volver"<<endl;
+        cout<<"=========================="<<endl;
+
+        cin>>opc;
+
+        system("cls");
+
+        switch(opc){
+        case 1:
+            recaudacionAnual();
+            break;
+
+        case 2:
+            recaudacionXActividad();
+            break;
+
+        case 3:
+            porcentajeInscripciones();
+            break;
+
+        case 4:
+             listarActividadesDeSocio();
+            break;
+
+        case 5:
+            ranking();
+            break;
+
+        case 6:
+            deudores();
+            break;
+
+        case 0:
+            return;
+        }
+
+        system("pause");
+    }
 }

@@ -1,5 +1,6 @@
 #ifndef CLSACTIVIDAD_H_INCLUDED
 #define CLSACTIVIDAD_H_INCLUDED
+
 class actividad {
 private:
     int idActividad;
@@ -8,12 +9,10 @@ private:
     bool eliminado;
 public:
     void setIdactividad(int);
-    void setIdsede(int);
     void setNombreactividad(char*);
     void setEliminado(bool);
 
     int getIdactividad();
-    int getIdSede();
     char* getNombreActividad();
     bool getEliminado();
 

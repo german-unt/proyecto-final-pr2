@@ -5,7 +5,6 @@ class actividadSede{
 private:
     int idActividad;
     int idSede;
-    int posicionDeJuego;
     Fecha fechaAlta;
     Fecha fechaBaja;
     bool eliminado;
@@ -14,14 +13,12 @@ private:
 public:
     void setIdactividad(int);
     void setIdsede(int);
-    void setPosicion(int);
     void setFechaAlta(Fecha);
     void setFechaBaja(Fecha);
     void setEliminado(bool);
 
     int getIdactividad();
     int getIdsede();
-    int getPosicion();
     Fecha getFechaAlta();
     Fecha getFechaBaja();
     bool getEliminado();
