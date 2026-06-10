@@ -11,7 +11,7 @@
 #include "clsArchivoSocio.h"
 #include"clsArchivoSede.h"
 #include"clsArchivoCuota.h"
-#include"clsArchivoActividadesSede.h"
+#include"clsArchivoActividadesSocio.h"
 #include"clsArchivoActividades.h"
 
 using namespace std;
@@ -47,7 +47,7 @@ void menuPrincipal(){
                 menuCuota();
                 break;
             case 5:
-
+                listados();
                 break;
             case 6:
 
@@ -197,6 +197,71 @@ void menuCuota(){
         system("pause");
     }
 }
+
+void listados(){
+    int opc;
+
+    while(true){
+        system("cls");
+
+        cout<<"MENU LISTADOS"<<endl;
+        cout<<"=========================="<<endl;
+        cout<<"1 - Socios por apellido"<<endl;
+        cout<<"2 - Socios por tipo"<<endl;
+        cout<<"3 - Cuotas por ID de socio"<<endl;
+        cout<<"4 - Cuotas por monto"<<endl;
+        cout<<"5 - Sedes por ID"<<endl;
+        cout<<"6 - Actividades por ID"<<endl;
+        cout<<"7 - Participaciones por ID de socio"<<endl;
+        cout<<"8 - Participaciones por ID de actividad"<<endl;
+        cout<<"0 - Volver"<<endl;
+        cout<<"=========================="<<endl;
+
+        cin>>opc;
+
+        system("cls");
+
+        switch(opc){
+        case 1:
+            listadoSociosApellido();
+            break;
+
+        case 2:
+            listadoSociosTipo();
+            break;
+
+        case 3:
+            listadoCuotaSocio();
+            break;
+
+        case 4:
+            listadoCuotaMonto();
+            break;
+
+        case 5:
+            listadoSedeXid();
+            break;
+
+        case 6:
+            listadoActividadXid();
+            break;
+
+        case 7:
+            listadoParticipacionesSocio();
+            break;
+
+        case 8:
+            listadoParticipacionesActividad();
+            break;
+
+        case 0:
+            return;
+        }
+
+        system("pause");
+    }
+}
+
 ///////////////////////////////////
 
 
@@ -468,4 +533,421 @@ cout<<"couta modificad correctamente"<<endl;
 
 }
 
-void listarCuota(){}
+void listarCuota(){
+archivoCuota arc;
+int cant = arc.contarRegistros();
+if (cant<=0){
+
+   cout<<"no hay cuotas ingresadas: "<<endl;
+   return;
+}
+for(int i =0;i<cant;i++){
+
+  cuota obj=arc.leerRegistro(i);
+    if(obj.getEliminado()==true){
+        obj.mostrar();
+        }
+}
+}
+///ordenar socios por apellido .
+void listadoSociosApellido(){
+
+    archivoSocio arc;
+
+    int cant = arc.contarRegistros();
+
+    socio *vec = new socio[cant];
+
+    for(int i=0;i<cant;i++){
+        vec[i]=arc.leerRegistros(i);
+    }
+
+    for(int i=0;i<cant-1;i++){
+
+        for(int j=i+1;j<cant;j++){
+
+            if(strcmp(vec[i].getApellido(),
+                      vec[j].getApellido())>0){
+
+                socio aux=vec[i];
+                vec[i]=vec[j];
+                vec[j]=aux;
+            }
+        }
+    }
+
+    for(int i=0;i<cant;i++){
+
+        if(vec[i].getEliminado()){
+
+            vec[i].mostrar();
+            cout<<endl;
+        }
+    }
+
+    delete[] vec;
+}
+
+///ordenar  por tipo de socios
+void listadoSociosTipo(){
+
+    archivoSocio arc;
+
+    int cant=arc.contarRegistros();
+
+    socio *vec=new socio[cant];
+
+    for(int i=0;i<cant;i++){
+        vec[i]=arc.leerRegistros(i);
+    }
+
+    for(int i=0;i<cant-1;i++){
+
+        for(int j=i+1;j<cant;j++){
+
+            if(vec[i].getTipoSocio()>
+               vec[j].getTipoSocio()){
+
+                socio aux=vec[i];
+                vec[i]=vec[j];
+                vec[j]=aux;
+            }
+        }
+    }
+
+    for(int i=0;i<cant;i++){
+
+        if(vec[i].getEliminado()){
+
+            vec[i].mostrar();
+            cout<<endl;
+        }
+    }
+
+    delete[] vec;
+}
+///ordenar cuota por id de socio.
+void listadoCuotaSocio(){
+
+    archivoCuota arc;
+
+    int cant=arc.contarRegistros();
+
+    cuota *vec=new cuota[cant];
+
+    for(int i=0;i<cant;i++){
+        vec[i]=arc.leerRegistro(i);
+    }
+
+    for(int i=0;i<cant-1;i++){
+
+        for(int j=i+1;j<cant;j++){
+
+            if(vec[i].getIdsocio()>
+               vec[j].getIdsocio()){
+
+                cuota aux=vec[i];
+                vec[i]=vec[j];
+                vec[j]=aux;
+            }
+        }
+    }
+
+    for(int i=0;i<cant;i++){
+
+        if(vec[i].getEliminado()){
+
+            vec[i].mostrar();
+            cout<<endl;
+        }
+    }
+
+    delete[] vec;
+}
+
+
+///ordenar por monto de deuda.
+
+void listadoCuotaMonto(){
+
+    archivoCuota arc;
+
+    int cant=arc.contarRegistros();
+
+    cuota *vec=new cuota[cant];
+
+    for(int i=0;i<cant;i++){
+        vec[i]=arc.leerRegistro(i);
+    }
+
+    for(int i=0;i<cant-1;i++){
+
+        for(int j=i+1;j<cant;j++){
+
+            if(vec[i].getCuota()>
+               vec[j].getCuota()){
+
+                cuota aux=vec[i];
+                vec[i]=vec[j];
+                vec[j]=aux;
+            }
+        }
+    }
+
+    for(int i=0;i<cant;i++){
+
+        if(vec[i].getEliminado()){
+
+            vec[i].mostrar();
+            cout<<endl;
+        }
+    }
+
+    delete[] vec;
+}
+
+///ordenar por id de sedes.
+
+void listadoParticipacionesSocio(){
+
+    archivoActividadesSocio arc;
+
+    int cant=arc.contarRegistros();
+
+    actividadSocio *vec=new actividadSocio[cant];
+
+    for(int i=0;i<cant;i++){
+        vec[i]=arc.leerRegistro(i);
+    }
+
+    for(int i=0;i<cant-1;i++){
+
+        for(int j=i+1;j<cant;j++){
+
+            if(vec[i].getIdsocio()>
+               vec[j].getIdsocio()){
+
+                actividadSocio aux=vec[i];
+                vec[i]=vec[j];
+                vec[j]=aux;
+            }
+        }
+    }
+
+    for(int i=0;i<cant;i++){
+
+        if(vec[i].getEliminado()){
+
+            vec[i].mostrar();
+            cout<<endl;
+        }
+    }
+
+    delete[] vec;
+}
+
+
+
+void listadoParticipacionesActividad(){
+
+    archivoActividadesSocio arc;
+
+    int cant=arc.contarRegistros();
+
+    actividadSocio *vec=new actividadSocio[cant];
+
+    for(int i=0;i<cant;i++){
+        vec[i]=arc.leerRegistro(i);
+    }
+
+    for(int i=0;i<cant-1;i++){
+
+        for(int j=i+1;j<cant;j++){
+
+            if(vec[i].getIdactividad()>
+               vec[j].getIdactividad()){
+
+                actividadSocio aux=vec[i];
+                vec[i]=vec[j];
+                vec[j]=aux;
+            }
+        }
+    }
+
+    for(int i=0;i<cant;i++){
+
+        if(vec[i].getEliminado()){
+
+            vec[i].mostrar();
+            cout<<endl;
+        }
+    }
+
+    delete[] vec;
+}
+
+
+void listadoSedeXid(){
+
+    archivoSede arc;
+
+    int cant = arc.contarRegistro();
+
+    sede *vec = new sede[cant];
+
+    for(int i=0;i<cant;i++){
+        vec[i]=arc.leerRegistro(i);
+    }
+
+    for(int i=0;i<cant-1;i++){
+
+        for(int j=i+1;j<cant;j++){
+
+            if(vec[i].getIdsede() >
+               vec[j].getIdsede()){
+
+                sede aux=vec[i];
+                vec[i]=vec[j];
+                vec[j]=aux;
+            }
+        }
+    }
+
+    for(int i=0;i<cant;i++){
+
+        if(vec[i].getEliminado()){
+
+            vec[i].mostrar();
+            cout<<endl;
+        }
+    }
+
+    delete[] vec;
+}
+
+
+
+void listadoActividadXid(){
+
+    archivoActividades arc;
+
+    int cant = arc.contarRegistros();
+
+    actividad *vec = new actividad[cant];
+
+    for(int i=0;i<cant;i++){
+        vec[i]=arc.leerRegistros(i);
+    }
+
+    for(int i=0;i<cant-1;i++){
+
+        for(int j=i+1;j<cant;j++){
+
+            if(vec[i].getIdactividad() >
+               vec[j].getIdactividad()){
+
+                actividad aux=vec[i];
+                vec[i]=vec[j];
+                vec[j]=aux;
+            }
+        }
+    }
+
+    for(int i=0;i<cant;i++){
+
+        if(vec[i].getEliminado()){
+
+            vec[i].mostrar();
+            cout<<endl;
+        }
+    }
+
+    delete[] vec;
+}
+
+///INFORMES
+
+
+actividad buscarActividadPorId(int idActividad){
+
+    archivoActividades arc;
+
+    int cant = arc.contarRegistros();
+
+    for(int i=0;i<cant;i++){
+
+        actividad obj = arc.leerRegistros(i);
+
+        if(obj.getIdactividad()==idActividad){
+            return obj;
+        }
+    }
+
+    actividad aux;
+    aux.setIdactividad(-1);
+
+    return aux;
+}
+
+
+void listarActividadesDeSocio(){
+
+    int idSocio;
+
+    cout<<"INGRESE EL ID DEL SOCIO: ";
+    cin>>idSocio;
+
+    archivoActividadesSocio arc;
+
+    int cant = arc.contarRegistros();
+
+    bool encontro=false;
+
+    for(int i=0;i<cant;i++){
+
+        actividadSocio reg = arc.leerRegistro(i);
+
+        if(reg.getIdsocio()==idSocio &&
+           reg.getEliminado()){
+
+            actividad act =
+                buscarActividadPorId(reg.getIdactividad());
+
+            if(act.getIdactividad()!=-1){
+
+                act.mostrar();
+                cout<<endl;
+
+                encontro=true;
+            }
+        }
+    }
+
+    if(!encontro){
+        cout<<"EL SOCIO NO TIENE ACTIVIDADES REGISTRADAS"<<endl;
+    }
+}
+
+
+
+
+void recaudacionAnual(){
+
+    archivoCuota arc;
+
+    int cant = arc.contarRegistros();
+
+    float total=0;
+
+    for(int i=0;i<cant;i++){
+
+        cuota obj = arc.leerRegistro(i);
+
+        if(obj.getEliminado()){
+
+            total += obj.getCuota();
+        }
+    }
+
+    cout<<"RECAUDACION ANUAL: $"<<total<<endl;
+}
