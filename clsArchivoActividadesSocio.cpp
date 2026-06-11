@@ -1,14 +1,14 @@
 #include <iostream>
 #include <cstring>
-#include "clsArchivoActividadesSede.h"
+#include "clsArchivoActividadesSocio.h"
 using namespace std;
 
-archivoActividadesSede::archivoActividadesSede(const char*n){
+archivoActividadesSocio::archivoActividadesSocio(const char*n){
 strcpy(nombre,n);
 }
-actividadSede archivoActividadesSede::leerRegistro(int pos){
+actividadSocio archivoActividadesSocio::leerRegistro(int pos){
 FILE *p = fopen(nombre, "rb");
- actividadSede obj;
+ actividadSocio obj;
 if(p == nullptr){
     obj.setIdactividad(-2);
     return obj;
@@ -20,7 +20,7 @@ fclose(p);
 return obj;
 }
 
-bool archivoActividadesSede::modificarRegistro(actividadSede obj, int pos){
+bool archivoActividadesSocio::modificarRegistro(actividadSocio obj, int pos){
     FILE *p = fopen(nombre, "rb+");
     if(p == nullptr) return false;
     fseek(p, sizeof obj * pos, 0);
@@ -29,7 +29,7 @@ bool archivoActividadesSede::modificarRegistro(actividadSede obj, int pos){
     return escribio;
 }
 
-bool archivoActividadesSede::grabarRegistro(actividadSede obj){
+bool archivoActividadesSocio::grabarRegistro(actividadSocio obj){
  FILE *p = fopen(nombre, "ab");
  if(p == nullptr) return false;
  bool escribio = fwrite(&obj, sizeof obj, 1, p);
@@ -37,19 +37,19 @@ bool archivoActividadesSede::grabarRegistro(actividadSede obj){
  return escribio;
 }
 
-int archivoActividadesSede::contarRegistros(){
+int archivoActividadesSocio::contarRegistros(){
  FILE *p = fopen(nombre, "rb");
  if(p == nullptr) return -1;
  fseek(p, 0, 2);
- int cant = ftell(p)/sizeof(actividadSede);
+ int cant = ftell(p)/sizeof(actividadSocio);
  fclose(p);
  return cant;
 }
 
-int archivoActividadesSede::buscarRegistro(int legajo){
+int archivoActividadesSocio::buscarRegistro(int legajo){
 int cantReg = contarRegistros();
 for(int i=0; i<cantReg; i++){
-    actividadSede obj = leerRegistro(i);
+    actividadSocio obj = leerRegistro(i);
     if(obj.getIdactividad()==legajo){
         return i;
     }
@@ -57,11 +57,11 @@ for(int i=0; i<cantReg; i++){
 return -1;
 }
 
-void archivoActividadesSede::listarRegistros(){
+void archivoActividadesSocio::listarRegistros(){
 int cantReg = contarRegistros();
 for(int i=0; i<cantReg; i++){
-    actividadSede obj = leerRegistro(i);
-    if(obj.getEliminado()){
+    actividadSocio obj = leerRegistro(i);
+    if(obj.getEstado()){
         obj.mostrar();
         cout<<endl;
     }

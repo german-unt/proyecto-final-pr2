@@ -5,12 +5,12 @@
 #include "clsSocio.h"
 #include "clsSede.h"
 #include "clsCuota.h"
-#include "clsActividad.h"
+#include "clsActividadSocio.h"
 //---------------------------
 #include "clsArchivoSocio.h"
 #include"clsArchivoSede.h"
 #include"clsArchivoCuota.h"
-#include"clsArchivoActividadesSede.h"
+#include"clsArchivoActividadesSocio.h"
 #include"clsArchivoActividades.h"
 void menuPrincipal();
 void menuSocios();
@@ -55,7 +55,8 @@ void consultasSocios();
 void consultasActividades();
 void consultasDeEstado();
 void rangoDeFechas();
-void consultaXidDeSocio();
+void consultaXSocio();
+void consultaResumen();
 
 void informes();
 void recaudacionAnual();

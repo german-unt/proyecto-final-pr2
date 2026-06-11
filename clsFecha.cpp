@@ -45,3 +45,26 @@ void Fecha::Cargar(){
 void Fecha::Mostrar(){
     cout<<dia<<"/"<<mes<<"/"<<anio;
 }
+int Fecha::obtenerValor(){
+    return anio * 10000 + mes * 100 + dia;
+}
+
+bool Fecha::operator>=(Fecha f){
+    return obtenerValor() >= f.obtenerValor();
+}
+
+bool Fecha::operator<=(Fecha f){
+    return obtenerValor() <= f.obtenerValor();
+}
+
+bool Fecha::operator>(Fecha f){
+    return obtenerValor() > f.obtenerValor();
+}
+
+bool Fecha::operator<(Fecha f){
+    return obtenerValor() < f.obtenerValor();
+}
+
+bool Fecha::operator==(Fecha f){
+    return obtenerValor() == f.obtenerValor();
+}

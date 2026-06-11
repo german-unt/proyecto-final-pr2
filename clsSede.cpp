@@ -17,7 +17,7 @@ cout<<"INGRESE LA DIRECCION DE LA SEDE: ";
 cargarCadena(direccion,100);
 cout<<"INGRESE EL TIPO DE ACTIVIDAD";
 cin>>tipoActividad;
-eliminado=true;
+estado=true;
 }
 
 void sede::mostrar(){
@@ -32,10 +32,10 @@ void sede::setIdsede(int s){idSede=s;}
 void sede::setNombresede(char* n){strcpy(nombreSede,n);}
 void sede::setDireccion(char* d){strcpy(direccion,d);}
 void sede::setTipoactividad(int t){tipoActividad=t;}
-void sede::setEliminado(bool e){eliminado=e;}
+void sede::setEstado(bool e){estado=e;}
 
 int sede::getIdsede(){return idSede;}
 char* sede::getNombresede(){return nombreSede;}
 char*sede::getDireccion(){return direccion;}
 int sede::getTipoactividad(){return tipoActividad;}
-bool sede::getEliminado(){return eliminado;}
+bool sede::getEstado(){return estado;}

@@ -6,15 +6,15 @@ private:
     int idActividad;
     int idSede;
     char nombreActividad[20];
-    bool eliminado;
+    bool estado;
 public:
     void setIdactividad(int);
     void setNombreactividad(char*);
-    void setEliminado(bool);
+    void setEstado(bool);
 
     int getIdactividad();
     char* getNombreActividad();
-    bool getEliminado();
+    bool getEstado();
 
     void cargar(int id=-1);
     void mostrar();

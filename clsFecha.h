@@ -14,6 +14,14 @@ class Fecha{
         int getAnio();
         void Cargar();
         void Mostrar();
+
+        int obtenerValor();
+
+        bool operator>=(Fecha);
+        bool operator<=(Fecha);
+        bool operator>(Fecha);
+        bool operator<(Fecha);
+        bool operator==(Fecha);
 };
 
 #endif // CLSFECHA_H_INCLUDED

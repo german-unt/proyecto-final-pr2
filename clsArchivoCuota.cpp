@@ -65,7 +65,7 @@ void archivoCuota::listarRegistros(){
     int cantReg = contarRegistros();
     for(int i=0; i<cantReg; i++){
         cuota obj = leerRegistro(i);
-        if(obj.getEliminado()){
+        if(obj.getEstado()){
             obj.mostrar();
             cout<<endl;
         }

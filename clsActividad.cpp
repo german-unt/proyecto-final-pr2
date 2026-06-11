@@ -14,7 +14,7 @@ void actividad::cargar(int id){
 
 cout<<"INGRESE EL NOMBRE DE LA ACTIVIDAD: ";
 cargarCadena(nombreActividad,20);
-eliminado=true;
+estado=true;
 }
 
 void actividad::mostrar(){
@@ -24,8 +24,8 @@ cout<<"ACTIVIDAD: "<<nombreActividad<<endl;
 
 void actividad::setIdactividad(int a){idActividad=a;}
 void actividad::setNombreactividad(char* n){strcpy(nombreActividad,n);}
-void actividad::setEliminado(bool e){eliminado=e;}
+void actividad::setEstado(bool e){estado=e;}
 
 int actividad::getIdactividad(){return idActividad;}
 char* actividad::getNombreActividad(){return nombreActividad;}
-bool actividad::getEliminado(){return eliminado;}
+bool actividad::getEstado(){return estado;}

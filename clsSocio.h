@@ -8,7 +8,7 @@ private:
     char apellido[20];
     char telefono[15];
    Fecha fechaNacimiento;
-    bool eliminado;
+    bool estado;
     int tipoSocio;
     int email;
 
@@ -19,7 +19,7 @@ public:
     void setApellido(char*);
     void setTelefono(char*);
     void setFechaNacimiento(Fecha);
-    void setEliminado (bool);
+    void setEstado (bool);
     void setTipoSocio(int);
     void setEmail(int);
     ///gets
@@ -28,7 +28,7 @@ public:
     char* getApellido();
     char* getTelefono();
     Fecha getFechaNacimiento();
-    bool getEliminado();
+    bool getEstado();
     int getTipoSocio();
     int getEmail();
 

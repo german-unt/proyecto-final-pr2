@@ -1,27 +1,27 @@
 #ifndef CLSACTIVIDADSEDE_H_INCLUDED
 #define CLSACTIVIDADSEDE_H_INCLUDED
 #include "clsFecha.h"
-class actividadSede{
+class actividadSocio{
 private:
     int idActividad;
-    int idSede;
+    int idSocio;
     Fecha fechaAlta;
     Fecha fechaBaja;
-    bool eliminado;
+    bool estado;
 
 
 public:
     void setIdactividad(int);
-    void setIdsede(int);
+    void setIdSocio(int);
     void setFechaAlta(Fecha);
     void setFechaBaja(Fecha);
-    void setEliminado(bool);
+    void setEstado(bool);
 
     int getIdactividad();
-    int getIdsede();
+    int getIdSocio();
     Fecha getFechaAlta();
     Fecha getFechaBaja();
-    bool getEliminado();
+    bool getEstado();
 
     void cargar();
     void mostrar();

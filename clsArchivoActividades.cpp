@@ -65,7 +65,7 @@ return escribio;
  int cantReg = contarRegistros();
 for(int i=0; i<cantReg; i++){
     actividad obj = leerRegistros(i);
-    if(obj.getEliminado()){
+    if(obj.getEstado()){
         obj.mostrar();
         cout<<endl;
     }

@@ -23,7 +23,7 @@ cout<<"INGRESE EL TIPO DE SOCIO: ";
 cin>>tipoSocio;
 cout<<"INGRESE EL EMAIL: ";
 cin>>email;
-eliminado=true;
+estado=true;
 }
 
 void socio::mostrar(){
@@ -51,8 +51,8 @@ strcpy(telefono,t);
 void socio::setFechaNacimiento(Fecha f){
 fechaNacimiento=f;
 }
-void socio::setEliminado(bool e ){
-eliminado=e;
+void socio::setEstado(bool e ){
+estado=e;
 }
 void socio::setTipoSocio(int Ts){
 
@@ -72,7 +72,7 @@ char* socio::getTelefono(){return telefono;}
 
 Fecha socio::getFechaNacimiento(){return fechaNacimiento;}
 
-bool socio::getEliminado(){return eliminado;}
+bool socio::getEstado(){return estado;}
 
 int socio::getTipoSocio(){return tipoSocio;}
 

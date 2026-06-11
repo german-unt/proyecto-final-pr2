@@ -62,7 +62,7 @@ void archivoSede::listarRegistro(){
 int cantReg = contarRegistro();
 for(int i=0; i<cantReg; i++){
     sede obj = leerRegistro(i);
-    if(obj.getEliminado()){
+    if(obj.getEstado()){
         obj.mostrar();
         cout<<endl;
     }
