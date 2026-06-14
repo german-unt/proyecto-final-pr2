@@ -66,4 +66,6 @@ void recaudacionXActividad();
 void porcentajeInscripciones();
 void ranking();
 void deudores();
+
+
 #endif // FUNCIONES_H_INCLUDED

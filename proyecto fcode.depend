@@ -285,3 +285,110 @@
 	<cstring>
 	"clsArchivoActividadesSocio.h"
 
+1776843284 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\cargarcadena.cpp
+	<iostream>
+	<cstring>
+
+1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsactividad.cpp
+	<iostream>
+	"clsActividad.h"
+	"cargarCadena.h"
+	<cstring>
+
+1781408511 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsactividad.h
+
+1776843284 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\cargarcadena.h
+
+1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsarchivoactividades.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoActividades.h"
+	"funciones.h"
+
+1780479856 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsarchivoactividades.h
+	"funciones.h"
+	"clsActividad.h"
+
+1781408511 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\funciones.h
+	"funciones.h"
+	"clsActividad.h"
+	"clsSocio.h"
+	"clsSede.h"
+	"clsCuota.h"
+	"clsActividadSocio.h"
+	"clsArchivoSocio.h"
+	"clsArchivoSede.h"
+	"clsArchivoCuota.h"
+	"clsArchivoActividadesSocio.h"
+	"clsArchivoActividades.h"
+
+1781408511 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clssocio.h
+	"clsFecha.h"
+
+1781408511 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsfecha.h
+
+1781408511 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clssede.h
+
+1781408511 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clscuota.h
+	"clsFecha.h"
+
+1781408511 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsactividadsocio.h
+	"clsFecha.h"
+
+1780482144 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsarchivosocio.h
+	"clsSocio.h"
+
+1780481738 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsarchivosede.h
+	"clsSede.h"
+
+1780480380 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsarchivocuota.h
+	"funciones.h"
+	"clsCuota.h"
+
+1781408511 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsarchivoactividadessocio.h
+	"funciones.h"
+	"clsActividadSocio.h"
+
+1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsarchivocuota.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoCuota.h"
+
+1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsarchivosede.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoSede.h"
+
+1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsarchivosocio.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoSocio.h"
+
+1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clscouta.cpp
+	<iostream>
+	"clsCuota.h"
+	"funciones.h"
+	"clsFecha.h"
+
+1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsfecha.cpp
+	<iostream>
+	"clsFecha.h"
+	"funciones.h"
+
+1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clssede.cpp
+	<iostream>
+	"cargarCadena.h"
+	<cstring>
+	"clsSede.h"
+
+1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clssocio.cpp
+	<iostream>
+	"clsSocio.h"
+	<cstring>
+	"funciones.h"
+	"cargarCadena.h"
+
+1780492554 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\main.cpp
+	<iostream>
+	"funciones.h"
+

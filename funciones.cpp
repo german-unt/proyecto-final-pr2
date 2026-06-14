@@ -758,7 +758,7 @@ void listadoSociosApellido()
     for(int i=0; i<cant; i++)
     {
 
-        if(vec[i].getEliminado())
+        if(vec[i].getEstado())
         {
 
             vec[i].mostrar();
@@ -804,7 +804,7 @@ void listadoSociosTipo()
     for(int i=0; i<cant; i++)
     {
 
-        if(vec[i].getEliminado())
+        if(vec[i].getEstado())
         {
 
             vec[i].mostrar();
@@ -849,7 +849,7 @@ void listadoCuotaSocio()
     for(int i=0; i<cant; i++)
     {
 
-        if(vec[i].getEliminado())
+        if(vec[i].getEstado())
         {
 
             vec[i].mostrar();
@@ -991,7 +991,7 @@ void listadoParticipacionesActividad()
     for(int i=0; i<cant; i++)
     {
 
-        if(vec[i].getEliminado())
+        if(vec[i].getEstado())
         {
 
             vec[i].mostrar();
@@ -1037,7 +1037,7 @@ void listadoSedeXid()
     for(int i=0; i<cant; i++)
     {
 
-        if(vec[i].getEliminado())
+        if(vec[i].getEstado())
         {
 
             vec[i].mostrar();
@@ -1084,7 +1084,7 @@ void listadoActividadXid()
     for(int i=0; i<cant; i++)
     {
 
-        if(vec[i].getEliminado())
+        if(vec[i].getEstado())
         {
 
             vec[i].mostrar();
@@ -1143,7 +1143,7 @@ void listarActividadesDeSocio()
         actividadSocio reg = arc.leerRegistro(i);
 
         if(reg.getIdsocio()==idSocio &&
-                reg.getEliminado())
+                reg.getEstado())
         {
 
             actividad act =
@@ -1183,7 +1183,7 @@ void recaudacionAnual()
 
         cuota obj = arc.leerRegistro(i);
 
-        if(obj.getEliminado())
+        if(obj.getEstado())
         {
 
             total += obj.getCuota();
@@ -1193,7 +1193,94 @@ void recaudacionAnual()
     cout<<"RECAUDACION ANUAL: $"<<total<<endl;
 }
 
+///informe
+void recaudacionXActividad(){
 
+    archivoActividades arcAct;
+    archivoActividadesSocio arcSocio;
+    archivoCuota arcCuota;
+
+    int cantAct=arcAct.contarRegistros();
+    int cantSoc=arcSocio.contarRegistros();
+    int cantCuo=arcCuota.contarRegistros();
+
+    for(int i=0;i<cantAct;i++){
+
+        actividad act=arcAct.leerRegistros(i);
+
+        float total=0;
+
+        for(int j=0;j<cantSoc;j++){
+
+            actividadSocio as=arcSocio.leerRegistro(j);
+
+            if(as.getIdactividad()==act.getIdactividad()){
+
+                for(int k=0;k<cantCuo;k++){
+
+                    cuota c=arcCuota.leerRegistro(k);
+
+                    if(c.getIdsocio()==as.getIdSocio()){
+
+                        total+=c.getCuota();
+                    }
+                }
+            }
+        }
+
+        cout<<"ACTIVIDAD: "<<act.getNombreActividad()<<endl;
+        cout<<"RECAUDACION: $"<<total<<endl<<endl;
+    }
+}
+
+void porcentajeInscripciones(){
+
+    archivoActividades arcAct;
+    archivoActividadesSocio arc;
+
+    int cantAct = arcAct.contarRegistros();
+    int cant = arc.contarRegistros();
+
+    int total = 0;
+
+    for(int i=0; i<cant; i++){
+
+        actividadSocio obj = arc.leerRegistro(i);
+
+        if(obj.getEstado()==true){
+            total++;
+        }
+    }
+
+    for(int i=0; i<cantAct; i++){
+
+        actividad act = arcAct.leerRegistros(i);
+
+        int cantidad = 0;
+
+        for(int j=0; j<cant; j++){
+
+            actividadSocio obj = arc.leerRegistro(j);
+
+            if(obj.getEstado()==true){
+
+                if(obj.getIdactividad()==act.getIdactividad()){
+                    cantidad++;
+                }
+            }
+        }
+
+        float porcentaje = 0;
+
+        if(total>0){
+            porcentaje = cantidad * 100.0 / total;
+        }
+
+        cout<<"ACTIVIDAD: "<<act.getNombreActividad()<<endl;
+        cout<<"PORCENTAJE DE INSCRIPCIONES: "<<porcentaje<<"%"<<endl;
+        cout<<endl;
+    }
+}
 void informes()
 {
     int opc;
