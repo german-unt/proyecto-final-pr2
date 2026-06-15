@@ -10,7 +10,7 @@ private:
    Fecha fechaNacimiento;
     bool estado;
     int tipoSocio;
-    int email;
+    char email[50];
 
 public:
     ///sets
@@ -21,7 +21,7 @@ public:
     void setFechaNacimiento(Fecha);
     void setEstado (bool);
     void setTipoSocio(int);
-    void setEmail(int);
+    void setEmail(char*);
     ///gets
     int getIdsocio();
     char* getNombre();
@@ -30,7 +30,7 @@ public:
     Fecha getFechaNacimiento();
     bool getEstado();
     int getTipoSocio();
-    int getEmail();
+    char* getEmail();
 
     void cargar(int id=-1);
     void mostrar();

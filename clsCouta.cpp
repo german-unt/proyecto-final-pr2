@@ -1,7 +1,7 @@
 #include<iostream>
 #include"clsCuota.h"
 #include"funciones.h"
-#include "clsFecha.h"
+
 using namespace std;
 void cuota::cargar(int id){
     if(id == -1){
@@ -16,7 +16,7 @@ cout<<"INGRESE LA DEUDA DEL SOCIO: ";
 cin>>deuda;
 estado=true;
 cout<<"INGRESE FECHA DE PAGO: ";
-FechaPago.Cargar;
+FechaPago.Cargar();
 }
 void cuota::mostrar(){
 cout<<"ID SOCIO:"<<idSocio<<endl;
@@ -35,11 +35,11 @@ deuda=d;
 void cuota::setEstado(bool e){
 estado=e;
 }
-void cuota::setFechaPago(fecha f){
-fechaPago=f; }
+void cuota::setFechaPago(Fecha f){
+FechaPago=f; }
 int cuota::getIdsocio(){return idSocio;}
 float cuota::getCuota(){return cuota;}
 float cuota::getDeuda(){return deuda;}
 bool cuota::getEstado(){return estado;}
-fecha cuota::getFechaPago(){return fechaPago; }
+Fecha cuota::getFechaPago(){return FechaPago; }
 

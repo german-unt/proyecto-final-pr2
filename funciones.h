@@ -52,11 +52,12 @@ void listadoParticipacionesActividad();
 
 void consultas();
 void consultasSocios();
-void consultasActividades();
+void consultaXActividad();
 void consultasDeEstado();
 void rangoDeFechas();
 void consultaXSocio();
 void consultaResumen();
+void menuConsultaActividades();
 
 void informes();
 void recaudacionAnual();

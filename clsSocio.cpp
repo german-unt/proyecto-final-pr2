@@ -22,7 +22,7 @@ fechaNacimiento.Cargar();
 cout<<"INGRESE EL TIPO DE SOCIO: ";
 cin>>tipoSocio;
 cout<<"INGRESE EL EMAIL: ";
-cin>>email;
+cargarCadena(email,50);
 estado=true;
 }
 
@@ -57,9 +57,8 @@ estado=e;
 void socio::setTipoSocio(int Ts){
 
 tipoSocio=Ts;}
-void socio::setEmail(int em ){
-email=em;}
-
+void socio::setEmail(char* em ){
+strcpy(email,em);}
 int socio::getIdsocio(){
 return idSocio;}
 
@@ -76,4 +75,4 @@ bool socio::getEstado(){return estado;}
 
 int socio::getTipoSocio(){return tipoSocio;}
 
-int socio::getEmail(){return email;}
+char* socio::getEmail(){return email;}

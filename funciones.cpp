@@ -308,7 +308,7 @@ void consultas()
             break;
 
         case 2:
-            consultasActividades();
+            menuConsultaActividades();
             break;
 
         case 3:
@@ -356,8 +356,8 @@ void consultasSocios()
 
     }
 }
+void menuConsultaActividades()
 
-void consultasActividades()
 {
 
     int opc;
@@ -424,7 +424,7 @@ void bajaSocio()
         return;
     }
     socio obj =arc.leerRegistros(pos);
-    obj.estado(false);
+    obj.setEstado(false);
     arc.modificarRegistro(obj,pos);
     cout<<"el socio ha sido dado de baja correctamente "<<endl;
 }
@@ -897,7 +897,7 @@ void listadoCuotaMonto()
     for(int i=0; i<cant; i++)
     {
 
-        if(vec[i].getEliminado())
+        if(vec[i].getEstado())
         {
 
             vec[i].mostrar();
@@ -930,8 +930,8 @@ void listadoParticipacionesSocio()
         for(int j=i+1; j<cant; j++)
         {
 
-            if(vec[i].getIdsocio()>
-                    vec[j].getIdsocio())
+            if(vec[i].getIdSocio()>
+                    vec[j].getIdSocio())
             {
 
                 actividadSocio aux=vec[i];
@@ -944,7 +944,7 @@ void listadoParticipacionesSocio()
     for(int i=0; i<cant; i++)
     {
 
-        if(vec[i].getEliminado())
+        if(vec[i].getEstado())
         {
 
             vec[i].mostrar();
@@ -1142,7 +1142,7 @@ void listarActividadesDeSocio()
 
         actividadSocio reg = arc.leerRegistro(i);
 
-        if(reg.getIdsocio()==idSocio &&
+        if(reg.getIdSocio()==idSocio &&
                 reg.getEstado())
         {
 
@@ -1323,11 +1323,11 @@ void informes()
             break;
 
         case 5:
-            ranking();
+///            ranking();
             break;
 
         case 6:
-            deudores();
+         ///   deudores();
             break;
 
         case 0:
@@ -1340,7 +1340,7 @@ void informes()
 ///consulta rango de fechas
 void rangoDeFechas()
 {
-    archivoSocio arc;
+    archivoActividadesSocio arc;
     actividadSocio obj;
 
     Fecha primeraFecha;
@@ -1434,8 +1434,8 @@ void consultaXActividad()
 
 void consultaResumen(){
 
-    actividadSocio obj;
-    archivoActividadSocio arc;
+    cuota obj;
+    archivoCuota arc;
 
     int mes;
 
@@ -1446,7 +1446,7 @@ void consultaResumen(){
     for(int i=0;i<cant;i++){
         obj = arc.leerRegistro(i);
         if(obj.getFechaPago().getMes()== mes){
-            total += obj.getImporte();
+            total += obj.getCuota();
         }
     }
     cout << "RECAUDACION TOTAL DEL MES: $" << total << endl;
