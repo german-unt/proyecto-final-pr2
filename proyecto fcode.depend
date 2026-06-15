@@ -418,3 +418,109 @@
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoActividades.h"
 
+1781094671 source:/home/facu/Escritorio/proyecto-final-pr2/cargarCadena.cpp
+	<iostream>
+	<cstring>
+
+1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsActividad.cpp
+	<iostream>
+	"clsActividad.h"
+	"cargarCadena.h"
+	<cstring>
+
+1781300911 /home/facu/Escritorio/proyecto-final-pr2/clsActividad.h
+
+1781094671 /home/facu/Escritorio/proyecto-final-pr2/cargarCadena.h
+
+1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsArchivoActividades.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoActividades.h"
+	"funciones.h"
+
+1781094671 /home/facu/Escritorio/proyecto-final-pr2/clsArchivoActividades.h
+	"funciones.h"
+	"clsActividad.h"
+
+1781484764 /home/facu/Escritorio/proyecto-final-pr2/funciones.h
+	"funciones.h"
+	"clsActividad.h"
+	"clsSocio.h"
+	"clsSede.h"
+	"clsCuota.h"
+	"clsActividadSocio.h"
+	"clsArchivoSocio.h"
+	"clsArchivoSede.h"
+	"clsArchivoCuota.h"
+	"clsArchivoActividadesSocio.h"
+	"clsArchivoActividades.h"
+
+1781484764 /home/facu/Escritorio/proyecto-final-pr2/clsSocio.h
+	"clsFecha.h"
+
+1781300911 /home/facu/Escritorio/proyecto-final-pr2/clsFecha.h
+
+1781300911 /home/facu/Escritorio/proyecto-final-pr2/clsSede.h
+
+1781300911 /home/facu/Escritorio/proyecto-final-pr2/clsCuota.h
+	"clsFecha.h"
+
+1781300911 /home/facu/Escritorio/proyecto-final-pr2/clsActividadSocio.h
+	"clsFecha.h"
+
+1781094671 /home/facu/Escritorio/proyecto-final-pr2/clsArchivoSocio.h
+	"clsSocio.h"
+
+1781094671 /home/facu/Escritorio/proyecto-final-pr2/clsArchivoSede.h
+	"clsSede.h"
+
+1781094671 /home/facu/Escritorio/proyecto-final-pr2/clsArchivoCuota.h
+	"funciones.h"
+	"clsCuota.h"
+
+1781300911 /home/facu/Escritorio/proyecto-final-pr2/clsArchivoActividadesSocio.h
+	"funciones.h"
+	"clsActividadSocio.h"
+
+1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsArchivoCuota.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoCuota.h"
+
+1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsArchivoSede.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoSede.h"
+
+1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsArchivoSocio.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoSocio.h"
+
+1781484764 source:/home/facu/Escritorio/proyecto-final-pr2/clsCouta.cpp
+	<iostream>
+	"clsCuota.h"
+	"funciones.h"
+
+1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsFecha.cpp
+	<iostream>
+	"clsFecha.h"
+	"funciones.h"
+
+1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsSede.cpp
+	<iostream>
+	"cargarCadena.h"
+	<cstring>
+	"clsSede.h"
+
+1781484764 source:/home/facu/Escritorio/proyecto-final-pr2/clsSocio.cpp
+	<iostream>
+	"clsSocio.h"
+	<cstring>
+	"funciones.h"
+	"cargarCadena.h"
+
+1781094671 source:/home/facu/Escritorio/proyecto-final-pr2/main.cpp
+	<iostream>
+	"funciones.h"
+

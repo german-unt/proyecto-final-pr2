@@ -238,7 +238,6 @@ void listados()
         cout<<"8 - Participaciones por ID de actividad"<<endl;
         cout<<"0 - Volver"<<endl;
         cout<<"=========================="<<endl;
-
         cin>>opc;
 
         system("cls");
@@ -1281,6 +1280,66 @@ void porcentajeInscripciones(){
         cout<<endl;
     }
 }
+
+///informes
+void ranking(){
+    archivoActividadesSocio arcActiviXSocio;
+    archivoActividades arcActivida;
+
+    int cantAxS= arcActiviXSocio.contarRegistros();
+    int cantActi= arcActivida.contarRegistros();
+
+if(cantActi<=0) {cout<< "ERROR: NO HAY ACTIVIDADES REGISTRADAS"<<endl; return;} /// VALIDACION DE REGISTROS
+
+    int *VcontarActividad= new int[cantActi]();
+    actividad *VranquearActividad = new actividad[cantActi];
+    actividadSocio registro;
+    actividad auxActi;
+    int aux;
+
+for(int i= 0; i<cantActi; i++){
+    VranquearActividad[i]= arcActivida.leerRegistros(i);
+    }
+
+    for(int i= 0; i<cantAxS; i++){
+    registro= arcActiviXSocio.leerRegistro(i);
+
+    if (registro.getEstado()==true){///VALIDA QUE LOS REGISTROS ESTEN ACTIVOS
+        for(int j=0; j<cantActi; j++){
+            if(registro.getIdactividad()==VranquearActividad[j].getIdactividad()){
+            VcontarActividad[j]++;
+            break;
+            }
+        }
+      }
+    }
+    for(int a=0; a<cantActi-1; a++){
+
+        for(int b=0; b<cantActi-a-1; b++){
+
+            if(VcontarActividad[b]<VcontarActividad[b+1]){
+            aux= VcontarActividad[b];
+            VcontarActividad[b]= VcontarActividad[b+1];
+            VcontarActividad[b+1]= aux;
+            ///ORDENAMOS EL CONTADOR Y EL REGISTRO TAMBIEN
+            auxActi= VranquearActividad[b];
+            VranquearActividad[b]= VranquearActividad[b+1];
+            VranquearActividad[b+1]= auxActi;
+        }
+        }
+    }
+    for(int i=0; i<cantActi; i++){
+    if (VcontarActividad[i]>0){
+    cout<< "#"<<i+1<<" : "<<VranquearActividad[i].getNombreActividad()<<". TOTAL INSCRIPTOS: "<<VcontarActividad[i]<<endl;
+    cout<<"- - - - - - - - - - - - - - - "<<endl;
+    }
+    }
+
+
+    delete[] VranquearActividad;
+    delete[] VcontarActividad;
+    }
+
 void informes()
 {
     int opc;
@@ -1323,11 +1382,11 @@ void informes()
             break;
 
         case 5:
-///            ranking();
+            ranking();
             break;
 
         case 6:
-         ///   deudores();
+            ///deudores();
             break;
 
         case 0:
@@ -1480,4 +1539,5 @@ socio obj;
         cout << "NO EXISTE NINGUN SOCIO CON ESE APELLIDO." << endl;
     }
 }
+
 
