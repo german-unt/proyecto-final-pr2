@@ -36,12 +36,12 @@
 		<Unit filename="cargarCadena.h" />
 		<Unit filename="clsActividad.cpp" />
 		<Unit filename="clsActividad.h" />
-		<Unit filename="clsActividadSede.cpp" />
-		<Unit filename="clsActividadSede.h" />
+		<Unit filename="clsActividadSocio.cpp" />
+		<Unit filename="clsActividadSocio.h" />
 		<Unit filename="clsArchivoActividades.cpp" />
 		<Unit filename="clsArchivoActividades.h" />
-		<Unit filename="clsArchivoActividadesSede.cpp" />
-		<Unit filename="clsArchivoActividadesSede.h" />
+		<Unit filename="clsArchivoActividadesSocio.cpp" />
+		<Unit filename="clsArchivoActividadesSocio.h" />
 		<Unit filename="clsArchivoCuota.cpp" />
 		<Unit filename="clsArchivoCuota.h" />
 		<Unit filename="clsArchivoSede.cpp" />

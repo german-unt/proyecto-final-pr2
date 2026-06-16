@@ -1281,7 +1281,7 @@ void porcentajeInscripciones(){
     }
 }
 
-///informes
+///INFORME RANKING
 void ranking(){
     archivoActividadesSocio arcActiviXSocio;
     archivoActividades arcActivida;
@@ -1339,6 +1339,37 @@ for(int i= 0; i<cantActi; i++){
     delete[] VranquearActividad;
     delete[] VcontarActividad;
     }
+
+///INFORME DEUDORES
+void deudores(){
+archivoCuota arc;
+cuota deudor;
+archivoSocio arcSocio;
+int pos;
+socio obj;
+int contDeudores=0;
+int cant=arc.contarRegistros();
+
+cout<<"SOCIOS CON DEUDAS PENDIENTES: "<<endl;
+for(int i =0; i<cant; i++){
+    deudor= arc.leerRegistro(i);
+    if(deudor.getDeuda()>0){
+        if(deudor.getEstado()){
+            pos=arcSocio.buscarRegistros(deudor.getIdsocio());
+            obj=arcSocio.leerRegistros(pos);
+            if(pos>0){
+                cout<<"ID: "<<deudor.getIdsocio()<<" | APELLIDO Y NOMBRE: "<<obj.getApellido()<<" "<<obj.getNombre()
+                <<" | DEUDA TOTAL: "<<deudor.getDeuda()<<endl;
+                contDeudores++;
+            }
+        }
+    }
+
+}
+cout<<"CANTIDAD TOTAL DE SOCIOS CON DEUDA: "<<contDeudores;
+}
+
+
 
 void informes()
 {

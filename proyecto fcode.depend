@@ -462,7 +462,7 @@
 
 1781300911 /home/facu/Escritorio/proyecto-final-pr2/clsSede.h
 
-1781300911 /home/facu/Escritorio/proyecto-final-pr2/clsCuota.h
+1781585744 /home/facu/Escritorio/proyecto-final-pr2/clsCuota.h
 	"clsFecha.h"
 
 1781300911 /home/facu/Escritorio/proyecto-final-pr2/clsActividadSocio.h
@@ -497,7 +497,7 @@
 	<cstring>
 	"clsArchivoSocio.h"
 
-1781484764 source:/home/facu/Escritorio/proyecto-final-pr2/clsCouta.cpp
+1781585783 source:/home/facu/Escritorio/proyecto-final-pr2/clsCouta.cpp
 	<iostream>
 	"clsCuota.h"
 	"funciones.h"
@@ -523,4 +523,31 @@
 1781094671 source:/home/facu/Escritorio/proyecto-final-pr2/main.cpp
 	<iostream>
 	"funciones.h"
+
+1781585744 source:/home/facu/Escritorio/proyecto-final-pr2/funciones.cpp
+	<iostream>
+	<cstring>
+	"funciones.h"
+	"clsActividad.h"
+	"clsSocio.h"
+	"clsSede.h"
+	"clsCuota.h"
+	"clsActividadSocio.h"
+	"cargarCadena.h"
+	"clsFecha.h"
+	"clsArchivoSocio.h"
+	"clsArchivoSede.h"
+	"clsArchivoCuota.h"
+	"clsArchivoActividadesSocio.h"
+	"clsArchivoActividades.h"
+
+1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsActividadSocio.cpp
+	<iostream>
+	"clsActividadSocio.h"
+	"funciones.h"
+
+1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsArchivoActividadesSocio.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoActividadesSocio.h"
 

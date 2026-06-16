@@ -12,12 +12,13 @@ void cuota::cargar(int id){
     }
 cout<<"INGRESE EL VALOR DE LA CUOTA: ";
 cin>>cuota;
-cout<<"INGRESE LA DEUDA DEL SOCIO: ";
+cout<<"INGRESE DEUDA DEL SOCIO(SI NO TIENE INGRESE 0): ";
 cin>>deuda;
-estado=true;
 cout<<"INGRESE FECHA DE PAGO: ";
 FechaPago.Cargar();
+estado=true;
 }
+
 void cuota::mostrar(){
 cout<<"ID SOCIO:"<<idSocio<<endl;
 cout<<"VALOR DE LA CUOTA: "<<cuota<<endl;
@@ -29,9 +30,9 @@ idSocio=id;
 }
 void cuota::setCuota(float c){
 cuota=c;
-}void cuota::setDeuda(float d){
-deuda=d;
 }
+void cuota::setDeuda(float d){
+deuda=d;}
 void cuota::setEstado(bool e){
 estado=e;
 }
