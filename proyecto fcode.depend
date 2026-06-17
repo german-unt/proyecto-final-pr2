@@ -451,15 +451,16 @@
 	"funciones.h"
 	"clsActividad.h"
 
-1781484764 /home/facu/Escritorio/proyecto-final-pr2/funciones.h
+1781706480 /home/facu/Escritorio/proyecto-final-pr2/funciones.h
 	"funciones.h"
 	"clsActividad.h"
 	"clsSocio.h"
-	"clsSede.h"
 	"clsCuota.h"
 	"clsActividadSocio.h"
+	"clsManagerSocio.h"
+	"clsManagerActividad.h"
+	"clsManagerInformes.h"
 	"clsArchivoSocio.h"
-	"clsArchivoSede.h"
 	"clsArchivoCuota.h"
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoActividades.h"
@@ -471,7 +472,7 @@
 
 1781300911 /home/facu/Escritorio/proyecto-final-pr2/clsSede.h
 
-1781585744 /home/facu/Escritorio/proyecto-final-pr2/clsCuota.h
+1781703708 /home/facu/Escritorio/proyecto-final-pr2/clsCuota.h
 	"clsFecha.h"
 
 1781300911 /home/facu/Escritorio/proyecto-final-pr2/clsActividadSocio.h
@@ -506,15 +507,18 @@
 	<cstring>
 	"clsArchivoSocio.h"
 
-1781585783 source:/home/facu/Escritorio/proyecto-final-pr2/clsCouta.cpp
+1781701302 source:/home/facu/Escritorio/proyecto-final-pr2/clsCouta.cpp
 	<iostream>
+	<ctime>
 	"clsCuota.h"
-	"funciones.h"
+	"clsSocio.h"
+	"clsArchivoSocio.h"
 
-1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsFecha.cpp
+1781701302 source:/home/facu/Escritorio/proyecto-final-pr2/clsFecha.cpp
 	<iostream>
 	"clsFecha.h"
 	"funciones.h"
+	<ctime>
 
 1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsSede.cpp
 	<iostream>
@@ -522,7 +526,7 @@
 	<cstring>
 	"clsSede.h"
 
-1781484764 source:/home/facu/Escritorio/proyecto-final-pr2/clsSocio.cpp
+1781701302 source:/home/facu/Escritorio/proyecto-final-pr2/clsSocio.cpp
 	<iostream>
 	"clsSocio.h"
 	<cstring>
@@ -533,27 +537,30 @@
 	<iostream>
 	"funciones.h"
 
-1781585744 source:/home/facu/Escritorio/proyecto-final-pr2/funciones.cpp
+1781706480 source:/home/facu/Escritorio/proyecto-final-pr2/funciones.cpp
 	<iostream>
 	<cstring>
 	"funciones.h"
 	"clsActividad.h"
 	"clsSocio.h"
-	"clsSede.h"
 	"clsCuota.h"
 	"clsActividadSocio.h"
 	"cargarCadena.h"
 	"clsFecha.h"
+	"clsManagerSocio.h"
+	"clsManagerActividad.h"
+	"clsManagerCouta.h"
+	"clsManagerInformes.h"
 	"clsArchivoSocio.h"
-	"clsArchivoSede.h"
 	"clsArchivoCuota.h"
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoActividades.h"
 
-1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsActividadSocio.cpp
+1781701302 source:/home/facu/Escritorio/proyecto-final-pr2/clsActividadSocio.cpp
 	<iostream>
 	"clsActividadSocio.h"
 	"funciones.h"
+	"clsArchivoSocio.h"
 
 1781300911 source:/home/facu/Escritorio/proyecto-final-pr2/clsArchivoActividadesSocio.cpp
 	<iostream>
@@ -619,4 +626,44 @@
 	"clsArchivoCuota.h"
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoActividades.h"
+
+1781703708 /home/facu/Escritorio/proyecto-final-pr2/clsManagerSocio.h
+	"clsSocio.h"
+	"clsArchivoSocio.h"
+
+1781703708 /home/facu/Escritorio/proyecto-final-pr2/clsManagerActividad.h
+	"clsActividad.h"
+	"clsArchivoActividades.h"
+
+1781703708 /home/facu/Escritorio/proyecto-final-pr2/clsManagerInformes.h
+	"clsActividad.h"
+	"clsSocio.h"
+	"clsCuota.h"
+	"clsActividadSocio.h"
+	"clsManagerSocio.h"
+	"clsManagerActividad.h"
+	"clsArchivoSocio.h"
+	"clsArchivoCuota.h"
+	"clsArchivoActividadesSocio.h"
+	"clsArchivoActividades.h"
+
+1781703708 source:/home/facu/Escritorio/proyecto-final-pr2/clsManagerActividad.cpp
+	<iostream>
+	"clsManagerActividad.h"
+
+1781706370 source:/home/facu/Escritorio/proyecto-final-pr2/clsManagerCouta.cpp
+	<iostream>
+	"clsManagerCouta.h"
+
+1781703708 /home/facu/Escritorio/proyecto-final-pr2/clsManagerCouta.h
+	"clsCuota.h"
+	"clsArchivoCuota.h"
+
+1781703708 source:/home/facu/Escritorio/proyecto-final-pr2/clsManagerInformes.cpp
+	<iostream>
+	"clsManagerInformes.h"
+
+1781703708 source:/home/facu/Escritorio/proyecto-final-pr2/clsManagerSocio.cpp
+	<iostream>
+	"clsManagerSocio.h"
 
