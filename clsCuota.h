@@ -1,6 +1,5 @@
 #ifndef CLSCUOTA_H_INCLUDED
 #define CLSCUOTA_H_INCLUDED
-
 #include "clsFecha.h"
 
 class cuota{
