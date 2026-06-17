@@ -3,7 +3,6 @@
 #include"funciones.h"
 #include "clsActividad.h"
 #include "clsSocio.h"
-#include "clsSede.h"
 #include "clsCuota.h"
 #include "clsActividadSocio.h"
 #include "cargarCadena.h"
@@ -78,10 +77,9 @@ void listados()
         cout<<"2 - Socios por tipo"<<endl;
         cout<<"3 - Cuotas por ID de socio"<<endl;
         cout<<"4 - Cuotas por monto"<<endl;
-        cout<<"5 - Sedes por ID"<<endl;///CAMBIAR
-        cout<<"6 - Actividades por ID"<<endl;
-        cout<<"7 - Participaciones por ID de socio"<<endl;
-        cout<<"8 - Participaciones por ID de actividad"<<endl;
+        cout<<"5- Actividades por ID"<<endl;
+        cout<<"6- Participaciones por ID de socio"<<endl;
+        cout<<"7- Participaciones por ID de actividad"<<endl;
         cout<<"0 - Volver"<<endl;
         cout<<"=========================="<<endl;
         cin>>opc;
@@ -107,18 +105,15 @@ void listados()
             break;
 
         case 5:
-            ///listadoSedeXid();CAMBIAR
-            break;
 
-        case 6:
             listadoActividadXid();
             break;
 
-        case 7:
+        case 6:
             listadoParticipacionesSocio();
             break;
 
-        case 8:
+        case 7:
             listadoParticipacionesActividad();
             break;
 
@@ -517,54 +512,6 @@ void listadoParticipacionesActividad()
     delete[] vec;
 }
 
-/**CAMBIARCAMBIARCAMBIAR
-void listadoSedeXid()
-{
-
-    archivoSede arc;
-
-    int cant = arc.contarRegistro();
-
-    sede *vec = new sede[cant];
-
-    for(int i=0; i<cant; i++)
-    {
-        vec[i]=arc.leerRegistro(i);
-    }
-
-    for(int i=0; i<cant-1; i++)
-    {
-
-        for(int j=i+1; j<cant; j++)
-        {
-
-            if(vec[i].getIdsede() >
-                    vec[j].getIdsede())
-            {
-
-                sede aux=vec[i];
-                vec[i]=vec[j];
-                vec[j]=aux;
-            }
-        }
-    }
-
-    for(int i=0; i<cant; i++)
-    {
-
-        if(vec[i].getEstado())
-        {
-
-            vec[i].mostrar();
-            cout<<endl;
-        }
-    }
-
-    delete[] vec;
-}
-
-
-CAMBIARCAMBIARCAMBIAR*/
 void listadoActividadXid()
 {
 
@@ -687,8 +634,7 @@ void consultaXActividad()
     {
         obj=arc.leerRegistros(i);
 
-
-        if(strcmp(obj.getNombreActividad(),nombre)==0)
+    if(strcmp(obj.getNombreActividad(),nombre)==0)
         {
             obj.mostrar();
             encontrado=true;
@@ -703,12 +649,9 @@ void consultaXActividad()
 
 void consultaResumen()
 {
-
     cuota obj;
     archivoCuota arc;
-
     int mes;
-
     cout << "INGRESE EL MES A RESUMIR: ";
     cin >> mes;
     float total = 0;
@@ -731,9 +674,7 @@ void consultasDeEstado()
     bool encontrado=false;
     int cant= arc.contarRegistros();
     char apellido [20];
-
     cout<<"INGRESE EL APELLIDO DEL SOCIO: ";
-
     cargarCadena(apellido,20);
 
     for(int i=0; i<cant; i++ )

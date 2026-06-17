@@ -568,7 +568,7 @@
 	"clsActividad.h"
 	"clsArchivoActividades.h"
 
-1781698170 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanageractividad.cpp
+1781702970 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanageractividad.cpp
 	<iostream>
 	"clsManagerActividad.h"
 
@@ -588,7 +588,7 @@
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoActividades.h"
 
-1781698766 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanagercouta.cpp
+1781702970 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanagercouta.cpp
 	<iostream>
 	"clsManagerCouta.h"
 

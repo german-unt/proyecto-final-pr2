@@ -20,7 +20,6 @@ void listadoSociosApellido();
 void listadoSociosTipo();
 void listadoCuotaSocio();
 void listadoCuotaMonto();
-void listadoSedeXid();///CAMBIAR LISTADO SOCIO POR EDAD
 void listadoActividadXid();
 void listadoParticipacionesSocio();
 void listadoParticipacionesActividad();

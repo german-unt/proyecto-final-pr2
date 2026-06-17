@@ -43,6 +43,7 @@ void menuCuota()
 
 void altaCuota()
 {
+
     int id;
     cout<<"INGRESE EL ID DE CUOTA: ";
     cin>>id;
