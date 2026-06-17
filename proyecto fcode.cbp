@@ -52,6 +52,8 @@
 		<Unit filename="clsFecha.h" />
 		<Unit filename="clsManagerActividad.cpp" />
 		<Unit filename="clsManagerActividad.h" />
+		<Unit filename="clsManagerActividadSocio.cpp" />
+		<Unit filename="clsManagerActividadSocio.h" />
 		<Unit filename="clsManagerCouta.cpp" />
 		<Unit filename="clsManagerCouta.h" />
 		<Unit filename="clsManagerInformes.cpp" />

@@ -16,6 +16,7 @@
 #include"clsArchivoCuota.h"
 #include"clsArchivoActividadesSocio.h"
 #include"clsArchivoActividades.h"
+#include "clsManagerActividadSocio.h"
 
 using namespace std;
 
@@ -29,10 +30,11 @@ void menuPrincipal()
         cout<<"======================="<<endl;
         cout<<"1 - SOCIOS"<<endl;
         cout<<"2 - ACTIVIDADES"<<endl;
-        cout<<"3 - CUOTA"<<endl;
-        cout<<"4 - LISTADOS "<<endl;
-        cout<<"5 - INFORMES"<<endl;
-        cout<<"6 - CONSULTAS"<<endl;
+        cout<<"3 - INSCRIPCION A ACTIVIDADES"<<endl;
+        cout<<"4 - CUOTA"<<endl;
+        cout<<"5 - LISTADOS "<<endl;
+        cout<<"6 - INFORMES"<<endl;
+        cout<<"7 - CONSULTAS"<<endl;
         cout<<"0 - SALIR"<<endl;
         cout<<"======================="<<endl;
         cout<<"INGRESE UNA OPCION: ";
@@ -47,15 +49,18 @@ void menuPrincipal()
             menuActividades();
             break;
         case 3:
-            menuCuota();
+            menuActividadSocio();
             break;
         case 4:
-            listados();
+            menuCuota();
             break;
         case 5:
-            informes();
+            listados();
             break;
         case 6:
+            informes();
+            break;
+        case 7:
             consultas();
             break;
         case 0:

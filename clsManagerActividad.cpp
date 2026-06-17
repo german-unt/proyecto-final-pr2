@@ -53,65 +53,79 @@ return obj.getIdactividad()+1;
 
 void altaActividad()
 {
-   int id = generarIdActividad();
+    int id = generarIdActividad();
     cout<<"ID ASIGNADO: "<<id<<endl;
     archivoActividades arc;
-    int pos = arc.buscarRegistros(id);
-    if(pos >= 0)
-    {
-        cout<<"EL ID INGRESADO YA EXISTE EN EL ARCHIVO"<<endl;
-        return;
-    }
     actividad obj;
     obj.cargar(id);
     arc.grabarRegistros(obj);
+    cout<<"ACTIVIDAD CARGADA CORRECTAMENTE"<<endl;
 }
 
 void bajaActividad()
 {
-
-    int id ;
+    int id;
     archivoActividades arc;
-    cout<<"ingrese el id del actividades: ";
+
+    cout<<"INGRESE EL ID DE LA ACTIVIDAD: ";
     cin>>id;
-    int pos= arc.buscarRegistros(id);
+
+    int pos = arc.buscarRegistros(id);
     if(pos < 0)
     {
-        cout<<"EL ID INGRESADO YA EXISTE EN EL ARCHIVO"<<endl;
+        cout<<"EL ID NO EXISTE"<<endl;
         return;
     }
-    actividad obj =arc.leerRegistros(pos);
+    actividad obj = arc.leerRegistros(pos);
     obj.setEstado(false);
     arc.modificarRegistros(obj,pos);
-    cout<<"la actividad ha sido dado de baja correctamente "<<endl;
-}
 
+    cout<<"LA ACTIVIDAD HA SIDO DADA DE BAJA CORRECTAMENTE"<<endl;
+}
 void modificarActividad()
 {
-    int id ;
-    cout<<"ingrese el id del actividad: ";
+    int id;
+    cout<<"INGRESE EL ID DE LA ACTIVIDAD: ";
     cin>>id;
-
     archivoActividades arc;
     int pos = arc.buscarRegistros(id);
     if(pos<0)
     {
-        cout<<"el id no existe "<<endl;
+        cout<<"EL ID NO EXISTE"<<endl;
         return;
     }
-    actividad obj=arc.leerRegistros(pos);
-
+    actividad obj = arc.leerRegistros(pos);
     if(obj.getEstado()==false)
     {
-        cout<<"el actividades esta dado de baja"<<endl;
+        char opcion;
+
+        cout<<"LA ACTIVIDAD ESTA DADA DE BAJA"<<endl;
+        cout<<"DESEA REACTIVARLA? (S/N): ";
+        cin>>opcion;
+
+    if(opcion=='S' || opcion=='s')
+        {
+    obj.setEstado(true);
+    arc.modificarRegistros(obj,pos);
+    cout<<"ACTIVIDAD REACTIVADA CORRECTAMENTE"<<endl;
+        }
         return;
     }
-    cout<<"ingrese los datos nuevos ";
+    obj.mostrar();
+    char opcion;
+
+    cout<<"DESEA MODIFICAR ESTA ACTIVIDAD? (S/N): ";
+    cin>>opcion;
+
+    if(opcion!='S' && opcion!='s')
+    {
+        return;
+    }
+    cout<<"INGRESE LOS DATOS NUEVOS"<<endl;
     obj.cargar(id);
     arc.modificarRegistros(obj,pos);
-    cout<<"actividades modificado correctamente"<<endl;
+    cout<<"ACTIVIDAD MODIFICADA CORRECTAMENTE"<<endl;
 }
-
 void listarActividad()
 {
     archivoActividades arc;

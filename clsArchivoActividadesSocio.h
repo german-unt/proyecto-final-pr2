@@ -13,7 +13,7 @@ bool modificarRegistro(actividadSocio, int);
 int contarRegistros();
 int buscarRegistro(int);
 void listarRegistros();
-
+int buscarRegistroSocio(int);
 };
 
 

@@ -77,10 +77,6 @@ estado=true;
 void actividadSocio::mostrar(){
 cout<<"ID ACTIVIDAD: "<<idActividad<<endl;
 cout<<"ID SOCIO: "<<idSocio<<endl;
-cout<<"FECHA ALTA: ";
-fechaAlta.Mostrar();
-cout<<"FECHA BAJA: ";
-fechaBaja.Mostrar();
 }
 void actividadSocio::setIdactividad(int id){idActividad=id;}
 void actividadSocio::setIdSocio(int s){idSocio=s;}

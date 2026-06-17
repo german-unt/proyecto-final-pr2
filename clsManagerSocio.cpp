@@ -49,47 +49,22 @@ if(cant<=0){
 socio obj = arc.leerRegistros(cant-1);
     return obj.getIdsocio()+1;
 }
-
-
 void altaSocio()
 {
     int id = generarIdSocio();
 
     cout<<"ID ASIGNADO: "<<id<<endl;
+
     archivoSocio arc;
-    int pos = arc.buscarRegistros(id);
-   if(pos >= 0){
 
-    socio obj = arc.leerRegistros(pos);
-
-    if(obj.getEstado()){
-
-        cout<<"EL ID INGRESADO YA EXISTE"<<endl;
-        return;
-    }
-
-    char opcion;
-
-    cout<<"EL SOCIO ESTA DADO DE BAJA"<<endl;
-    cout<<"DESEA REACTIVARLO? (S/N): ";
-    cin>>opcion;
-
-    if(opcion=='S' || opcion=='s'){
-
-        obj.setEstado(true);
-
-        arc.modificarRegistro(obj,pos);
-
-        cout<<"SOCIO REACTIVADO CORRECTAMENTE"<<endl;
-    }
-
-    return;
-}
     socio obj;
-    obj.cargar(id);
-    arc.grabarRegistros(obj);
-}
 
+    obj.cargar(id);
+
+    arc.grabarRegistros(obj);
+
+    cout<<"SOCIO CARGADO CORRECTAMENTE"<<endl;
+}
 void bajaSocio()
 {
     archivoSocio arc;
@@ -116,31 +91,48 @@ void modificarSocio()
 
     archivoSocio arc;
     int pos = arc.buscarRegistros(id);
+
     if(pos<0)
     {
-        cout<<"el id no existe "<<endl;
+    cout<<"el id no existe "<<endl;
         return;
     }
+
     socio obj=arc.leerRegistros(pos);
 
     if(obj.getEstado()==false)
     {
-        cout<<"el socio esta dado de baja"<<endl;
+        char opcion;
+
+    cout<<"EL SOCIO ESTA DADO DE BAJA"<<endl;
+    cout<<"DESEA REACTIVARLO? (S/N): ";
+    cin>>opcion;
+
+        if(opcion=='S' || opcion=='s')
+        {
+            obj.setEstado(true);
+            arc.modificarRegistro(obj,pos);
+
+    cout<<"SOCIO REACTIVADO CORRECTAMENTE"<<endl;
+        }
         return;
     }
     obj.mostrar();
-char opcion;
-cout<<"DESEA MODIFICAR ESTE SOCIO? (S/N): ";
-cin>>opcion;
-    if(opcion!='S' && opcion!='s'){
-    return;
-}
+
+    char opcion;
+
+    cout<<"DESEA MODIFICAR ESTE SOCIO? (S/N): ";
+    cin>>opcion;
+
+    if(opcion!='S' && opcion!='s')
+    {
+        return;
+    }
     cout<<"ingrese los datos nuevos ";
     obj.cargar(id);
     arc.modificarRegistro(obj,pos);
     cout<<"socio modificado correctamente"<<endl;
 }
-
 void listarSocio()
 {
     archivoSocio arc;

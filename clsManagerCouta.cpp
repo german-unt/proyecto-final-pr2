@@ -43,80 +43,115 @@ void menuCuota()
 
 void altaCuota()
 {
+    int idSocio;
 
-    int id;
-    cout<<"INGRESE EL ID DE CUOTA: ";
-    cin>>id;
+    cout<<"INGRESE EL ID DEL SOCIO: ";
+    cin>>idSocio;
+
     archivoCuota arc;
-    int pos = arc.buscarRegistros(id);
+
+    int pos = arc.buscarRegistros(idSocio);
+
     if(pos >= 0)
     {
-        cout<<"EL ID INGRESADO YA EXISTE EN EL ARCHIVO"<<endl;
+        cout<<"EL SOCIO YA TIENE UNA CUOTA REGISTRADA"<<endl;
         return;
     }
+
     cuota obj;
-    obj.cargar(id);
+
+    obj.cargar(idSocio);
+
     arc.grabarRegistro(obj);
 
+    cout<<"CUOTA REGISTRADA CORRECTAMENTE"<<endl;
 }
-
 void bajaCuota()
 {
-    int id ;
+    int idSocio;
+
+    cout<<"INGRESE EL ID DEL SOCIO: ";
+    cin>>idSocio;
+
     archivoCuota arc;
-    cout<<"ingrese el id de la cuota: ";
-    cin>>id;
-    int pos= arc.buscarRegistros(id);
+
+    int pos = arc.buscarRegistros(idSocio);
+
     if(pos < 0)
     {
-        cout<<"EL ID INGRESADO YA EXISTE EN EL ARCHIVO"<<endl;
+        cout<<"NO EXISTE LA CUOTA"<<endl;
         return;
     }
-    cuota obj =arc.leerRegistro(pos);
+
+    cuota obj = arc.leerRegistro(pos);
+
     obj.setEstado(false);
+
     arc.modificarRegistro(obj,pos);
-    cout<<"la couta ha sido dado de baja correctamente "<<endl;
+
+    cout<<"LA CUOTA FUE DADA DE BAJA"<<endl;
 }
 void modificarCuota()
-{   int id ;
-    cout<<"ingrese el id de la couta: ";
-    cin>>id;
+{
+    int idSocio;
+
+    cout<<"INGRESE EL ID DEL SOCIO: ";
+    cin>>idSocio;
+
     archivoCuota arc;
-    int pos = arc.buscarRegistros(id);
+
+    int pos = arc.buscarRegistros(idSocio);
+
     if(pos<0)
     {
-        cout<<"el id no existe "<<endl;
+        cout<<"NO EXISTE LA CUOTA"<<endl;
         return;
     }
-    cuota obj=arc.leerRegistro(pos);
+
+    cuota obj = arc.leerRegistro(pos);
 
     if(obj.getEstado()==false)
     {
-        cout<<"la sede esta dada de baja"<<endl;
+        cout<<"LA CUOTA ESTA DADA DE BAJA"<<endl;
         return;
     }
-    cout<<"ingrese los datos nuevos ";
-    obj.cargar(id);
-    arc.modificarRegistro(obj,pos);
-    cout<<"couta modificad correctamente"<<endl;
 
+    obj.mostrar();
+
+    char opcion;
+
+    cout<<"DESEA MODIFICAR ESTA CUOTA? (S/N): ";
+    cin>>opcion;
+
+    if(opcion!='S' && opcion!='s')
+    {
+        return;
+    }
+
+    obj.cargar(idSocio);
+
+    arc.modificarRegistro(obj,pos);
+
+    cout<<"CUOTA MODIFICADA CORRECTAMENTE"<<endl;
 }
 
 void listarCuota()
 {
     archivoCuota arc;
-    int cant = arc.contarRegistros();
-    if (cant<=0)
-    {
 
-        cout<<"no hay cuotas ingresadas: "<<endl;
+    int cant = arc.contarRegistros();
+
+    if(cant<=0)
+    {
+        cout<<"NO HAY CUOTAS INGRESADAS"<<endl;
         return;
     }
-    for(int i =0; i<cant; i++)
-    {
 
-        cuota obj=arc.leerRegistro(i);
-        if(obj.getEstado()==true)
+    for(int i=0; i<cant; i++)
+    {
+        cuota obj = arc.leerRegistro(i);
+
+        if(obj.getEstado())
         {
             obj.mostrar();
         }
