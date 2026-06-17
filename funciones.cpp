@@ -25,7 +25,7 @@ void menuPrincipal()
         system("cls");
         cout<<"MENU PRINCIPAL"<<endl;
         cout<<"======================="<<endl;
-        cout<<"1 -SOCIOS"<<endl;
+        cout<<"1 - SOCIOS"<<endl;
         cout<<"2 - ACTIVIDADES"<<endl;
         cout<<"3 - SEDES"<<endl;
         cout<<"4 - CUOTA"<<endl;
@@ -294,8 +294,9 @@ void consultas()
         cout<<"MENU CONSULTAS"<<endl;
         cout<<"=========================="<<endl;
         cout<<"1 - CONSULTA DE SOCIOS"<<endl;
-        cout<<"2 - CONSULTA DE JORNADAS"<<endl;
+        cout<<"2 - CONSULTA DE ACTIVIDADES"<<endl;
         cout<<"3 - CONSULTA DE ESTADO"<<endl;
+        cout<<"0 - SALIR"<<endl;
 
         cin>>opc;
         system("cls");
@@ -333,6 +334,7 @@ void consultasSocios()
         cout<<"=========================="<<endl;
         cout<<"1 - CONSULTA POR RANGO DE FECHAS"<<endl;
         cout<<"2 - CONSULTA POR ID DE SOCIO"<<endl;
+        cout<<"0 - SALIR"<<endl;
 
         cin>>opc;
         system("cls");
@@ -368,6 +370,7 @@ void menuConsultaActividades()
         cout<<"=========================="<<endl;
         cout<<"1 - CONSULTA POR ACTIVIDAD"<<endl;
         cout<<"2 - CONSULTA POR RESUMEN"<<endl;
+        cout<<"0 - SALIR"<<endl;
 
         cin>>opc;
         system("cls");
@@ -392,20 +395,50 @@ void menuConsultaActividades()
 }
 
 ///////////////////////////////////
-
+int generarIdSocio(){
+archivoSocio arc;
+int cant = arc.contarRegistros();
+if(cant<=0){
+    return 1;
+}
+socio obj = arc.leerRegistros(cant-1);
+    return obj.getIdsocio()+1;
+}
 
 void altaSocio()
 {
-    int id;
-    cout<<"INGRESE EL ID DE SOCIO: ";
-    cin>>id;
+    int id = generarIdSocio();
+
+    cout<<"ID ASIGNADO: "<<id<<endl;
     archivoSocio arc;
     int pos = arc.buscarRegistros(id);
-    if(pos >= 0)
-    {
-        cout<<"EL ID INGRESADO YA EXISTE EN EL ARCHIVO"<<endl;
+   if(pos >= 0){
+
+    socio obj = arc.leerRegistros(pos);
+
+    if(obj.getEstado()){
+
+        cout<<"EL ID INGRESADO YA EXISTE"<<endl;
         return;
     }
+
+    char opcion;
+
+    cout<<"EL SOCIO ESTA DADO DE BAJA"<<endl;
+    cout<<"DESEA REACTIVARLO? (S/N): ";
+    cin>>opcion;
+
+    if(opcion=='S' || opcion=='s'){
+
+        obj.setEstado(true);
+
+        arc.modificarRegistro(obj,pos);
+
+        cout<<"SOCIO REACTIVADO CORRECTAMENTE"<<endl;
+    }
+
+    return;
+}
     socio obj;
     obj.cargar(id);
     arc.grabarRegistros(obj);
@@ -416,6 +449,7 @@ void bajaSocio()
     int id ;
     archivoSocio arc;
     cout<<"ingrese el id del socio: ";
+    cin>>id;
     int pos= arc.buscarRegistros(id);
     if(pos < 0)
     {
@@ -448,6 +482,13 @@ void modificarSocio()
         cout<<"el socio esta dado de baja"<<endl;
         return;
     }
+    obj.mostrar();
+char opcion;
+cout<<"DESEA MODIFICAR ESTE SOCIO? (S/N): ";
+cin>>opcion;
+    if(opcion!='S' && opcion!='s'){
+    return;
+}
     cout<<"ingrese los datos nuevos ";
     obj.cargar(id);
     arc.modificarRegistro(obj,pos);
@@ -475,12 +516,19 @@ void listarSocio()
     }
 
 }
-
+int generarIdActividad(){
+archivoActividades arc;
+int cant = arc.contarRegistros();
+    if(cant<=0){
+        return 1;
+    }
+actividad obj = arc.leerRegistros(cant-1);
+return obj.getIdactividad()+1;
+}
 void altaActividad()
 {
-    int id;
-    cout<<"INGRESE EL ID DE ACTIVIDADES: ";
-    cin>>id;
+   int id = generarIdActividad();
+    cout<<"ID ASIGNADO: "<<id<<endl;
     archivoActividades arc;
     int pos = arc.buscarRegistros(id);
     if(pos >= 0)
@@ -499,6 +547,7 @@ void bajaActividad()
     int id ;
     archivoActividades arc;
     cout<<"ingrese el id del actividades: ";
+    cin>>id;
     int pos= arc.buscarRegistros(id);
     if(pos < 0)
     {
@@ -557,12 +606,20 @@ void listarActividad()
         }
     }
 }
-
+int generarIdSede(){
+    archivoSede arc;
+    int cant = arc.contarRegistro();
+    if(cant<=0){
+        return 1;
+    }
+    sede obj = arc.leerRegistro(cant-1);
+    return obj.getIdsede()+1;
+}
 void altaSede()
 {
-    int id;
-    cout<<"INGRESE EL ID DE SEDE: ";
-    cin>>id;
+    int id = generarIdSede();
+
+    cout<<"ID ASIGNADO: "<<id<<endl;
     archivoSede arc;
     int pos = arc.buscarRegistro(id);
     if(pos >= 0)
@@ -580,6 +637,7 @@ void bajaSede()
     int id ;
     archivoSede arc;
     cout<<"ingrese el id de la sede: ";
+    cin>>id;
     int pos= arc.buscarRegistro(id);
     if(pos < 0)
     {
@@ -663,6 +721,7 @@ void bajaCuota()
     int id ;
     archivoCuota arc;
     cout<<"ingrese el id de la cuota: ";
+    cin>>id;
     int pos= arc.buscarRegistros(id);
     if(pos < 0)
     {
@@ -1353,13 +1412,13 @@ int cant=arc.contarRegistros();
 cout<<"SOCIOS CON DEUDAS PENDIENTES: "<<endl;
 for(int i =0; i<cant; i++){
     deudor= arc.leerRegistro(i);
-    if(deudor.getDeuda()>0){
+    if(deudor.calcularDeuda()>0){
         if(deudor.getEstado()){
             pos=arcSocio.buscarRegistros(deudor.getIdsocio());
             obj=arcSocio.leerRegistros(pos);
-            if(pos>0){
+            if(pos>=0){
                 cout<<"ID: "<<deudor.getIdsocio()<<" | APELLIDO Y NOMBRE: "<<obj.getApellido()<<" "<<obj.getNombre()
-                <<" | DEUDA TOTAL: "<<deudor.getDeuda()<<endl;
+                <<" | DEUDA TOTAL: "<<deudor.calcularDeuda()<<endl;
                 contDeudores++;
             }
         }
@@ -1387,7 +1446,7 @@ void informes()
         cout<<"4 - Listar todas las actividades de un socio"<<endl;
         cout<<"5 - Ranking de actividades"<<endl;
         cout<<"6 - Listar socios con deudas pendientes"<<endl;
-        cout<<"0 - Volver"<<endl;
+        cout<<"0 - SALIR"<<endl;
         cout<<"=========================="<<endl;
 
         cin>>opc;
@@ -1417,7 +1476,7 @@ void informes()
             break;
 
         case 6:
-            ///deudores();
+            deudores();
             break;
 
         case 0:

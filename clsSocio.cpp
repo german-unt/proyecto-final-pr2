@@ -15,14 +15,61 @@ cout<<"INGRESE EL NOMBRE: ";
 cargarCadena(nombre,20);
 cout<<"INGRESE EL APELLIDO: ";
 cargarCadena(apellido,20);
+while(true){
 cout<<"INGRESE EL TELEFONO: ";
 cargarCadena(telefono,15);
+
+bool valido=true;
+
+for(int i=0; telefono[i]!='\0'; i++){
+
+if(telefono[i]<'0' || telefono[i]>'9'){
+    valido=false;
+    }
+}
+if(valido){
+    break;
+    }
+
+cout<<"EL TELEFONO SOLO PUEDE CONTENER NUMEROS"<<endl;
+}
 cout<<"INGRESE LA FECHA DE NACIMIENTO: ";
 fechaNacimiento.Cargar();
+cout<<"TIPOS DE SOCIO"<<endl;
+cout<<"1 - BASICO"<<endl;
+cout<<"2 - INTERMEDIO"<<endl;
+cout<<"3 - PREMIUM"<<endl;
+
+while(true){
 cout<<"INGRESE EL TIPO DE SOCIO: ";
 cin>>tipoSocio;
+
+if(tipoSocio>=1 && tipoSocio<=3){
+    break;
+    }
+
+cout<<"TIPO DE SOCIO INVALIDO"<<endl;
+}
+while(true){
+
 cout<<"INGRESE EL EMAIL: ";
 cargarCadena(email,50);
+
+bool tieneArroba=false;
+
+for(int i=0; email[i]!='\0'; i++){
+
+if(email[i]=='@'){
+    tieneArroba=true;
+    }
+}
+
+if(tieneArroba){
+    break;
+}
+
+cout<<"EL EMAIL DEBE CONTENER @"<<endl;
+}
 estado=true;
 }
 
@@ -33,7 +80,19 @@ cout<<"APELLIDO: "<<apellido<<endl;
 cout<<"TELEFONO: "<<telefono<<endl;
 cout<<"FECHA DE NACIMIENTO: ";
 fechaNacimiento.Mostrar();
-cout<<"TIPO DE SOCIO: "<<tipoSocio<<endl;
+cout<<endl;
+cout<<"TIPO DE SOCIO: ";
+
+if(tipoSocio==1){
+cout<<"BASICO";
+}
+else if(tipoSocio==2){
+cout<<"INTERMEDIO";
+}
+else{
+cout<<"PREMIUM";
+}
+cout<<endl;
 cout<<"EMAIL: "<<email<<endl;
 }
 void socio::setIdSocio(int id){

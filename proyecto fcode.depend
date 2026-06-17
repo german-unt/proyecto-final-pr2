@@ -309,7 +309,7 @@
 	"funciones.h"
 	"clsActividad.h"
 
-1781479505 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\funciones.h
+1781663896 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\funciones.h
 	"funciones.h"
 	"clsActividad.h"
 	"clsSocio.h"
@@ -329,7 +329,7 @@
 
 1781408511 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clssede.h
 
-1781408511 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clscuota.h
+1781650256 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clscuota.h
 	"clsFecha.h"
 
 1781408511 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsactividadsocio.h
@@ -364,15 +364,18 @@
 	<cstring>
 	"clsArchivoSocio.h"
 
-1781479172 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clscouta.cpp
+1781650384 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clscouta.cpp
 	<iostream>
+	<ctime>
 	"clsCuota.h"
-	"funciones.h"
+	"clsSocio.h"
+	"clsArchivoSocio.h"
 
-1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsfecha.cpp
+1781620082 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsfecha.cpp
 	<iostream>
 	"clsFecha.h"
 	"funciones.h"
+	<ctime>
 
 1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clssede.cpp
 	<iostream>
@@ -380,7 +383,7 @@
 	<cstring>
 	"clsSede.h"
 
-1781481671 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clssocio.cpp
+1781655255 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clssocio.cpp
 	<iostream>
 	"clsSocio.h"
 	<cstring>
@@ -391,17 +394,18 @@
 	<iostream>
 	"funciones.h"
 
-1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsactividadsocio.cpp
+1781654038 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsactividadsocio.cpp
 	<iostream>
 	"clsActividadSocio.h"
 	"funciones.h"
+	"clsArchivoSocio.h"
 
 1781408511 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsarchivoactividadessocio.cpp
 	<iostream>
 	<cstring>
 	"clsArchivoActividadesSocio.h"
 
-1781480514 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\funciones.cpp
+1781663896 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\funciones.cpp
 	<iostream>
 	<cstring>
 	"funciones.h"

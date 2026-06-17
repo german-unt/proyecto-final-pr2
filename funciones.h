@@ -67,6 +67,10 @@ void recaudacionXActividad();
 void porcentajeInscripciones();
 void ranking();
 void deudores();
+int generarIdSocio();
+int generarIdActividad();
+int generarIdSede();
+
 
 
 #endif // FUNCIONES_H_INCLUDED
