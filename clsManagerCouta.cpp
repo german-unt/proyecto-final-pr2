@@ -154,6 +154,8 @@ void listarCuota()
         if(obj.getEstado())
         {
             obj.mostrar();
+            cout<<endl;
+            cout<<"============================"<<endl;
         }
     }
 }

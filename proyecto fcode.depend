@@ -377,7 +377,7 @@
 	"clsSocio.h"
 	"clsArchivoSocio.h"
 
-1781620082 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsfecha.cpp
+1781752190 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsfecha.cpp
 	<iostream>
 	"clsFecha.h"
 	"funciones.h"
@@ -389,7 +389,7 @@
 	<cstring>
 	"clsSede.h"
 
-1781655255 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clssocio.cpp
+1781753968 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clssocio.cpp
 	<iostream>
 	"clsSocio.h"
 	<cstring>
@@ -411,7 +411,7 @@
 	<cstring>
 	"clsArchivoActividadesSocio.h"
 
-1781715181 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\funciones.cpp
+1781756644 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\funciones.cpp
 	<iostream>
 	<cstring>
 	"funciones.h"
@@ -693,11 +693,11 @@
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoActividades.h"
 
-1781713855 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsmanageractividad.cpp
+1781752397 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsmanageractividad.cpp
 	<iostream>
 	"clsManagerActividad.h"
 
-1781713162 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsmanagercouta.cpp
+1781753723 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsmanagercouta.cpp
 	<iostream>
 	"clsManagerCouta.h"
 
@@ -705,15 +705,15 @@
 	"clsCuota.h"
 	"clsArchivoCuota.h"
 
-1781704574 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsmanagerinformes.cpp
+1781753064 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsmanagerinformes.cpp
 	<iostream>
 	"clsManagerInformes.h"
 
-1781712521 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsmanagersocio.cpp
+1781753724 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsmanagersocio.cpp
 	<iostream>
 	"clsManagerSocio.h"
 
-1781718634 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsmanageractividadsocio.cpp
+1781755447 source:c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsmanageractividadsocio.cpp
 	<iostream>
 	"clsManagerActividadSocio.h"
 	"clsActividadSocio.h"
@@ -737,6 +737,12 @@
 	"funciones.h"
 
 1781745900 /home/facu/Escritorio/proyecto-final-pr2/clsInterfaz.h
+	"SFML/Graphics.hpp"
+	"SFML/System.hpp"
+	"SFML/Window.hpp"
+	"funciones.h"
+
+1781752190 c:\users\german\documents\utn\tecnicatura en programacion\programacion 2\proyecto-final-pr2\clsinterfaz.h
 	"SFML/Graphics.hpp"
 	"SFML/System.hpp"
 	"SFML/Window.hpp"

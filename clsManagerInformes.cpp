@@ -1,6 +1,6 @@
 #include <iostream>
 #include"clsManagerInformes.h"
-#include "clsInterfaz.h"
+
 using namespace std;
 void informes()
 {
@@ -80,75 +80,9 @@ void recaudacionAnual()
             total += obj.getCuota();
         }
     }
-
-    cout<<"RECAUDACION ANUAL: $"<<total<<endl;
-}
-///BUSCA ACTIVIDAD POR ID PARA REALIZAR INFORME ACTIVIDADES QUE HACE CADA SOCIO
-actividad buscarActividadPorId(int idActividad)
-{
-
-    archivoActividades arc;
-
-    int cant = arc.contarRegistros();
-
-    for(int i=0; i<cant; i++)
-    {
-
-        actividad obj = arc.leerRegistros(i);
-
-        if(obj.getIdactividad()==idActividad)
-        {
-            return obj;
-        }
-    }
-
-    actividad aux;
-    aux.setIdactividad(-1);
-
-    return aux;
-}
-///INFORME : ACTIVIDADES QUE HACE CADA SOCIO
-void listarActividadesDeSocio()
-{
-
-    int idSocio;
-
-    cout<<"INGRESE EL ID DEL SOCIO: ";
-    cin>>idSocio;
-
-    archivoActividadesSocio arc;
-
-    int cant = arc.contarRegistros();
-
-    bool encontro=false;
-
-    for(int i=0; i<cant; i++)
-    {
-
-        actividadSocio reg = arc.leerRegistro(i);
-
-        if(reg.getIdSocio()==idSocio &&
-                reg.getEstado())
-        {
-
-            actividad act =
-                buscarActividadPorId(reg.getIdactividad());
-
-            if(act.getIdactividad()!=-1)
-            {
-
-                act.mostrar();
-                cout<<endl;
-
-                encontro=true;
-            }
-        }
-    }
-
-    if(!encontro)
-    {
-        cout<<"EL SOCIO NO TIENE ACTIVIDADES REGISTRADAS"<<endl;
-    }
+    cout<<"- - - - - - - - - - - - - - - "<<endl<<endl;
+    cout<<"RECAUDACION ANUAL: $"<<total<<endl<<endl;
+    cout<<"- - - - - - - - - - - - - - - "<<endl;
 }
 ///INFORME :RECAUDACION POR ACTIVIDAD
 void recaudacionXActividad()
@@ -252,6 +186,73 @@ void porcentajeInscripciones()
         cout<<endl;
     }
 }
+///BUSCA ACTIVIDAD POR ID PARA REALIZAR INFORME ACTIVIDADES QUE HACE CADA SOCIO
+actividad buscarActividadPorId(int idActividad)
+{
+
+    archivoActividades arc;
+
+    int cant = arc.contarRegistros();
+
+    for(int i=0; i<cant; i++)
+    {
+
+        actividad obj = arc.leerRegistros(i);
+
+        if(obj.getIdactividad()==idActividad)
+        {
+            return obj;
+        }
+    }
+
+    actividad aux;
+    aux.setIdactividad(-1);
+
+    return aux;
+}
+///INFORME : ACTIVIDADES QUE HACE CADA SOCIO
+void listarActividadesDeSocio()
+{
+
+    int idSocio;
+
+    cout<<"INGRESE EL ID DEL SOCIO: ";
+    cin>>idSocio;
+
+    archivoActividadesSocio arc;
+
+    int cant = arc.contarRegistros();
+
+    bool encontro=false;
+
+    for(int i=0; i<cant; i++)
+    {
+
+        actividadSocio reg = arc.leerRegistro(i);
+
+        if(reg.getIdSocio()==idSocio &&
+                reg.getEstado())
+        {
+
+            actividad act =
+                buscarActividadPorId(reg.getIdactividad());
+
+            if(act.getIdactividad()!=-1)
+            {
+
+                act.mostrar();
+                cout<<endl;
+
+                encontro=true;
+            }
+        }
+    }
+
+    if(!encontro)
+    {
+        cout<<"EL SOCIO NO TIENE ACTIVIDADES REGISTRADAS"<<endl;
+    }
+}
 
 ///INFORME :RANKING ACTIVIDADES
 void ranking()
@@ -323,8 +324,6 @@ void ranking()
         }
     }
 
-
-            mostrarRankingSFML(VranquearActividad,VcontarActividad,cantAxS);
     delete[] VranquearActividad;
     delete[] VcontarActividad;
 }
@@ -353,7 +352,8 @@ void deudores()
                 if(pos>=0)
                 {
                     cout<<"ID: "<<deudor.getIdsocio()<<" | APELLIDO Y NOMBRE: "<<obj.getApellido()<<" "<<obj.getNombre()
-                        <<" | DEUDA TOTAL: "<<deudor.calcularDeuda()<<endl;
+                        <<" | DEUDA TOTAL: $"<<deudor.calcularDeuda()<<endl<<endl;
+                        cout<<"==============================================================================="<<endl;
                     contDeudores++;
                 }
             }

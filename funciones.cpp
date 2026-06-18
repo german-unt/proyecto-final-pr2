@@ -11,7 +11,6 @@
 #include"clsManagerActividad.h"
 #include"clsManagerCouta.h"
 #include"clsManagerInformes.h"
-//---------------------------
 #include "clsArchivoSocio.h"
 #include"clsArchivoCuota.h"
 #include"clsArchivoActividadesSocio.h"
@@ -110,7 +109,6 @@ void listados()
             break;
 
         case 5:
-
             listadoActividadXid();
             break;
 
@@ -229,7 +227,6 @@ void menuConsultaActividades()
 
         case 2:
             consultaResumen();
-            ///recuadacion mensual total (de todo el club).
             break;
 
         case 0:
@@ -239,12 +236,10 @@ void menuConsultaActividades()
         system("pause");
     }
 }
-///////////////////////////////////
 
 ///ordenar socios por apellido .
 void listadoSociosApellido()
 {
-
     archivoSocio arc;
 
     int cant = arc.contarRegistros();
@@ -379,7 +374,7 @@ void listadoCuotaSocio()
 }
 
 
-///ordenar por monto de deuda.
+///ordenar por monto
 
 void listadoCuotaMonto()
 {

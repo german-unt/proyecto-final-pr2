@@ -33,7 +33,7 @@ if(valido){
 
 cout<<"EL TELEFONO SOLO PUEDE CONTENER NUMEROS"<<endl;
 }
-cout<<"INGRESE LA FECHA DE NACIMIENTO: ";
+cout<<"INGRESE LA FECHA DE NACIMIENTO: "<<endl;
 fechaNacimiento.Cargar();
 cout<<"TIPOS DE SOCIO"<<endl;
 cout<<"1 - BASICO"<<endl;
@@ -74,14 +74,22 @@ estado=true;
 }
 
 void socio::mostrar(){
+cout<<endl;
 cout<<"ID DEL SOCIO: "<<idSocio<<endl;
+cout<<endl;
 cout<<"NOMBRE: "<<nombre<<endl;
+cout<<endl;
 cout<<"APELLIDO: "<<apellido<<endl;
+cout<<endl;
 cout<<"TELEFONO: "<<telefono<<endl;
+cout<<endl;
 cout<<"FECHA DE NACIMIENTO: ";
+cout<<endl;
 fechaNacimiento.Mostrar();
 cout<<endl;
+cout<<endl;
 cout<<"TIPO DE SOCIO: ";
+cout<<endl;
 
 if(tipoSocio==1){
 cout<<"BASICO";
@@ -92,6 +100,7 @@ cout<<"INTERMEDIO";
 else{
 cout<<"PREMIUM";
 }
+cout<<endl;
 cout<<endl;
 cout<<"EMAIL: "<<email<<endl;
 }

@@ -262,6 +262,8 @@ void listarActividadSocio()
         {
             obj.mostrar();
             cout<<endl;
+            cout<<"============================"<<endl;
+            cout<<endl;
         }
     }
 }

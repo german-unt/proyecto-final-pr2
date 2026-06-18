@@ -143,6 +143,8 @@ void listarActividad()
         if(obj.getEstado()==true)
         {
             obj.mostrar();
+             cout<<endl;
+            cout<<"============================"<<endl;
         }
     }
 }

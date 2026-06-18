@@ -150,6 +150,8 @@ void listarSocio()
         if(obj.getEstado()==true)
         {
             obj.mostrar();
+            cout<<endl;
+            cout<<"============================"<<endl;
         }
     }
 
