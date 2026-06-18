@@ -118,7 +118,7 @@ void modificarSocio()
         return;
     }
     obj.mostrar();
-
+    cout<<endl;
     char opcion;
 
     cout<<"DESEA MODIFICAR ESTE SOCIO? (S/N): ";
