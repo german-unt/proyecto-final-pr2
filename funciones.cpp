@@ -160,7 +160,6 @@ void consultas()
             break;
 
         case 0:
-            break;
             return;
         }
         system("pause");
@@ -194,7 +193,6 @@ void consultasSocios()
             break;
 
         case 0:
-            break;
             return;
         }
         system("pause");
@@ -230,7 +228,6 @@ void menuConsultaActividades()
             break;
 
         case 0:
-            break;
             return;
         }
         system("pause");

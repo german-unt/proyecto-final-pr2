@@ -166,7 +166,7 @@
 
 1781185208 c:\users\alumno\desktop\proyecto-final-pr2\clsfecha.h
 
-1781701366 c:\users\alumno\desktop\proyecto-final-pr2\funciones.h
+1781704031 c:\users\alumno\desktop\proyecto-final-pr2\funciones.h
 	"funciones.h"
 	"clsActividad.h"
 	"clsSocio.h"
@@ -241,7 +241,7 @@
 	"clsSocio.h"
 	"clsArchivoSocio.h"
 
-1781696467 source:c:\users\alumno\desktop\proyecto-final-pr2\clsfecha.cpp
+1781780715 source:c:\users\alumno\desktop\proyecto-final-pr2\clsfecha.cpp
 	<iostream>
 	"clsFecha.h"
 	"funciones.h"
@@ -255,7 +255,7 @@
 
 1781094328 c:\users\alumno\desktop\proyecto-final-pr2\cargarcadena.h
 
-1781696467 source:c:\users\alumno\desktop\proyecto-final-pr2\clssocio.cpp
+1781780715 source:c:\users\alumno\desktop\proyecto-final-pr2\clssocio.cpp
 	<iostream>
 	"clsSocio.h"
 	<cstring>
@@ -269,7 +269,7 @@
 1781185592 c:\users\alumno\desktop\proyecto-final-pr2\clsactividadsocio.h
 	"clsFecha.h"
 
-1781181842 c:\users\alumno\desktop\proyecto-final-pr2\clsarchivoactividadessocio.h
+1781780715 c:\users\alumno\desktop\proyecto-final-pr2\clsarchivoactividadessocio.h
 	"funciones.h"
 	"clsActividadSocio.h"
 
@@ -279,13 +279,13 @@
 	"cargarCadena.h"
 	<cstring>
 
-1781696467 source:c:\users\alumno\desktop\proyecto-final-pr2\clsactividadsocio.cpp
+1781780715 source:c:\users\alumno\desktop\proyecto-final-pr2\clsactividadsocio.cpp
 	<iostream>
 	"clsActividadSocio.h"
 	"funciones.h"
 	"clsArchivoSocio.h"
 
-1781189818 source:c:\users\alumno\desktop\proyecto-final-pr2\clsarchivoactividadessocio.cpp
+1781780715 source:c:\users\alumno\desktop\proyecto-final-pr2\clsarchivoactividadessocio.cpp
 	<iostream>
 	<cstring>
 	"clsArchivoActividadesSocio.h"
@@ -580,11 +580,11 @@
 	"clsActividad.h"
 	"clsArchivoActividades.h"
 
-1781702970 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanageractividad.cpp
+1781780715 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanageractividad.cpp
 	<iostream>
 	"clsManagerActividad.h"
 
-1781697464 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanagersocio.cpp
+1781780715 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanagersocio.cpp
 	<iostream>
 	"clsManagerSocio.h"
 
@@ -600,7 +600,7 @@
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoActividades.h"
 
-1781702970 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanagercouta.cpp
+1781780715 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanagercouta.cpp
 	<iostream>
 	"clsManagerCouta.h"
 
@@ -608,17 +608,16 @@
 	"clsCuota.h"
 	"clsArchivoCuota.h"
 
-1781701299 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanagerinformes.cpp
+1781780715 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanagerinformes.cpp
 	<iostream>
 	"clsManagerInformes.h"
 
-1781701913 source:c:\users\alumno\desktop\proyecto-final-pr2\funciones.cpp
+1781780715 source:c:\users\alumno\desktop\proyecto-final-pr2\funciones.cpp
 	<iostream>
 	<cstring>
 	"funciones.h"
 	"clsActividad.h"
 	"clsSocio.h"
-	"clsSede.h"
 	"clsCuota.h"
 	"clsActividadSocio.h"
 	"cargarCadena.h"
@@ -631,6 +630,7 @@
 	"clsArchivoCuota.h"
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoActividades.h"
+	"clsManagerActividadSocio.h"
 
 1781703708 /home/facu/Escritorio/proyecto-final-pr2/clsManagerSocio.h
 	"clsSocio.h"
@@ -747,4 +747,13 @@
 	"SFML/System.hpp"
 	"SFML/Window.hpp"
 	"funciones.h"
+
+1781780715 source:c:\users\alumno\desktop\proyecto-final-pr2\clsmanageractividadsocio.cpp
+	<iostream>
+	"clsManagerActividadSocio.h"
+	"clsActividadSocio.h"
+	"clsArchivoActividadesSocio.h"
+	"clsArchivoSocio.h"
+
+1781780715 c:\users\alumno\desktop\proyecto-final-pr2\clsmanageractividadsocio.h
 
