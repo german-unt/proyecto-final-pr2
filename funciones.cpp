@@ -26,7 +26,7 @@ void menuPrincipal()
     {
         system("cls");
         cout<<"*BIENVENIDO A FC-CODE*"<<endl;
-        cout<<"MENU PRINCIPAL"<<endl;
+        cout<<"   MENU PRINCIPAL   "<<endl;
         cout<<"======================="<<endl;
         cout<<"1 - SOCIOS"<<endl;
         cout<<"2 - ACTIVIDADES"<<endl;
