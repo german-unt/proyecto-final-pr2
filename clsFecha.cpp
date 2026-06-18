@@ -18,12 +18,12 @@ void Fecha::setDia(int d)
 
 void Fecha::setMes(int m)
 {
-
+    mes = m;
 }
 
 void Fecha::setAnio(int a)
 {
-
+    anio= a;
 }
 
 int Fecha::getDia()
@@ -105,6 +105,12 @@ void Fecha::Cargar()
             cout<<"DIA INVALIDO"<<endl;
             continue;
         }
+
+        if (anio<1900 || anio>anioActual) {
+            cout << "ANIO INVALIDO" << endl;
+            continue;
+        }
+
 
         Fecha fechaIngresada(dia,mes,anio);
         Fecha fechaActual(diaActual,mesActual,anioActual);

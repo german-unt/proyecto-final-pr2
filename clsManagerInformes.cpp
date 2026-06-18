@@ -1,6 +1,6 @@
 #include <iostream>
 #include"clsManagerInformes.h"
-
+#include "clsInterfaz.h"
 using namespace std;
 void informes()
 {
@@ -319,10 +319,12 @@ void ranking()
         {
             cout<< "#"<<i+1<<" : "<<VranquearActividad[i].getNombreActividad()<<". TOTAL INSCRIPTOS: "<<VcontarActividad[i]<<endl;
             cout<<"- - - - - - - - - - - - - - - "<<endl;
+
         }
     }
 
 
+            mostrarRankingSFML(VranquearActividad,VcontarActividad,cantAxS);
     delete[] VranquearActividad;
     delete[] VcontarActividad;
 }
