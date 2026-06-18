@@ -54,7 +54,6 @@ void menuActividadSocio()
 void altaActividadSocio()
 {
     int idSocio;
-
     cout<<"INGRESE ID DEL SOCIO: ";
     cin>>idSocio;
 
@@ -69,6 +68,9 @@ void altaActividadSocio()
     }
 
     socio objSocio = arcSocio.leerRegistros(posSocio);
+    if (objSocio.getEstado()==false){cout<<"EL SOCIO ESTA DADO DE BAJA"<<endl;
+    return;
+    }
 
     int tipo = objSocio.getTipoSocio();
 
@@ -99,14 +101,22 @@ void altaActividadSocio()
     }
 
 int idActividad;
-
-    cout<<"INGRESE LA ACTIVIDAD: ";
+    cout<<"======================="<<endl;
+    cout<<"ELIJA UNA ACTIVIDAD: "<<endl<<endl;
     cin>>idActividad;
-
     actividadSocio obj;
-    obj.setIdSocio(idSocio);
+
+    actividad objActividad;
+    archivoActividades arcActividad;
+
+    int pos=arcActividad.buscarRegistros(idActividad);
+    objActividad=arcActividad.leerRegistros(pos);
+    if (objActividad.getEstado()==false){cout<<"LA ACTIVIDAD ESTA DADA DE BAJA"<<endl;
+    return;
+    }
     obj.setIdactividad(idActividad);
     obj.setEstado(true);
+    obj.setIdSocio(idSocio);
     archivoActividadesSocio arc;
     arc.grabarRegistro(obj);
 
