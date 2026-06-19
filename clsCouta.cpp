@@ -52,6 +52,8 @@ void cuota::cargar(int id)
 
     cout<<"INGRESE FECHA DEL ULTIMO PAGO: "<<endl;
     FechaPago.Cargar();
+    //if(getFechaPago().getAnio()>=2020){
+    //}
 
     estado=true;
 }

@@ -16,11 +16,12 @@
 void menuPrincipal();
 
 void listados();
+
 void listadoSociosApellido();
 void listadoSociosTipo();
-void listadoCuotaSocio();
+//void listadoCuotaSocio();
 void listadoCuotaMonto();
-void listadoActividadXid();
+//void listadoActividadXid();
 void listadoParticipacionesSocio();
 void listadoParticipacionesActividad();
 

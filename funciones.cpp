@@ -80,11 +80,8 @@ void listados()
         cout<<"=========================="<<endl;
         cout<<"1 - Socios por apellido"<<endl;
         cout<<"2 - Socios por tipo"<<endl;
-        cout<<"3 - Cuotas por ID de socio"<<endl;
         cout<<"4 - Cuotas por monto"<<endl;
-        cout<<"5- Actividades por ID"<<endl;
-        cout<<"6- Participaciones por ID de socio"<<endl;
-        cout<<"7- Participaciones por ID de actividad"<<endl;
+        cout<<"7-  Participaciones por ID de actividad"<<endl;
         cout<<"0 - Volver"<<endl;
         cout<<"=========================="<<endl;
         cin>>opc;
@@ -102,7 +99,7 @@ void listados()
             break;
 
         case 3:
-            listadoCuotaSocio();
+           // listadoCuotaSocio();
             break;
 
         case 4:
@@ -110,11 +107,11 @@ void listados()
             break;
 
         case 5:
-            listadoActividadXid();
+           // listadoActividadXid();
             break;
 
         case 6:
-            listadoParticipacionesSocio();
+            //listadoParticipacionesSocio();
             break;
 
         case 7:
@@ -235,7 +232,7 @@ void menuConsultaActividades()
     }
 }
 
-///ordenar socios por apellido .
+///ordenar socios por apellido (ARREGLAR ES TEMA DE LA MAYUSCULAS QUE AFECTAN EL ORDEN).
 void listadoSociosApellido()
 {
     archivoSocio arc;
@@ -326,6 +323,7 @@ void listadoSociosTipo()
     delete[] vec;
 }
 ///ordenar cuota por id de socio.
+/*
 void listadoCuotaSocio()
 {
 
@@ -371,7 +369,7 @@ void listadoCuotaSocio()
     delete[] vec;
 }
 
-
+*/
 ///ordenar por monto
 
 void listadoCuotaMonto()
@@ -418,6 +416,7 @@ void listadoCuotaMonto()
 
     delete[] vec;
 }
+/*
 void listadoParticipacionesSocio()
 {
 
@@ -463,7 +462,7 @@ void listadoParticipacionesSocio()
     delete[] vec;
 }
 
-
+*/
 
 void listadoParticipacionesActividad()
 {
@@ -509,7 +508,7 @@ void listadoParticipacionesActividad()
 
     delete[] vec;
 }
-
+/*
 void listadoActividadXid()
 {
 
@@ -554,8 +553,9 @@ void listadoActividadXid()
 
     delete[] vec;
 }
+*/
 
-///consulta rango de fechas
+///consulta rango de fechas (no anda)
 void rangoDeFechas()
 {
     archivoActividadesSocio arc;
@@ -596,18 +596,17 @@ void consultaXSocio()
     archivoSocio arc;
     bool encontrado=false;
     int cant=arc.contarRegistros();
-    char apellido [20];
+    int id;
 
-    cout<<"INGRESE EL APELLIDO DEL SOCIO: ";
-
-    cargarCadena(apellido,20);
+    cout<<"INGRESE EL ID DEL SOCIO: ";
+    cin>>id;
 
     for(int i=0; i<cant; i++ )
     {
         obj=arc.leerRegistros(i);
 
 
-        if(strcmp(obj.getApellido(),apellido)==0)
+        if((obj.getIdsocio()==id) && (obj.getEstado()==true))
         {
             obj.mostrar();
             encontrado=true;
@@ -615,7 +614,7 @@ void consultaXSocio()
     }
     if(!encontrado)
     {
-        cout << "NO EXISTE NINGUN SOCIO CON ESE APELLIDO." << endl;
+        cout << "NO EXISTE NINGUN SOCIO CON ESE ID." << endl;
     }
 }
 void consultaXActividad()
@@ -624,27 +623,29 @@ void consultaXActividad()
     archivoActividades arc;
     bool encontrado=false;
     int cant=arc.contarRegistros();
-    char nombre[20];
-    cout<<"INGRESE EL NOMBRE DE LA ACTIVIDAD: ";
-    cargarCadena(nombre,20);
+    int id;
+    cout<<"INGRESE EL ID DE LA ACTIVIDAD: ";
+    cin>>id;
 
     for(int i=0; i<cant; i++ )
     {
         obj=arc.leerRegistros(i);
 
-    if(strcmp(obj.getNombreActividad(),nombre)==0)
+    if((obj.getIdactividad()==id) && (obj.getEstado()==true))
         {
             obj.mostrar();
             encontrado=true;
         }
+
     }
+
     if(!encontrado)
     {
-        cout << "NO SE ENCONTRO NINGUNA ACTIVIDAD   " << endl;
+        cout << "NO SE ENCONTRO NINGUNA ACTIVIDAD " << endl;
     }
 
 }
-
+///(no anda) agregar con importe de pago
 void consultaResumen()
 {
     cuota obj;
@@ -671,27 +672,30 @@ void consultasDeEstado()
     archivoSocio arc;
     bool encontrado=false;
     int cant= arc.contarRegistros();
-    char apellido [20];
-    cout<<"INGRESE EL APELLIDO DEL SOCIO: ";
-    cargarCadena(apellido,20);
+    int id;
+    cout<<"INGRESE EL ID DEL SOCIO: ";
+    cin>>id;
 
     for(int i=0; i<cant; i++ )
     {
         obj=arc.leerRegistros(i);
 
 
-        if((strcmp(obj.getApellido(),apellido)==0) && (obj.getEstado()==true))
+        if((obj.getIdsocio()==id) && (obj.getEstado()==true))
         {
             cout<<"EL SOCIO ESTA ACTIVO"<<endl;
             encontrado=true;
+            return;
         }
-        else
+        else if((obj.getIdsocio()==id) && (obj.getEstado()==false))
         {
             cout<<"EL SOCIO ESTA INACTIVO"<<endl;
+
+            return;
         }
     }
     if(!encontrado)
     {
-        cout << "NO EXISTE NINGUN SOCIO CON ESE APELLIDO." << endl;
+        cout << "NO EXISTE NINGUN SOCIO." << endl;
     }
 }

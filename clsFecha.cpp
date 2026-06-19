@@ -124,6 +124,7 @@ void Fecha::Cargar()
         break;
     }
 }
+
 void Fecha::Mostrar()
 {
     cout<<dia<<"/"<<mes<<"/"<<anio;
