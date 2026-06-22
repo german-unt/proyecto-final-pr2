@@ -12,10 +12,10 @@ cuota archivoCuota::leerRegistro(int pos){
 FILE *p = fopen(nombre, "rb");
 cuota obj;
 if(p==nullptr){
-    obj.setCuota(-2);
+    obj.setMontoEsperado(-2);
     return obj;
 }
-obj.setCuota(-1);
+obj.setMontoEsperado(-1);
 fseek(p, sizeof obj * pos, 0);
 fread(&obj, sizeof obj, 1, p);
 fclose(p);
@@ -53,7 +53,7 @@ int archivoCuota::buscarRegistros(int legajo){
 int cantReg = contarRegistros();
 for(int i=0; i<cantReg; i++){
     cuota obj = leerRegistro(i);
-    if(obj.getCuota()==legajo){
+    if(obj.getIdsocio()==legajo){
         return i;
     }
 }

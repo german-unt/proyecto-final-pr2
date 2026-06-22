@@ -48,7 +48,7 @@ void informes()
             break;
 
         case 6:
-            deudores();
+           /// deudores();
             break;
 
         case 0:
@@ -77,7 +77,7 @@ void recaudacionAnual()
         if(obj.getEstado())
         {
 
-            total += obj.getCuota();
+            total += obj.getMontoEsperado();
         }
     }
     cout<<"- - - - - - - - - - - - - - - "<<endl<<endl;
@@ -119,7 +119,7 @@ void recaudacionXActividad()
                     if(c.getIdsocio()==as.getIdSocio())
                     {
 
-                        total+=c.getCuota();
+                        total+=c.getMontoEsperado();
                     }
                 }
             }
@@ -329,6 +329,7 @@ void ranking()
 }
 
 ///INFORME :SOCIOS DEUDORES
+/**
 void deudores()
 {
     archivoCuota arc;
@@ -363,3 +364,4 @@ void deudores()
     cout<<"CANTIDAD TOTAL DE SOCIOS CON DEUDA: "<<contDeudores;
 }
 
+*/

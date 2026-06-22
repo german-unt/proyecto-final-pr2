@@ -799,7 +799,7 @@
 1781752078 c:\users\oem\desktop\proyecto-final-pr2\clssocio.h
 	"clsFecha.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clscuota.h
+1782131558 c:\users\oem\desktop\proyecto-final-pr2\clscuota.h
 	"clsFecha.h"
 
 1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsmanagersocio.h
@@ -848,7 +848,7 @@
 	<cstring>
 	"clsArchivoActividadesSocio.h"
 
-1781752078 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivocuota.cpp
+1782131365 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivocuota.cpp
 	<iostream>
 	<cstring>
 	"clsArchivoCuota.h"
@@ -858,14 +858,14 @@
 	<cstring>
 	"clsArchivoSocio.h"
 
-1781752078 source:c:\users\oem\desktop\proyecto-final-pr2\clscouta.cpp
+1782136361 source:c:\users\oem\desktop\proyecto-final-pr2\clscouta.cpp
 	<iostream>
-	<ctime>
 	"clsCuota.h"
-	"clsSocio.h"
 	"clsArchivoSocio.h"
+	"clsSocio.h"
+	"clsManagerCouta.h"
 
-1781752078 source:c:\users\oem\desktop\proyecto-final-pr2\clsfecha.cpp
+1781879983 source:c:\users\oem\desktop\proyecto-final-pr2\clsfecha.cpp
 	<iostream>
 	"clsFecha.h"
 	"funciones.h"
@@ -884,15 +884,17 @@
 
 1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.h
 
-1781872484 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
+1782134218 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
 	<iostream>
 	"clsManagerCouta.h"
+	"clsArchivoCuota.h"
+	"clsCuota.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.h
+1782136304 c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.h
 	"clsCuota.h"
 	"clsArchivoCuota.h"
 
-1781872484 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.cpp
+1782133068 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.cpp
 	<iostream>
 	"clsManagerInformes.h"
 
@@ -907,7 +909,7 @@
 	"funciones.h"
 	"cargarCadena.h"
 
-1781879240 source:c:\users\oem\desktop\proyecto-final-pr2\funciones.cpp
+1782132973 source:c:\users\oem\desktop\proyecto-final-pr2\funciones.cpp
 	<iostream>
 	<cstring>
 	"funciones.h"

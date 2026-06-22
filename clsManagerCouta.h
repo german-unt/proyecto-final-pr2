@@ -8,7 +8,7 @@ void altaCuota();
 void bajaCuota();
 void modificarCuota();
 void listarCuota();
-
-
+float obtenerDeudaTotalSocio(int idsocio);
+float calcularDeudaHistorica (int idSocio);
 
 #endif // CLSMANAGERCOUTA_H_INCLUDED

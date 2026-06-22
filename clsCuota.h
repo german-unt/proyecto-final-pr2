@@ -2,28 +2,33 @@
 #define CLSCUOTA_H_INCLUDED
 #include "clsFecha.h"
 
-class cuota{
+class cuota {
 private:
     int idSocio;
-    float cuota;
+    float importePagado;
+    float montoEsperado;
+    Fecha fechaPago;
     bool estado;
-    Fecha FechaPago;
 
 public:
-    void setIdsocio(int);
-    void setCuota(float);
-    void setEstado(bool);
-    void setFechaPago(Fecha);
+    cuota() { estado = true; importePagado = 0; montoEsperado = 0; }
+
+    // Setters y Getters
+    void setIdsocio(int id);
+    void setImportePagado(float imp);
+    void setMontoEsperado(float mon);
+    void setFechaPago(Fecha f);
+    void setEstado(bool e);
 
     int getIdsocio();
-    float getCuota();
-    bool getEstado();
+    float getImportePagado();
+    float getMontoEsperado();
     Fecha getFechaPago();
+    bool getEstado();
 
-    float calcularDeuda();
-
-    void cargar(int id=-1);
+    // Métodos de acción
+    void cargar(int id = -1);
     void mostrar();
 };
 
-#endif // CLSCUOTA_H_INCLUDED
+#endif

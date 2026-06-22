@@ -1,95 +1,50 @@
-#include<iostream>
-#include<ctime>
-
-#include"clsCuota.h"
-#include"clsSocio.h"
-#include"clsArchivoSocio.h"
+#include <iostream>
+#include "clsCuota.h"
+#include "clsArchivoSocio.h"
+#include "clsSocio.h"
+#include "clsManagerCouta.h"
 
 using namespace std;
 
-void cuota::cargar(int id)
-{
-
-    if(id == -1)
-    {
-        cout<<"INGRESE EL ID DEL SOCIO: ";
-        cin>>idSocio;
-    }
-    else
-    {
-        idSocio=id;
+void cuota::cargar(int id) {
+/// VALIDAR LOS IDs SI EXITEN O NO
+    if(id == -1) {
+        cout << "INGRESE EL ID DEL SOCIO: ";
+        cin >> idSocio;
+    } else {
+        idSocio = id;
     }
 
+    // Obtenemos el tipo de socio para saber cuánto debe pagar
     archivoSocio arcSocio;
+    int pos = arcSocio.buscarRegistros(idSocio);
+    float valorBase = 10000; // Valor por defecto
 
-    int pos=arcSocio.buscarRegistros(idSocio);
-
-    if(pos>=0)
-    {
-
-        socio objSocio=arcSocio.leerRegistros(pos);
-
-        switch(objSocio.getTipoSocio())
-        {
-
-        case 1:
-            cuota=10000;
-            break;
-
-        case 2:
-            cuota=20000;
-            break;
-
-        case 3:
-            cuota=30000;
-            break;
-
-        default:
-            cuota=10000;
-            break;
-        }
+    if(pos >= 0) {
+        socio obj = arcSocio.leerRegistros(pos);
+        if(obj.getTipoSocio() == 2) valorBase = 20000;
+        else if(obj.getTipoSocio() == 3) valorBase = 30000;
     }
 
-    cout<<"INGRESE FECHA DEL ULTIMO PAGO: "<<endl;
-    FechaPago.Cargar();
-    //if(getFechaPago().getAnio()>=2020){
-    //}
+    montoEsperado = valorBase;
 
-    estado=true;
+    cout << "IMPORTE A PAGAR (Esperado: $" << montoEsperado << "): ";
+    cin >> importePagado;
+
+    cout << "INGRESE FECHA DE PAGO: " << endl;
+    fechaPago.Cargar();
+
+    estado = true;
 }
 
-void cuota::mostrar()
-{
-
-    cout<<"ID SOCIO: "<<idSocio<<endl;
-    cout<<"VALOR DE LA CUOTA: $"<<cuota<<endl;
-    cout<<"ULTIMO PAGO: ";
-    FechaPago.Mostrar();
-    cout<<endl;
-
-    cout<<"DEUDA ACTUAL: $"<<calcularDeuda()<<endl;
-}
-
-float cuota::calcularDeuda()
-{
-
-    time_t t=time(NULL);
-
-    tm *fechaActual=localtime(&t);
-
-    int mesActual=fechaActual->tm_mon+1;
-    int anioActual=fechaActual->tm_year+1900;
-
-    int mesesAdeudados=
-        (anioActual-FechaPago.getAnio())*12+
-        (mesActual-FechaPago.getMes());
-
-    if(mesesAdeudados<0)
-    {
-        mesesAdeudados=0;
-    }
-
-    return mesesAdeudados*cuota;
+void cuota::mostrar() {
+    cout << "ID SOCIO: " << idSocio << endl;
+    cout << "IMPORTE PAGADO: $" << importePagado << endl;
+    cout << "FECHA DE PAGO: ";
+    fechaPago.Mostrar();
+    // Ahora la deuda se calcula de forma externa y precisa
+    cout << "IMPORTE TOTAL A DEBER: $" << obtenerDeudaTotalSocio(idSocio) << endl;
+    cout << endl;
 }
 
 void cuota::setIdsocio(int id)
@@ -97,9 +52,13 @@ void cuota::setIdsocio(int id)
     idSocio=id;
 }
 
-void cuota::setCuota(float c)
+void cuota::setMontoEsperado(float mon)
 {
-    cuota=c;
+    montoEsperado=mon;
+}
+void cuota::setImportePagado(float imp)
+{
+    importePagado=imp;
 }
 
 void cuota::setEstado(bool e)
@@ -109,7 +68,7 @@ void cuota::setEstado(bool e)
 
 void cuota::setFechaPago(Fecha f)
 {
-    FechaPago=f;
+    fechaPago=f;
 }
 
 int cuota::getIdsocio()
@@ -117,9 +76,13 @@ int cuota::getIdsocio()
     return idSocio;
 }
 
-float cuota::getCuota()
+float cuota::getMontoEsperado()
 {
-    return cuota;
+    return montoEsperado;
+}
+float cuota::getImportePagado()
+{
+    return importePagado;
 }
 
 bool cuota::getEstado()
@@ -129,5 +92,5 @@ bool cuota::getEstado()
 
 Fecha cuota::getFechaPago()
 {
-    return FechaPago;
+    return fechaPago;
 }

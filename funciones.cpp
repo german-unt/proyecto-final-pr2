@@ -370,7 +370,7 @@ void listadoCuotaSocio()
 }
 
 */
-///ordenar por monto
+///ordenar por monto PAGADO
 
 void listadoCuotaMonto()
 {
@@ -392,8 +392,8 @@ void listadoCuotaMonto()
         for(int j=i+1; j<cant; j++)
         {
 
-            if(vec[i].getCuota()>
-                    vec[j].getCuota())
+            if(vec[i].getImportePagado()>
+                    vec[j].getImportePagado())
             {
 
                 cuota aux=vec[i];
@@ -660,7 +660,7 @@ void consultaResumen()
         obj = arc.leerRegistro(i);
         if(obj.getFechaPago().getMes()== mes)
         {
-            total += obj.getCuota();
+            total += obj.getMontoEsperado();
         }
     }
     cout << "RECAUDACION TOTAL DEL MES: $" << total << endl;
