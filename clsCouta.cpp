@@ -7,7 +7,11 @@
 using namespace std;
 
 void cuota::cargar(int id) {
-/// VALIDAR LOS IDs SI EXITEN O NO
+    archivoSocio arcSocio;
+    socio obj;
+    int pos = -1;
+
+    // 1. Lógica de entrada del ID (si no vino por parámetro)
     if(id == -1) {
         cout << "INGRESE EL ID DEL SOCIO: ";
         cin >> idSocio;
@@ -15,19 +19,34 @@ void cuota::cargar(int id) {
         idSocio = id;
     }
 
-    // Obtenemos el tipo de socio para saber cuánto debe pagar
-    archivoSocio arcSocio;
-    int pos = arcSocio.buscarRegistros(idSocio);
-    float valorBase = 10000; // Valor por defecto
+    // 2. Buscar al socio en el archivo
+    pos = arcSocio.buscarRegistros(idSocio);
 
-    if(pos >= 0) {
-        socio obj = arcSocio.leerRegistros(pos);
-        if(obj.getTipoSocio() == 2) valorBase = 20000;
-        else if(obj.getTipoSocio() == 3) valorBase = 30000;
+    // 3. Validar: ¿Existe el ID?
+    if (pos < 0) {
+        cout << "ERROR: EL ID DE SOCIO NO EXISTE EN EL SISTEMA." << endl;
+        // Aquí deberías manejar el error, por ejemplo, saliendo de la función
+
+        return;
     }
+
+    // 4. Leer el objeto y validar: ¿Está activo?
+    obj = arcSocio.leerRegistros(pos);
+    if (obj.getEstado() == false) {
+        cout << "ERROR: EL SOCIO EXISTE PERO ESTA DADO DE BAJA." << endl;
+
+        return;
+    }
+
+    // 5. Si pasó las validaciones, procedemos con la asignación de valores
+    // Calculamos el monto esperado según su tipo
+    float valorBase = 10000;
+    if(obj.getTipoSocio() == 2) valorBase = 20000;
+    else if(obj.getTipoSocio() == 3) valorBase = 30000;
 
     montoEsperado = valorBase;
 
+    cout << "SOCIO: " << obj.getNombre() << " " << obj.getApellido() << endl;
     cout << "IMPORTE A PAGAR (Esperado: $" << montoEsperado << "): ";
     cin >> importePagado;
 

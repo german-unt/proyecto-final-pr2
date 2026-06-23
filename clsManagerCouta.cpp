@@ -67,6 +67,23 @@ void altaCuota() {
     cout << "INGRESE EL ID DEL SOCIO QUE REALIZA EL PAGO: ";
     cin >> idSocio;
 
+    // 1. Instanciamos el archivo para validar antes de hacer cualquier otra cosa
+    archivoSocio arcSocio;
+    int pos = arcSocio.buscarRegistros(idSocio);
+
+    // 2. Validación de existencia
+    if (pos < 0) {
+        cout << "ERROR: EL SOCIO CON ID " << idSocio << " NO EXISTE." << endl;
+        return; // Salimos de la función si el socio no existe
+    }
+
+    // 3. Validación de estado (si el socio está dado de baja)
+    socio objSocio = arcSocio.leerRegistros(pos);
+    if (!objSocio.getEstado()) {
+        cout << "ERROR: EL SOCIO ESTA DADO DE BAJA Y NO PUEDE PAGAR CUOTAS." << endl;
+        return;
+    }
+
     // Ya no validamos si "ya tiene cuota", porque ahora cada pago es una transacción nueva.
     // Esto permite pagos mensuales, parciales o múltiples.
     cuota obj;
@@ -146,6 +163,7 @@ void listarCuota() {
         }
     }
 }
+///ARREGLAR EL TEMA DE FECHA DE ALTA Y BAJA CON EL ARCHIVO INSCRIPCIONES
 float calcularDeudaHistorica(int idSocio) {
 
     archivoSocio arcSocio;

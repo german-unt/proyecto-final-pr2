@@ -858,7 +858,7 @@
 	<cstring>
 	"clsArchivoSocio.h"
 
-1782136361 source:c:\users\oem\desktop\proyecto-final-pr2\clscouta.cpp
+1782220978 source:c:\users\oem\desktop\proyecto-final-pr2\clscouta.cpp
 	<iostream>
 	"clsCuota.h"
 	"clsArchivoSocio.h"
@@ -884,11 +884,12 @@
 
 1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.h
 
-1782134218 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
+1782221474 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
 	<iostream>
 	"clsManagerCouta.h"
 	"clsArchivoCuota.h"
 	"clsCuota.h"
+	<ctime>
 
 1782136304 c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.h
 	"clsCuota.h"
