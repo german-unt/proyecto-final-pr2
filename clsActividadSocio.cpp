@@ -4,79 +4,30 @@
 #include "clsArchivoSocio.h"
 using namespace std;
 
-void actividadSocio::cargar(){
-cout<<"INGRESE EL ID DE SOCIO: ";
-cin>>idSocio;
-archivoSocio arcSocio;
-int pos = arcSocio.buscarRegistros(idSocio);
-if(pos<0){
-cout<<"SOCIO NO ENCONTRADO"<<endl;
-    return;
-}
-socio obj = arcSocio.leerRegistros(pos);
-if(obj.getTipoSocio()==1){
+void actividadSocio::cargar() {
+    cout << "INGRESE EL ID DE SOCIO: ";
+    cin >> idSocio;
 
-cout<<"ACTIVIDADES DISPONIBLES"<<endl;
-cout<<"1 - FUTBOL"<<endl;
-cout<<"2 - VOLEY"<<endl;
+    // Aquí el Manager ya debería haber validado que el socio existe.
+    // Solo pedimos el ID de la actividad (la validación de si puede inscribirse
+    // se hace en el Manager ANTES de llamar a este cargar).
+    cout << "INGRESE EL ID DE ACTIVIDAD: ";
+    cin >> idActividad;
 
-while(true){
+    cout << "INGRESE LA FECHA DE ALTA: " << endl;
+    fechaAlta.Cargar();
 
-cout<<"INGRESE EL ID DE ACTIVIDAD: ";
-cin>>idActividad;
-
-if(idActividad==1 || idActividad==2){
-            break;
-        }
-
-cout<<"ESA ACTIVIDAD NO ESTA DISPONIBLE PARA SU PLAN"<<endl;
-    }
-}
-else if(obj.getTipoSocio()==2){
- cout<<"ACTIVIDADES DISPONIBLES"<<endl;
- cout<<"1 - FUTBOL"<<endl;
- cout<<"2 - VOLEY"<<endl;
- cout<<"3 - HOCKEY"<<endl;
- cout<<"4 - RUGBY"<<endl;
-
-while(true){
-cout<<"INGRESE EL ID DE ACTIVIDAD: ";
-cin>>idActividad;
-if(idActividad>=1 && idActividad<=4){
-    break;
-}
-    cout<<"ESA ACTIVIDAD NO ESTA DISPONIBLE PARA SU PLAN"<<endl;
-    }
-}
-else if(obj.getTipoSocio()==3){
-cout<<"ACTIVIDADES DISPONIBLES"<<endl;
-cout<<"1 - FUTBOL"<<endl;
-cout<<"2 - VOLEY"<<endl;
-cout<<"3 - HOCKEY"<<endl;
-cout<<"4 - RUGBY"<<endl;
-cout<<"5 - NATACION"<<endl;
-
-while(true){
-cout<<"INGRESE EL ID DE ACTIVIDAD: ";
-cin>>idActividad;
-
-if(idActividad>=1 && idActividad<=5){
-    break;
+    // La fecha de baja usualmente empieza vacía o nula al dar el alta
+    estado = true;
 }
 
-cout<<"ID DE ACTIVIDAD INVALIDO"<<endl;
-    }
-}
-cout<<"INGRESE LA FECHA DE ALTA: ";
-fechaAlta.Cargar();
-cout<<"INGRESE LA FECHA DE BAJA: ";
-fechaBaja.Cargar();
-estado=true;
-}
+void actividadSocio::mostrar() {
+    // Para mostrar el nombre de la actividad, necesitamos el archivo de actividades
+    archivoActividades arcAct;
+    int pos = arcAct.buscarRegistros(idActividad); // Asumiendo que tu clase tiene este método
+    actividad act = arcAct.leerRegistros(pos);
 
-void actividadSocio::mostrar(){
-cout<<"ID ACTIVIDAD: "<<idActividad<<endl;
-cout<<"ID SOCIO: "<<idSocio<<endl;
+    cout << "ID ACTIVIDAD: " << idActividad << " | NOMBRE: " << act.getNombreActividad() << endl;
 }
 void actividadSocio::setIdactividad(int id){idActividad=id;}
 void actividadSocio::setIdSocio(int s){idSocio=s;}

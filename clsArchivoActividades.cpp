@@ -71,3 +71,15 @@ for(int i=0; i<cantReg; i++){
     }
 }
  }
+
+bool archivoActividades::estadoActividad(int idActividad) {
+    int cant = contarRegistros();
+    for(int i = 0; i < cant; i++) {
+        actividad aux = leerRegistros(i);
+        // Si el ID coincide y la actividad está activa, existe
+        if(aux.getIdactividad() == idActividad && aux.getEstado()) {
+            return true;
+        }
+    }
+    return false;
+}

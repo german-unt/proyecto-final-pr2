@@ -51,229 +51,178 @@ void menuActividadSocio()
         system("pause");
     }
 }
-void altaActividadSocio()
-{
+void altaActividadSocio() {
     int idSocio;
-    cout<<"INGRESE ID DEL SOCIO: ";
-    cin>>idSocio;
+    cout << "INGRESE ID SOCIO: ";
+    cin >> idSocio;
 
+    // 1. Validar existencia socio
     archivoSocio arcSocio;
-
     int posSocio = arcSocio.buscarRegistros(idSocio);
+    if(posSocio < 0) {
+        cout << "Socio no existe." << endl;
+        return;
+    }
+    socio s = arcSocio.leerRegistros(posSocio);
 
-    if(posSocio<0)
-    {
-        cout<<"SOCIO INEXISTENTE"<<endl;
+    // 2. Determinar el límite usando IF-ELSE normal
+    int limite;
+    if (s.getTipoSocio() == 1) {
+        limite = 2;
+    } else if (s.getTipoSocio() == 2) {
+        limite = 3;
+    } else {
+        limite = 99; // Para Premium o cualquier otro plan
+    }
+
+    // 3. Validar límite de actividades
+    if(contarActividadesSocio(idSocio) >= limite) {
+        cout << "Limite de actividades alcanzado para este plan." << endl;
         return;
     }
 
-    socio objSocio = arcSocio.leerRegistros(posSocio);
-    if (objSocio.getEstado()==false){cout<<"EL SOCIO ESTA DADO DE BAJA"<<endl;
-    return;
-    }
-
-    int tipo = objSocio.getTipoSocio();
-
-    cout<<"ACTIVIDADES DISPONIBLES"<<endl;
-    cout<<"======================="<<endl;
-
-    if(tipo==1)
-    {
-        cout<<"1 - FUTBOL"<<endl;
-        cout<<"5 - HOCKEY"<<endl;
-    }
-
-    if(tipo==2)
-    {
-        cout<<"1 - FUTBOL"<<endl;
-        cout<<"3 - NATACION"<<endl;
-        cout<<"4 - VOLEY"<<endl;
-        cout<<"5 - HOCKEY"<<endl;
-    }
-
-    if(tipo==3)
-    {
-        cout<<"1 - FUTBOL"<<endl;
-        cout<<"2 - RUGBY"<<endl;
-        cout<<"3 - NATACION"<<endl;
-        cout<<"4 - VOLEY"<<endl;
-        cout<<"5 - HOCKEY"<<endl;
-    }
-
-int idActividad;
-    cout<<"======================="<<endl;
-    cout<<"ELIJA UNA ACTIVIDAD: "<<endl<<endl;
-    cin>>idActividad;
-    actividadSocio obj;
-
-    actividad objActividad;
-    archivoActividades arcActividad;
-
-    int pos=arcActividad.buscarRegistros(idActividad);
-    objActividad=arcActividad.leerRegistros(pos);
-    if (objActividad.getEstado()==false){cout<<"LA ACTIVIDAD ESTA DADA DE BAJA"<<endl;
-    return;
-    }
-    obj.setIdactividad(idActividad);
-    obj.setEstado(true);
-    obj.setIdSocio(idSocio);
-    archivoActividadesSocio arc;
-    arc.grabarRegistro(obj);
-
-    cout<<"INSCRIPCION REALIZADA CORRECTAMENTE"<<endl;
-}
-void bajaActividadSocio()
-{
-    int idActividad;
-
-    cout<<"INGRESE ID DE ACTIVIDAD: ";
-    cin>>idActividad;
-
-    archivoActividadesSocio arc;
-
-    int pos = arc.buscarRegistro(idActividad);
-
-    if(pos<0)
-    {
-        cout<<"NO EXISTE"<<endl;
-        return;
-    }
-
-    actividadSocio obj = arc.leerRegistro(pos);
-
-    obj.setEstado(false);
-
-    arc.modificarRegistro(obj,pos);
-
-    cout<<"INSCRIPCION DADA DE BAJA"<<endl;
-}
-void modificarActividadSocio()
-{
-    int idSocio;
-
-    cout<<"INGRESE EL ID DEL SOCIO: ";
-    cin>>idSocio;
-
-    archivoActividadesSocio arc;
-
-    int pos = arc.buscarRegistroSocio(idSocio);
-
-    if(pos<0)
-    {
-        cout<<"NO EXISTE INSCRIPCION PARA ESE SOCIO"<<endl;
-        return;
-    }
-
-    actividadSocio obj = arc.leerRegistro(pos);
-
-    if(obj.getEstado()==false)
-    {
-        cout<<"LA INSCRIPCION ESTA DADA DE BAJA"<<endl;
-        return;
-    }
-
-    cout<<endl;
-    cout<<"INSCRIPCION ACTUAL"<<endl;
-    cout<<"================="<<endl;
-    obj.mostrar();
-
-    int opcion;
-
-    cout<<endl;
-    cout<<"DESEA MODIFICAR ESTA INSCRIPCION?"<<endl;
-    cout<<"1 - SI"<<endl;
-    cout<<"0 - NO"<<endl;
-    cin>>opcion;
-
-
-while(opcion!=0 && opcion !=1){
-     cout<<"ERROR, INGRESE 0 O 1"<<endl;
-     cin>>opcion;
-}
-    archivoSocio arcSocio;
-
-    int posSocio = arcSocio.buscarRegistros(obj.getIdSocio());
-
-    if(posSocio<0)
-    {
-        cout<<"SOCIO INEXISTENTE"<<endl;
-        return;
-    }
-
-    socio objSocio = arcSocio.leerRegistros(posSocio);
-
-    int tipo = objSocio.getTipoSocio();
-
-    cout<<endl;
-    cout<<"ACTIVIDADES DISPONIBLES"<<endl;
-    cout<<"======================="<<endl;
-
-    if(tipo==1)
-    {
-        cout<<"1 - FUTBOL"<<endl;
-        cout<<"5 - HOCKEY"<<endl;
-    }
-
-    if(tipo==2)
-    {
-        cout<<"1 - FUTBOL"<<endl;
-        cout<<"3 - NATACION"<<endl;
-        cout<<"4 - VOLEY"<<endl;
-        cout<<"5 - HOCKEY"<<endl;
-    }
-
-    if(tipo==3)
-    {
-        cout<<"1 - FUTBOL"<<endl;
-        cout<<"2 - RUGBY"<<endl;
-        cout<<"3 - NATACION"<<endl;
-        cout<<"4 - VOLEY"<<endl;
-        cout<<"5 - HOCKEY"<<endl;
-    }
-
-    int nuevaActividad;
-
-    cout<<endl;
-    cout<<"INGRESE NUEVO ID DE ACTIVIDAD: ";
-    cin>>nuevaActividad;
-
-    if(tipo==1 &&
-       nuevaActividad!=1 &&
-       nuevaActividad!=5)
-    {
-        cout<<"ESA ACTIVIDAD NO CORRESPONDE A SU PLAN"<<endl;
-        return;
-    }
-
-    if(tipo==2 &&
-       nuevaActividad==2)
-    {
-        cout<<"ESA ACTIVIDAD NO CORRESPONDE A SU PLAN"<<endl;
-        return;
-    }
-
-    obj.setIdactividad(nuevaActividad);
-
-    arc.modificarRegistro(obj,pos);
-
-    cout<<"INSCRIPCION MODIFICADA CORRECTAMENTE"<<endl;
-}
-void listarActividadSocio()
-{
-    archivoActividadesSocio arc;
-
-    int cant = arc.contarRegistros();
-
-    for(int i=0;i<cant;i++)
-    {
-        actividadSocio obj = arc.leerRegistro(i);
-
-        if(obj.getEstado())
-        {
-            obj.mostrar();
-            cout<<endl;
-            cout<<"============================"<<endl;
-            cout<<endl;
+    cout << "\n--- ACTIVIDADES DISPONIBLES ---" << endl;
+    archivoActividades arcAct;
+    int cantAct = arcAct.contarRegistros();
+    for(int i = 0; i < cantAct; i++) {
+        actividad aux = arcAct.leerRegistros(i);
+        if(aux.getEstado()) {
+            cout << "ID: " << aux.getIdactividad() << " | Nombre: " << aux.getNombreActividad() << endl;
         }
     }
+
+    int idAct;
+    bool actividadValida = false;
+
+    // Bucle de validación para que el usuario no pueda seguir hasta poner un ID real
+    while(!actividadValida) {
+        cout << "\nINGRESE ID ACTIVIDAD: ";
+        cin >> idAct;
+
+        if(arcAct.estadoActividad(idAct)) {
+            actividadValida = true;
+        } else {
+            cout << "ERROR: El ID de actividad no existe o no está activo. Intente nuevamente." << endl;
+        }
+    }
+
+    // Validar si ya está inscrito
+    archivoActividadesSocio arc;
+    if(arc.buscarActividadSocio(idSocio, idAct) != -1) {
+        cout << "El socio ya se encuentra inscripto en esta actividad." << endl;
+        return;
+    }
+
+    // Grabar
+    actividadSocio nueva;
+    nueva.setIdSocio(idSocio);
+    nueva.setIdactividad(idAct);
+    nueva.setEstado(true);
+
+    if(arc.grabarRegistro(nueva)) {
+        cout << "Inscripcion realizada con exito." << endl;
+    }
+}
+
+void bajaActividadSocio() {
+    int idSocio;
+    cout << "ID SOCIO: "; cin >> idSocio;
+
+    archivoActividadesSocio arc;
+    int cant = arc.contarRegistros();
+
+    cout << "ACTIVIDADES INSCRIPTAS:" << endl;
+    for(int i=0; i<cant; i++) {
+        actividadSocio aux = arc.leerRegistro(i);
+        if(aux.getIdSocio() == idSocio && aux.getEstado()) {
+            cout << "Pos: " << i << " | ID Actividad: " << aux.getIdactividad() << endl;
+        }
+    }
+
+    int pos;
+    cout << "INGRESE POSICION A DAR DE BAJA: "; cin >> pos;
+    actividadSocio obj = arc.leerRegistro(pos);
+    obj.setEstado(false);
+    arc.modificarRegistro(obj, pos);
+}
+void modificarActividadSocio() {
+    int idSocio;
+    cout << "INGRESE ID DEL SOCIO A MODIFICAR: ";
+    cin >> idSocio;
+
+    archivoActividadesSocio arc;
+    int cant = arc.contarRegistros();
+    bool tieneActividades = false;
+
+    // 1. Mostrar actividades actuales
+    cout << "\nACTIVIDADES ACTUALES DEL SOCIO:" << endl;
+    for(int i = 0; i < cant; i++) {
+        actividadSocio aux = arc.leerRegistro(i);
+        if(aux.getIdSocio() == idSocio && aux.getEstado()) {
+            cout << "[" << i << "] ID Actividad: " << aux.getIdactividad() << endl;
+            tieneActividades = true;
+        }
+    }
+
+    if(!tieneActividades) {
+        cout << "EL SOCIO NO TIENE ACTIVIDADES ACTIVAS." << endl;
+        return;
+    }
+
+    // 2. Elegir actividad
+    int pos;
+    cout << "\nINGRESE LA POSICION DE LA ACTIVIDAD A MODIFICAR: ";
+    cin >> pos;
+
+    actividadSocio obj = arc.leerRegistro(pos);
+
+    // 3. Baja lógica
+    if(obj.getIdSocio() == idSocio && obj.getEstado()) {
+        obj.setEstado(false);
+        arc.modificarRegistro(obj, pos);
+
+        cout << "ACTIVIDAD DADA DE BAJA. AHORA SELECCIONE LA NUEVA:" << endl;
+
+        // 4. Llamar al alta para que el usuario elija la nueva
+        altaActividadSocio();
+    } else {
+        cout << "POSICION INVALIDA O NO ENCONTRADA." << endl;
+    }
+}
+void listarActividadSocio() {
+
+    archivoActividadesSocio arc;
+    archivoSocio arcSocio;
+    int cant = arc.contarRegistros();
+
+    cout << "--- LISTADO DE ACTIVIDADES POR SOCIO ---" << endl;
+
+    // Recorremos socios para agrupar
+    for(int i = 0; i < arcSocio.contarRegistros(); i++) {
+        socio s = arcSocio.leerRegistros(i);
+        bool tieneActividades = false;
+
+        // Buscamos actividades para este socio
+        for(int j = 0; j < cant; j++) {
+            actividadSocio ins = arc.leerRegistro(j);
+            if(ins.getIdSocio() == s.getIdsocio() && ins.getEstado()) {
+                if(!tieneActividades) {
+                    cout << "\nSOCIO: " << s.getNombre() << " " << s.getApellido() << " (ID: " << s.getIdsocio() << ")" << endl;
+                    tieneActividades = true;
+                }
+                ins.mostrar(); // Esto mostrará el ID y el nombre de la actividad
+            }
+        }
+    }
+}
+
+int contarActividadesSocio(int idSocio) {
+    archivoActividadesSocio arc;
+    int cant = arc.contarRegistros();
+    int contador = 0;
+    for(int i=0; i<cant; i++) {
+        actividadSocio aux = arc.leerRegistro(i);
+        if(aux.getIdSocio() == idSocio && aux.getEstado()) contador++;
+    }
+    return contador;
 }

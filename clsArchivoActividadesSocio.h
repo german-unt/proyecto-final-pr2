@@ -14,6 +14,7 @@ int contarRegistros();
 int buscarRegistro(int);
 void listarRegistros();
 int buscarRegistroSocio(int);
+int buscarActividadSocio(int idSocio, int idActividad);
 };
 
 

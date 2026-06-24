@@ -13,6 +13,7 @@ public:
     int contarRegistros();
     int buscarRegistros(int);
     void listarRegistros();
+    bool estadoActividad(int idActividad);
 } ;
 
 

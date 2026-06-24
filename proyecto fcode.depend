@@ -771,7 +771,7 @@
 
 1781752078 c:\users\oem\desktop\proyecto-final-pr2\cargarcadena.h
 
-1781752078 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividadsocio.cpp
+1782307845 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividadsocio.cpp
 	<iostream>
 	"clsActividadSocio.h"
 	"funciones.h"
@@ -813,7 +813,7 @@
 	"clsActividad.h"
 	"clsArchivoActividades.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividades.h
+1782310964 c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividades.h
 	"funciones.h"
 	"clsActividad.h"
 
@@ -833,17 +833,17 @@
 	"funciones.h"
 	"clsCuota.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividadessocio.h
+1782307058 c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividadessocio.h
 	"funciones.h"
 	"clsActividadSocio.h"
 
-1781752078 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividades.cpp
+1782310990 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividades.cpp
 	<iostream>
 	<cstring>
 	"clsArchivoActividades.h"
 	"funciones.h"
 
-1781752078 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividadessocio.cpp
+1782307058 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividadessocio.cpp
 	<iostream>
 	<cstring>
 	"clsArchivoActividadesSocio.h"
@@ -875,14 +875,14 @@
 	<iostream>
 	"clsManagerActividad.h"
 
-1781872484 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.cpp
+1782312098 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.cpp
 	<iostream>
 	"clsManagerActividadSocio.h"
 	"clsActividadSocio.h"
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoSocio.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.h
+1782307058 c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.h
 
 1782221474 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
 	<iostream>
