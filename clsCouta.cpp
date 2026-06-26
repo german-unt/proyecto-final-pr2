@@ -61,9 +61,10 @@ void cuota::mostrar() {
     cout << "IMPORTE PAGADO: $" << importePagado << endl;
     cout << "FECHA DE PAGO: ";
     fechaPago.Mostrar();
+    cout<<endl;
     // Ahora la deuda se calcula de forma externa y precisa
     cout << "IMPORTE TOTAL A DEBER: $" << obtenerDeudaTotalSocio(idSocio) << endl;
-    cout << endl;
+    cout << endl<<endl;
 }
 
 void cuota::setIdsocio(int id)

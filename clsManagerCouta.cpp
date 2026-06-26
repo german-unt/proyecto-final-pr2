@@ -165,43 +165,54 @@ void listarCuota() {
 }
 ///ARREGLAR EL TEMA DE FECHA DE ALTA Y BAJA CON EL ARCHIVO INSCRIPCIONES
 float calcularDeudaHistorica(int idSocio) {
-
-    archivoSocio arcSocio;
     archivoActividadesSocio arcActividadSocio;
+    archivoSocio arcSocio;
     actividadSocio obj;
+    socio objSocio;
 
-    int pos = arcSocio.buscarRegistros(idSocio);
-    if (pos < 0) {return -1 ;}
+    // 1. Buscar el tipo de socio para determinar su valor mensual
+    int posSocio = arcSocio.buscarRegistros(idSocio);
+    if (posSocio < 0) {
+        return 0; // Si el socio no existe, la deuda es 0
+    }
+    objSocio = arcSocio.leerRegistros(posSocio);
 
-    socio objSocio = arcSocio.leerRegistros(pos);
+    float valorMensual = 10000; // Valor base por defecto (Plan 1)
+    if (objSocio.getTipoSocio() == 2) {
+        valorMensual = 20000;  // Plan Intermedio
+    } else if (objSocio.getTipoSocio() == 3) {
+        valorMensual = 30000;  // Plan Premium
+    }
 
-    // 1. Determinar el valor mensual
-    float valorMensual = 10000;
-    if(objSocio.getTipoSocio() == 2) valorMensual = 20000;
-    else if(objSocio.getTipoSocio() == 3) valorMensual = 30000;
-
-    // 2. Obtener fecha actual (usando time como haces en Fecha::Cargar)
-    time_t t = time(NULL);
+    // 2. Obtener la fecha actual del sistema
+    time_t t = time(nullptr);
     tm* hoy = localtime(&t);
     int mesActual = hoy->tm_mon + 1;
     int anioActual = hoy->tm_year + 1900;
-    int posAXS = arcActividadSocio.buscarRegistro(idSocio);
-    if (posAXS < 0) {return -1 ;}
-    obj= arcActividadSocio.leerRegistro(posAXS);
-    // 3. Obtener fecha de alta del socio
+
+    // CORRECCIÓN CLAVE: Usar buscarRegistroSocio para encontrar la inscripción correcta del socio
+    int posAXS = arcActividadSocio.buscarRegistroSocio(idSocio);
+    if (posAXS < 0) {
+        return 0; // Si el socio no está inscrito a ninguna actividad, no debe nada
+    }
+    obj = arcActividadSocio.leerRegistro(posAXS);
+
+    // 3. Obtener fecha de alta de la inscripción del socio
     int mesAlta = obj.getFechaAlta().getMes();
     int anioAlta = obj.getFechaAlta().getAnio();
 
-    // 4. Cálculo de diferencia en meses
-    // Convertimos años a meses y sumamos los meses actuales
+    // 4. Cálculo de diferencia en meses convirtiendo años a meses
     int mesesTotalesActual = (anioActual * 12) + mesActual;
     int mesesTotalesAlta = (anioAlta * 12) + mesAlta;
 
     int mesesTranscurridos = mesesTotalesActual - mesesTotalesAlta;
 
-    // Si el resultado es negativo (por error de fecha) o cero, devolvemos 0
-    if(mesesTranscurridos < 0) mesesTranscurridos = 0;
+    // Si da negativo (por seguridad o error de carga futura), lo dejamos en 0
+    if (mesesTranscurridos < 0) {
+        mesesTranscurridos = 0;
+    }
 
+    // Devolvemos los meses totales que debió pagar por su valor mensual correspondiente
     return mesesTranscurridos * valorMensual;
 }
 

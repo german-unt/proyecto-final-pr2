@@ -2,6 +2,7 @@
 #include"clsActividadSocio.h"
 #include"funciones.h"
 #include "clsArchivoSocio.h"
+#include "clsFecha.h"
 using namespace std;
 
 void actividadSocio::cargar() {
@@ -13,6 +14,9 @@ void actividadSocio::cargar() {
     // se hace en el Manager ANTES de llamar a este cargar).
     cout << "INGRESE EL ID DE ACTIVIDAD: ";
     cin >> idActividad;
+
+    // ALERTA: Limpiamos el buffer para eliminar el Enter residual
+    cin.ignore();
 
     cout << "INGRESE LA FECHA DE ALTA: " << endl;
     fechaAlta.Cargar();
@@ -28,6 +32,9 @@ void actividadSocio::mostrar() {
     actividad act = arcAct.leerRegistros(pos);
 
     cout << "ID ACTIVIDAD: " << idActividad << " | NOMBRE: " << act.getNombreActividad() << endl;
+    cout<< "FECHA DE INSCRIPCION: ";
+    fechaAlta.Mostrar();
+    cout<<endl;
 }
 void actividadSocio::setIdactividad(int id){idActividad=id;}
 void actividadSocio::setIdSocio(int s){idSocio=s;}

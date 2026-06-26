@@ -6,15 +6,35 @@ using namespace std;
 
 void actividad::cargar(int id){
     if(id == -1){
-        cout<<"INGRESE EL ID de Actividad: ";
-        cin>>idActividad;
-    }else{
+        cout << "INGRESE EL ID de Actividad: ";
+        cin >> idActividad;
+        cin.ignore(); // Limpia el buffer después de un cin numérico
+    } else {
         idActividad = id;
     }
 
-cout<<"INGRESE EL NOMBRE DE LA ACTIVIDAD: ";
-cargarCadena(nombreActividad,20);
-estado=true;
+    while(true) {
+        cout << "INGRESE EL NOMBRE DE LA ACTIVIDAD: ";
+        cargarCadena(nombreActividad, 20);
+
+        bool tieneNumeros = false;
+
+        // Recorremos la cadena buscando dígitos numéricos
+        for(int i = 0; nombreActividad[i] != '\0'; i++) {
+            if(nombreActividad[i] >= '0' && nombreActividad[i] <= '9') {
+                tieneNumeros = true;
+            }
+        }
+
+        // Si no se encontraron números y la cadena no está vacía, es válida
+        if(!tieneNumeros && nombreActividad[0] != '\0') {
+            break; // Rompe el while e ingresa con éxito
+        }
+
+        cout << "ERROR: El nombre de la actividad no puede contener numeros ni estar vacio.\n" << endl;
+    }
+
+    estado = true;
 }
 
 void actividad::mostrar(){

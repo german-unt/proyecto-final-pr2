@@ -96,3 +96,15 @@ int archivoActividadesSocio::buscarActividadSocio(int idSocio, int idActividad) 
     }
     return -1;
 }
+
+int archivoActividadesSocio::buscarRegistroSocio(int idSocio){
+    int cantReg = contarRegistros();
+    for(int i = 0; i < cantReg; i++){
+        actividadSocio obj = leerRegistro(i);
+        // Comparamos contra el ID del Socio y que la inscripción esté activa
+        if(obj.getIdSocio() == idSocio && obj.getEstado() == true){
+            return i;
+        }
+    }
+    return -1;
+}

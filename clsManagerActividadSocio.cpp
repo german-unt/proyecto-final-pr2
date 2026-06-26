@@ -56,23 +56,28 @@ void altaActividadSocio() {
     cout << "INGRESE ID SOCIO: ";
     cin >> idSocio;
 
-    // 1. Validar existencia socio
+    // 1. Validar existencia y estado del socio
     archivoSocio arcSocio;
     int posSocio = arcSocio.buscarRegistros(idSocio);
     if(posSocio < 0) {
         cout << "Socio no existe." << endl;
         return;
     }
-    socio s = arcSocio.leerRegistros(posSocio);
+    socio objSocio = arcSocio.leerRegistros(posSocio);
 
-    // 2. Determinar el límite usando IF-ELSE normal
+    if (!objSocio.getEstado()) {
+        cout << "ERROR: El socio se encuentra inactivo." << endl;
+        return;
+    }
+
+    // 2. Determinar el límite por plan
     int limite;
-    if (s.getTipoSocio() == 1) {
+    if (objSocio.getTipoSocio() == 1) {
         limite = 2;
-    } else if (s.getTipoSocio() == 2) {
+    } else if (objSocio.getTipoSocio() == 2) {
         limite = 3;
     } else {
-        limite = 99; // Para Premium o cualquier otro plan
+        limite = 99;
     }
 
     // 3. Validar límite de actividades
@@ -81,9 +86,11 @@ void altaActividadSocio() {
         return;
     }
 
+    // 4. Listar actividades disponibles
     cout << "\n--- ACTIVIDADES DISPONIBLES ---" << endl;
     archivoActividades arcAct;
     int cantAct = arcAct.contarRegistros();
+
     for(int i = 0; i < cantAct; i++) {
         actividad aux = arcAct.leerRegistros(i);
         if(aux.getEstado()) {
@@ -94,7 +101,7 @@ void altaActividadSocio() {
     int idAct;
     bool actividadValida = false;
 
-    // Bucle de validación para que el usuario no pueda seguir hasta poner un ID real
+    // 5. Validar que el ID de actividad ingresado exista de verdad
     while(!actividadValida) {
         cout << "\nINGRESE ID ACTIVIDAD: ";
         cin >> idAct;
@@ -102,25 +109,36 @@ void altaActividadSocio() {
         if(arcAct.estadoActividad(idAct)) {
             actividadValida = true;
         } else {
-            cout << "ERROR: El ID de actividad no existe o no está activo. Intente nuevamente." << endl;
+            cout << "ERROR: El ID de actividad no existe o no esta activo. Intente nuevamente." << endl;
         }
     }
 
-    // Validar si ya está inscrito
-    archivoActividadesSocio arc;
-    if(arc.buscarActividadSocio(idSocio, idAct) != -1) {
+    // 6. Validar si ya está inscrito a esa actividad específica
+    archivoActividadesSocio arcInscripciones;
+    if(arcInscripciones.buscarActividadSocio(idSocio, idAct) != -1) {
         cout << "El socio ya se encuentra inscripto en esta actividad." << endl;
         return;
     }
 
-    // Grabar
+    // 7. Preparación de la inscripción y carga con objeto auxiliar Fecha
     actividadSocio nueva;
     nueva.setIdSocio(idSocio);
     nueva.setIdactividad(idAct);
     nueva.setEstado(true);
 
-    if(arc.grabarRegistro(nueva)) {
-        cout << "Inscripcion realizada con exito." << endl;
+    // Limpiamos el buffer del cin anterior antes de llamar a la carga de la fecha
+    cin.ignore();
+
+    cout << "\nINGRESE LA FECHA DE INSCRIPCION (ALTA):" << endl;
+    Fecha fAlta; // Creamos el objeto auxiliar de tipo Fecha
+    fAlta.Cargar(); // Invocamos el método Cargar propio de la clase Fecha
+    nueva.setFechaAlta(fAlta); // Pasamos la fecha cargada al objeto inscripción
+
+    // 8. Grabar nueva inscripción en el archivo binario
+    if(arcInscripciones.grabarRegistro(nueva)) {
+        cout << "\nInscripcion realizada con exito." << endl;
+    } else {
+        cout << "\nError al grabar la inscripcion." << endl;
     }
 }
 
@@ -190,27 +208,37 @@ void modificarActividadSocio() {
     }
 }
 void listarActividadSocio() {
-
-    archivoActividadesSocio arc;
+archivoActividadesSocio arcInscripciones;
     archivoSocio arcSocio;
-    int cant = arc.contarRegistros();
+    int cantInscripciones = arcInscripciones.contarRegistros();
 
-    cout << "--- LISTADO DE ACTIVIDADES POR SOCIO ---" << endl;
+    cout << "--- LISTADO DE ACTIVIDADES POR SOCIO (SOLO SOCIOS ACTIVOS) ---" << endl;
 
     // Recorremos socios para agrupar
     for(int i = 0; i < arcSocio.contarRegistros(); i++) {
-        socio s = arcSocio.leerRegistros(i);
+        socio objSocio = arcSocio.leerRegistros(i);
+
+        // VALIDACIÓN: Solo procesamos socios que estén activos
+        if (!objSocio.getEstado()) {
+            continue; // Si el socio está dado de baja, saltamos al siguiente
+        }
+
         bool tieneActividades = false;
 
         // Buscamos actividades para este socio
-        for(int j = 0; j < cant; j++) {
-            actividadSocio ins = arc.leerRegistro(j);
-            if(ins.getIdSocio() == s.getIdsocio() && ins.getEstado()) {
+        for(int j = 0; j < cantInscripciones; j++) {
+            actividadSocio objInscripcion = arcInscripciones.leerRegistro(j);
+
+            // Verificamos que sea el socio, que la inscripción esté activa y el socio activo
+            if(objInscripcion.getIdSocio() == objSocio.getIdsocio() && objInscripcion.getEstado()) {
+
                 if(!tieneActividades) {
-                    cout << "\nSOCIO: " << s.getNombre() << " " << s.getApellido() << " (ID: " << s.getIdsocio() << ")" << endl;
+                    cout << "\nSOCIO: " << objSocio.getNombre() << " " << objSocio.getApellido()
+                         << " (ID: " << objSocio.getIdsocio() << ")" << endl;
                     tieneActividades = true;
                 }
-                ins.mostrar(); // Esto mostrará el ID y el nombre de la actividad
+
+                objInscripcion.mostrar(); // Muestra la actividad del socio activo
             }
         }
     }
