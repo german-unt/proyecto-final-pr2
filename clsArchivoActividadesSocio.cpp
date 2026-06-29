@@ -68,24 +68,6 @@ for(int i=0; i<cantReg; i++){
 }
 }
 
-
-int archivoActividadesSocio::buscarRegistroSocio(int idSocio){
-
-    int cantReg = contarRegistros();
-
-    for(int i=0;i<cantReg;i++){
-
-        actividadSocio obj = leerRegistro(i);
-
-        if(obj.getIdSocio()==idSocio){
-            return i;
-        }
-    }
-
-    return -1;
-}
-
-
 int archivoActividadesSocio::buscarActividadSocio(int idSocio, int idActividad) {
     int cant = contarRegistros();
     for(int i = 0; i < cant; i++) {

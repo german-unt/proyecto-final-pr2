@@ -645,7 +645,7 @@ void consultaXActividad()
     }
 
 }
-///(no anda) agregar con importe de pago
+///modificado deberia andar ahora
 void consultaResumen()
 {
     cuota obj;
@@ -655,12 +655,14 @@ void consultaResumen()
     cin >> mes;
     float total = 0;
     int cant = arc.contarRegistros();
-    for(int i=0; i<cant; i++)
+
+    for(int i = 0; i < cant; i++)
     {
         obj = arc.leerRegistro(i);
-        if(obj.getFechaPago().getMes()== mes)
+        if(obj.getFechaPago().getMes() == mes && obj.getEstado() == true)
         {
-            total += obj.getMontoEsperado();
+            // Aca sumamos la plata real que entro, no el montoEsperado
+            total += obj.getImportePagado();
         }
     }
     cout << "RECAUDACION TOTAL DEL MES: $" << total << endl;

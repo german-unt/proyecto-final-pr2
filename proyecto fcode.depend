@@ -834,7 +834,7 @@
 	"funciones.h"
 	"clsCuota.h"
 
-1782500436 c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividadessocio.h
+1782686789 c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividadessocio.h
 	"funciones.h"
 	"clsActividadSocio.h"
 
@@ -844,7 +844,7 @@
 	"clsArchivoActividades.h"
 	"funciones.h"
 
-1782307058 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividadessocio.cpp
+1782686789 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividadessocio.cpp
 	<iostream>
 	<cstring>
 	"clsArchivoActividadesSocio.h"
@@ -859,7 +859,7 @@
 	<cstring>
 	"clsArchivoSocio.h"
 
-1782499698 source:c:\users\oem\desktop\proyecto-final-pr2\clscouta.cpp
+1782695256 source:c:\users\oem\desktop\proyecto-final-pr2\clscouta.cpp
 	<iostream>
 	"clsCuota.h"
 	"clsArchivoSocio.h"
@@ -885,14 +885,14 @@
 
 1782307058 c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.h
 
-1782221474 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
+1782694258 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
 	<iostream>
 	"clsManagerCouta.h"
 	"clsArchivoCuota.h"
 	"clsCuota.h"
 	<ctime>
 
-1782136304 c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.h
+1782694258 c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.h
 	"clsCuota.h"
 	"clsArchivoCuota.h"
 
@@ -911,7 +911,7 @@
 	"funciones.h"
 	"cargarCadena.h"
 
-1782132973 source:c:\users\oem\desktop\proyecto-final-pr2\funciones.cpp
+1782695353 source:c:\users\oem\desktop\proyecto-final-pr2\funciones.cpp
 	<iostream>
 	<cstring>
 	"funciones.h"

@@ -11,7 +11,6 @@ void cuota::cargar(int id) {
     socio obj;
     int pos = -1;
 
-    // 1. Lógica de entrada del ID (si no vino por parámetro)
     if(id == -1) {
         cout << "INGRESE EL ID DEL SOCIO: ";
         cin >> idSocio;
@@ -19,35 +18,31 @@ void cuota::cargar(int id) {
         idSocio = id;
     }
 
-    // 2. Buscar al socio en el archivo
     pos = arcSocio.buscarRegistros(idSocio);
 
-    // 3. Validar: ¿Existe el ID?
     if (pos < 0) {
         cout << "ERROR: EL ID DE SOCIO NO EXISTE EN EL SISTEMA." << endl;
-        // Aquí deberías manejar el error, por ejemplo, saliendo de la función
-
         return;
     }
 
-    // 4. Leer el objeto y validar: ¿Está activo?
     obj = arcSocio.leerRegistros(pos);
     if (obj.getEstado() == false) {
         cout << "ERROR: EL SOCIO EXISTE PERO ESTA DADO DE BAJA." << endl;
-
         return;
     }
 
-    // 5. Si pasó las validaciones, procedemos con la asignación de valores
-    // Calculamos el monto esperado según su tipo
+    // 1. Calculamos el valor de la cuota mensual como dato INFORMATIVO
     float valorBase = 10000;
     if(obj.getTipoSocio() == 2) valorBase = 20000;
     else if(obj.getTipoSocio() == 3) valorBase = 30000;
 
-    montoEsperado = valorBase;
+    // 2. TALLADO EN PIEDRA: Guardamos la deuda total en el momento del pago
+    montoEsperado = obtenerDeudaTotalSocio(idSocio);
 
     cout << "SOCIO: " << obj.getNombre() << " " << obj.getApellido() << endl;
-    cout << "IMPORTE A PAGAR (Esperado: $" << montoEsperado << "): ";
+    cout << "VALOR CUOTA MENSUAL (TIPO " << obj.getTipoSocio() << "): $" << valorBase << endl;
+    cout << "DEUDA TOTAL ACUMULADA: $" << montoEsperado << endl;
+    cout << "IMPORTE A PAGAR AHORA: ";
     cin >> importePagado;
 
     cout << "INGRESE FECHA DE PAGO: " << endl;
@@ -58,15 +53,16 @@ void cuota::cargar(int id) {
 
 void cuota::mostrar() {
     cout << "ID SOCIO: " << idSocio << endl;
-    cout << "IMPORTE PAGADO: $" << importePagado << endl;
     cout << "FECHA DE PAGO: ";
     fechaPago.Mostrar();
-    cout<<endl;
-    // Ahora la deuda se calcula de forma externa y precisa
-    cout << "IMPORTE TOTAL A DEBER: $" << obtenerDeudaTotalSocio(idSocio) << endl;
-    cout << endl<<endl;
-}
+    cout << endl;
 
+    // 3. Mostramos los datos históricos (estáticos), no los calculados al vuelo
+    cout << "DEUDA PREVIA AL PAGO: $" << montoEsperado << endl;
+    cout << "IMPORTE ABONADO:      $" << importePagado << endl;
+    cout << "SALDO PENDIENTE:      $" << (montoEsperado - importePagado) << endl;
+    cout << "---------------------------------------" << endl;
+}
 void cuota::setIdsocio(int id)
 {
     idSocio=id;
