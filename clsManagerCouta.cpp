@@ -59,10 +59,10 @@ void listarPagosSocio(int idSocio) {
             encontro = true;
         }
     }
-    if(!encontro) cout << "No hay pagos registrados para este socio." << endl;
+    if(!encontro) cout << "NO HAY PAGOS REGISTRADOS DE ESTE SOCIO." << endl;
 }
 
-// 3. CORRECCIÓN: altaCuota con la matemática en su lugar
+// 3. CORRECCIÓN: altaCuota con la matemática y validación de tope
 void altaCuota() {
     int idSocio;
     cout << "INGRESE EL ID DEL SOCIO: ";
@@ -82,24 +82,37 @@ void altaCuota() {
     }
 
     if (!tieneActividad) {
-        cout << "\nERROR: El socio NO ESTA INSCRIPTO en ninguna actividad." << endl;
-        cout << "No se puede cobrar cuota." << endl;
+        cout << "ERROR: EL SOCIO NO ESTA INSCRIPTO A NINGUNA ACTIVIDAD." << endl;
+        cout << "NO SE PUDO REGISTRA CUOTA." << endl;
         return;
     }
 
     archivoCuota arc;
     float deudaHistorica = calcularDeudaHistorica(idSocio);
-    float totalPagado = obtenerTotalPagadoSocio(idSocio); // Ahora sí, esto valdrá 0 al principio o 1000 si ya pagó
+    float totalPagado = obtenerTotalPagadoSocio(idSocio);
     float deudaPendiente = deudaHistorica - totalPagado;
 
-    cout << "\n--------------------------------------------------" << endl;
+    cout << "--------------------------------------------------" << endl;
     cout << "DEUDA TOTAL ACUMULADA HISTORICA: $" << deudaHistorica << endl;
     cout << "TOTAL YA ABONADO HASTA AHORA:    $" << totalPagado << endl;
     cout << "SALDO PENDIENTE ACTUAL:          $" << deudaPendiente << endl;
-    cout << "--------------------------------------------------\n" << endl;
+    cout << "--------------------------------------------------" << endl;
+
+    if (deudaPendiente <= 0) {
+        cout << "EL SOCIO NO TIENE SALDO PENDIENTE." << endl;
+        return;
+    }
 
     cuota obj;
-    obj.cargar(idSocio);
+    obj.cargar(idSocio); // Nota: Esta función ya pide el monto dentro de tu clase cuota
+
+    // VALIDACIÓN: Comprobar que el importe cargado no supere el saldo pendiente
+    if (obj.getImportePagado() > deudaPendiente) {
+        cout << "ERROR: EL MONTO INGRESADO DE $" << obj.getImportePagado()
+             << ", SUPERA EL SALDO PENDIENTE DE $" << deudaPendiente << "." << endl;
+        cout << "NO SE PUDO REGISTRA." << endl;
+        return;
+    }
 
     if (arc.grabarRegistro(obj)) {
         cout << "CUOTA CARGADA CON EXITO" << endl;
@@ -142,7 +155,15 @@ void modificarCuota() {
         cout << "REGISTRO INVALIDO O DADO DE BAJA." << endl;
         return;
     }
+    cout<<endl;
+    char confirmar;
+    cout << "DESEA MODIFICAR ESTA CUOTA? (S/N): ";
+    cin >> confirmar;
 
+    if (confirmar != 'S' && confirmar != 's')
+    {
+        return;
+    }
     obj.mostrar();
     cout << "INGRESE EL NUEVO IMPORTE: ";
     float nuevoImp;
@@ -178,51 +199,51 @@ float calcularDeudaHistorica(int idSocio) {
     archivoSocio arcSocio;
     socio objSocio;
 
-    // 1. Buscamos al socio para ver su tipo y saber cuánto paga
+    // 1. Obtener tipo de socio
     int posSocio = arcSocio.buscarRegistros(idSocio);
     if (posSocio < 0) return 0;
-
     objSocio = arcSocio.leerRegistros(posSocio);
-    float valorMensual = 10000;
-    if (objSocio.getTipoSocio() == 2) valorMensual = 20000;
-    else if (objSocio.getTipoSocio() == 3) valorMensual = 30000;
 
-    // 2. Buscamos de forma manual si tiene alguna inscripción activa
-    archivoActividadesSocio arcActividadSocio;
-    int cantInscripciones = arcActividadSocio.contarRegistros();
-    actividadSocio objInscripcion;
-    bool estaInscripto = false;
+    float valorMensual = 10000;
+    if(objSocio.getTipoSocio() == 2) valorMensual = 20000;
+    else if(objSocio.getTipoSocio() == 3) valorMensual = 30000;
+
+    // 2. BUSCAR LA INSCRIPCIÓN MÁS ANTIGUA
+    archivoActividadesSocio arcInscripciones;
+    int cantInscripciones = arcInscripciones.contarRegistros();
+
+    int mesMin = 13, anioMin = 3000; // Valores iniciales altos
+    bool encontroAlguna = false;
 
     for(int i = 0; i < cantInscripciones; i++) {
-        objInscripcion = arcActividadSocio.leerRegistro(i);
-        // Acá comprobamos que el ID SOCIO coincida y esté activo
-        if(objInscripcion.getIdSocio() == idSocio && objInscripcion.getEstado() == true) {
-            estaInscripto = true;
-            break; // Encontramos su registro, cortamos la búsqueda
+        actividadSocio aux = arcInscripciones.leerRegistro(i);
+
+        if(aux.getIdSocio() == idSocio && aux.getEstado() == true) {
+            int mes = aux.getFechaAlta().getMes();
+            int anio = aux.getFechaAlta().getAnio();
+
+            // Si encontramos una fecha más chica (más vieja), la guardamos
+            if(anio < anioMin || (anio == anioMin && mes < mesMin)) {
+                anioMin = anio;
+                mesMin = mes;
+                encontroAlguna = true;
+            }
         }
     }
 
-    if (!estaInscripto) {
-        return 0; // Si no tiene actividad, no debe nada.
-    }
+    if (!encontroAlguna) return 0;
 
-    // 3. Fechas para calcular meses
+    // 3. Cálculo de meses transcurridos desde esa fecha mínima
     time_t t = time(nullptr);
     tm* hoy = localtime(&t);
     int mesActual = hoy->tm_mon + 1;
     int anioActual = hoy->tm_year + 1900;
 
-    int mesAlta = objInscripcion.getFechaAlta().getMes();
-    int anioAlta = objInscripcion.getFechaAlta().getAnio();
-
     int mesesTotalesActual = (anioActual * 12) + mesActual;
-    int mesesTotalesAlta = (anioAlta * 12) + mesAlta;
+    int mesesTotalesAlta = (anioMin * 12) + mesMin;
     int mesesTranscurridos = mesesTotalesActual - mesesTotalesAlta;
 
-    // Si se acaba de inscribir este mes, al menos debe 1 mes (el actual)
-    if (mesesTranscurridos <= 0) {
-        mesesTranscurridos = 1;
-    }
+    if (mesesTranscurridos <= 0) mesesTranscurridos = 1;
 
     return mesesTranscurridos * valorMensual;
 }

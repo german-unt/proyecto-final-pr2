@@ -20,6 +20,7 @@ void informes()
         cout<<"6 - Listar socios con deudas pendientes"<<endl;
         cout<<"0 - SALIR"<<endl;
         cout<<"=========================="<<endl;
+        cout<<"INGRESE UNA OPCION: ";
 
         cin>>opc;
 
@@ -48,7 +49,7 @@ void informes()
             break;
 
         case 6:
-           /// deudores();
+           deudores();
             break;
 
         case 0:
@@ -62,7 +63,6 @@ void informes()
 ///INFORME : RECAUDACION ANUAL
 void recaudacionAnual()
 {
-
     archivoCuota arc;
 
     int cant = arc.contarRegistros();
@@ -74,15 +74,15 @@ void recaudacionAnual()
 
         cuota obj = arc.leerRegistro(i);
 
-        if(obj.getEstado())
+        if(obj.getEstado()==true)
         {
 
-            total += obj.getMontoEsperado();
+            total += obj.getImportePagado();
         }
     }
-    cout<<"- - - - - - - - - - - - - - - "<<endl<<endl;
-    cout<<"RECAUDACION ANUAL: $"<<total<<endl<<endl;
-    cout<<"- - - - - - - - - - - - - - - "<<endl;
+    cout<<"- - - - - - - - - - - - - - - - - - - - - -"<<endl<<endl;
+    cout<<"-> RECAUDACION ANUAL: $"<<total<<endl<<endl;
+    cout<<"- - - - - - - - - - - - - - - - - - - - - -"<<endl;
 }
 ///INFORME :RECAUDACION POR ACTIVIDAD
 void recaudacionXActividad()
@@ -108,7 +108,7 @@ void recaudacionXActividad()
 
             actividadSocio as=arcSocio.leerRegistro(j);
 
-            if(as.getIdactividad()==act.getIdactividad())
+            if(as.getIdactividad()==act.getIdactividad()&& act.getEstado()==true)
             {
 
                 for(int k=0; k<cantCuo; k++)
@@ -116,17 +116,19 @@ void recaudacionXActividad()
 
                     cuota c=arcCuota.leerRegistro(k);
 
-                    if(c.getIdsocio()==as.getIdSocio())
+                    if(c.getIdsocio()==as.getIdSocio()&& c.getEstado()==true)
                     {
 
-                        total+=c.getMontoEsperado();
+                        total+=c.getImportePagado();
                     }
                 }
             }
         }
 
+        if(act.getEstado()==true){
         cout<<"ACTIVIDAD: "<<act.getNombreActividad()<<endl;
         cout<<"RECAUDACION: $"<<total<<endl<<endl;
+    }
     }
 }
 ///INFORME : PORCENTAJE DE INSCRIPCIONES
@@ -145,8 +147,9 @@ void porcentajeInscripciones()
     {
 
         actividadSocio obj = arc.leerRegistro(i);
+        actividad objAct= arcAct.leerRegistros(i);
 
-        if(obj.getEstado()==true)
+        if(obj.getEstado()==true && objAct.getEstado()==true)
         {
             total++;
         }
@@ -164,7 +167,7 @@ void porcentajeInscripciones()
 
             actividadSocio obj = arc.leerRegistro(j);
 
-            if(obj.getEstado()==true)
+            if(obj.getEstado()==true && act.getEstado()==true)
             {
 
                 if(obj.getIdactividad()==act.getIdactividad())
@@ -180,10 +183,11 @@ void porcentajeInscripciones()
         {
             porcentaje = cantidad * 100.0 / total;
         }
-
+        if(act.getEstado()==true){
         cout<<"ACTIVIDAD: "<<act.getNombreActividad()<<endl;
         cout<<"PORCENTAJE DE INSCRIPCIONES: "<<porcentaje<<"%"<<endl;
         cout<<endl;
+    }
     }
 }
 ///BUSCA ACTIVIDAD POR ID PARA REALIZAR INFORME ACTIVIDADES QUE HACE CADA SOCIO
@@ -328,40 +332,28 @@ void ranking()
     delete[] VcontarActividad;
 }
 
-///INFORME :SOCIOS DEUDORES
-/**
-void deudores()
-{
-    archivoCuota arc;
-    cuota deudor;
+/// INFORME: SOCIOS DEUDORES
+void deudores() {
     archivoSocio arcSocio;
-    int pos;
-    socio obj;
-    int contDeudores=0;
-    int cant=arc.contarRegistros();
+    int cantSocios = arcSocio.contarRegistros();
 
-    cout<<"SOCIOS CON DEUDAS PENDIENTES: "<<endl;
-    for(int i =0; i<cant; i++)
-    {
-        deudor= arc.leerRegistro(i);
-        if(deudor.calcularDeuda()>0)
-        {
-            if(deudor.getEstado())
-            {
-                pos=arcSocio.buscarRegistros(deudor.getIdsocio());
-                obj=arcSocio.leerRegistros(pos);
-                if(pos>=0)
-                {
-                    cout<<"ID: "<<deudor.getIdsocio()<<" | APELLIDO Y NOMBRE: "<<obj.getApellido()<<" "<<obj.getNombre()
-                        <<" | DEUDA TOTAL: $"<<deudor.calcularDeuda()<<endl<<endl;
-                        cout<<"==============================================================================="<<endl;
-                    contDeudores++;
-                }
+    cout << "SOCIOS CON DEUDAS PENDIENTES: " << endl;
+    cout << "------------------------------" << endl;
+
+    for (int i = 0; i < cantSocios; i++) {
+        socio obj = arcSocio.leerRegistros(i);
+
+        // Solo evaluamos socios activos
+        if (obj.getEstado()==true) {
+            // Usamos la función de cálculo real, NO el valor de la cuota.dat
+            float deudaActual = obtenerDeudaTotalSocio(obj.getIdsocio());
+
+            if (deudaActual > 0) {
+                cout << "ID: " << obj.getIdsocio()
+                     << " | SOCIO: " << obj.getNombre() << " " << obj.getApellido()
+                     << " | DEUDA TOTAL: $" << deudaActual << endl;
             }
         }
-
     }
-    cout<<"CANTIDAD TOTAL DE SOCIOS CON DEUDA: "<<contDeudores;
-}
 
-*/
+}

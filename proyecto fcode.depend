@@ -761,7 +761,7 @@
 	<iostream>
 	<cstring>
 
-1782496219 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividad.cpp
+1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividad.cpp
 	<iostream>
 	"clsActividad.h"
 	"cargarCadena.h"
@@ -818,12 +818,13 @@
 	"funciones.h"
 	"clsActividad.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.h
+1782736309 c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.h
 	"clsActividad.h"
 	"clsSocio.h"
 	"clsCuota.h"
 	"clsActividadSocio.h"
 	"clsManagerSocio.h"
+	"clsManagerCouta.h"
 	"clsManagerActividad.h"
 	"clsArchivoSocio.h"
 	"clsArchivoCuota.h"
@@ -872,11 +873,11 @@
 	"funciones.h"
 	<ctime>
 
-1781872484 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividad.cpp
+1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividad.cpp
 	<iostream>
 	"clsManagerActividad.h"
 
-1782499070 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.cpp
+1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.cpp
 	<iostream>
 	"clsManagerActividadSocio.h"
 	"clsActividadSocio.h"
@@ -885,7 +886,7 @@
 
 1782307058 c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.h
 
-1782694258 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
+1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
 	<iostream>
 	"clsManagerCouta.h"
 	"clsArchivoCuota.h"
@@ -896,22 +897,22 @@
 	"clsCuota.h"
 	"clsArchivoCuota.h"
 
-1782133068 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.cpp
+1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.cpp
 	<iostream>
 	"clsManagerInformes.h"
 
-1782495342 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagersocio.cpp
+1782742424 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagersocio.cpp
 	<iostream>
 	"clsManagerSocio.h"
 
-1781872484 source:c:\users\oem\desktop\proyecto-final-pr2\clssocio.cpp
+1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clssocio.cpp
 	<iostream>
 	"clsSocio.h"
 	<cstring>
 	"funciones.h"
 	"cargarCadena.h"
 
-1782695353 source:c:\users\oem\desktop\proyecto-final-pr2\funciones.cpp
+1782743206 source:c:\users\oem\desktop\proyecto-final-pr2\funciones.cpp
 	<iostream>
 	<cstring>
 	"funciones.h"

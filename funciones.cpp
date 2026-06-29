@@ -83,7 +83,8 @@ void listados()
         cout<<"4 - Cuotas por monto"<<endl;
         cout<<"7-  Participaciones por ID de actividad"<<endl;
         cout<<"0 - Volver"<<endl;
-        cout<<"=========================="<<endl;
+        cout<<"======================="<<endl;
+        cout<<"INGRESE UNA OPCION: ";
         cin>>opc;
 
         system("cls");
@@ -139,6 +140,8 @@ void consultas()
         cout<<"2 - CONSULTA DE ACTIVIDADES"<<endl;
         cout<<"3 - CONSULTA DE ESTADO"<<endl;
         cout<<"0 - SALIR"<<endl;
+        cout<<"======================="<<endl;
+        cout<<"INGRESE UNA OPCION: ";
 
         cin>>opc;
         system("cls");
@@ -176,6 +179,8 @@ void consultasSocios()
         cout<<"1 - CONSULTA POR RANGO DE FECHAS"<<endl;
         cout<<"2 - CONSULTA POR ID DE SOCIO"<<endl;
         cout<<"0 - SALIR"<<endl;
+        cout<<"======================="<<endl;
+        cout<<"INGRESE UNA OPCION: ";
 
         cin>>opc;
         system("cls");
@@ -211,6 +216,8 @@ void menuConsultaActividades()
         cout<<"1 - CONSULTA POR ACTIVIDAD"<<endl;
         cout<<"2 - CONSULTA POR RESUMEN"<<endl;
         cout<<"0 - SALIR"<<endl;
+        cout<<"======================="<<endl;
+        cout<<"INGRESE UNA OPCION: ";
 
         cin>>opc;
         system("cls");
@@ -277,46 +284,45 @@ void listadoSociosApellido()
     delete[] vec;
 }
 
-///ordenar  por tipo de socios
-void listadoSociosTipo()
-{
-
+void listadoSociosTipo() {
     archivoSocio arc;
+    int cant = arc.contarRegistros();
+    if(cant <= 0) { cout << "No hay socios para listar." << endl; return; }
 
-    int cant=arc.contarRegistros();
-
-    socio *vec=new socio[cant];
-
-    for(int i=0; i<cant; i++)
-    {
-        vec[i]=arc.leerRegistros(i);
+    socio *vec = new socio[cant];
+    for(int i = 0; i < cant; i++) {
+        vec[i] = arc.leerRegistros(i);
     }
 
-    for(int i=0; i<cant-1; i++)
-    {
-
-        for(int j=i+1; j<cant; j++)
-        {
-
-            if(vec[i].getTipoSocio()>
-                    vec[j].getTipoSocio())
-            {
-
-                socio aux=vec[i];
-                vec[i]=vec[j];
-                vec[j]=aux;
+    // Ordenamiento (Burbujeo)
+    for(int i = 0; i < cant - 1; i++) {
+        for(int j = i + 1; j < cant; j++) {
+            if(vec[i].getTipoSocio() > vec[j].getTipoSocio()) {
+                socio aux = vec[i];
+                vec[i] = vec[j];
+                vec[j] = aux;
             }
         }
     }
 
-    for(int i=0; i<cant; i++)
-    {
+    // Listado categorizado
+    int tipoActual = -1;
+    const char* nombresTipos[] = {"", "BASICO", "INTERMEDIO", "PREMIUM"};
 
-        if(vec[i].getEstado())
-        {
+    for(int i = 0; i < cant; i++) {
+        if(vec[i].getEstado()) {
+            // Si cambia el tipo, imprimimos una nueva cabecera
+            if(vec[i].getTipoSocio() != tipoActual) {
+                tipoActual = vec[i].getTipoSocio();
+                cout << "\n========================================" << endl;
+                cout << "TIPO DE SOCIO: " << nombresTipos[tipoActual] << endl;
+                cout << "========================================" << endl;
+            }
 
-            vec[i].mostrar();
-            cout<<endl;
+            // Listado resumido en una sola línea
+            cout <<"ID: "<< vec[i].getIdsocio() << " -> "
+                 << vec[i].getApellido() << ", "
+                 << vec[i].getNombre() << endl;
         }
     }
 
@@ -586,7 +592,7 @@ void rangoDeFechas()
         }
     }
 
-    cout << "La cantidad de socios ingresados en ese rango de fechas es: "
+    cout << "LA CANTIDAD DE SOCIOS POR EL RANGO DE FECHA SOLICITADO ES: "
          << cantidad << endl;
 }
 ///consultaXSocio
@@ -691,7 +697,7 @@ void consultasDeEstado()
         }
         else if((obj.getIdsocio()==id) && (obj.getEstado()==false))
         {
-            cout<<"EL SOCIO ESTA INACTIVO"<<endl;
+            cout<<"EL SOCIO ESTA INACTIVO "<<endl;
 
             return;
         }

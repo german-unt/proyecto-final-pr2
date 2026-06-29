@@ -31,7 +31,7 @@ void actividad::cargar(int id){
             break; // Rompe el while e ingresa con éxito
         }
 
-        cout << "ERROR: El nombre de la actividad no puede contener numeros ni estar vacio.\n" << endl;
+        cout << "ERROR: EL NOMBRE DE LA ACTIVIDAD NO PUEDE TENER NUMEROS O ESTAR VACIO " << endl;
     }
 
     estado = true;

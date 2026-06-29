@@ -133,7 +133,7 @@ void listarActividad()
     if (cant<=0)
     {
 
-        cout<<"no hay actividades ingresadas: "<<endl;
+        cout<<"NO HAY ACTIVIDADES REGISTRADAS "<<endl;
         return;
     }
     for(int i =0; i<cant; i++)

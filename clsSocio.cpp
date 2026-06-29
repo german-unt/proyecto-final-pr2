@@ -6,7 +6,7 @@
 using namespace std;
 void socio::cargar(int id){
     if(id == -1){
-        cout<<"INGRESE EL ID de Socio: ";
+        cout<<"INGRESE EL ID DE SOCIO: ";
         cin>>idSocio;
     }else{
         idSocio = id;

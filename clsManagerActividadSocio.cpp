@@ -15,12 +15,14 @@ void menuActividadSocio()
         system("cls");
 
         cout<<"MENU INSCRIPCIONES"<<endl;
-        cout<<"=================="<<endl;
+        cout<<"======================="<<endl;
         cout<<"1 - INSCRIBIR SOCIO"<<endl;
         cout<<"2 - DAR DE BAJA INSCRIPCION"<<endl;
         cout<<"3 - MODIFICAR INSCRIPCION"<<endl;
         cout<<"4 - LISTAR INSCRIPCIONES"<<endl;
         cout<<"0 - VOLVER"<<endl;
+        cout<<"======================="<<endl;
+        cout<<"INGRESE UNA OPCION: ";
 
         cin>>opc;
 

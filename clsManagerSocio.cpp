@@ -69,7 +69,7 @@ void bajaSocio()
 {
     archivoSocio arc;
     int id ;
-    cout<<"ingrese el id del socio: ";
+    cout<<"INGRESE ID DE SOCIO: ";
     cin>>id;
     int pos= arc.buscarRegistros(id);
     if(pos < 0)
@@ -80,7 +80,7 @@ void bajaSocio()
     socio obj =arc.leerRegistros(pos);
     obj.setEstado(false);
     arc.modificarRegistro(obj,pos);
-    cout<<"el socio ha sido dado de baja correctamente "<<endl;
+    cout<<"SOCIO DADO DE BAJA CORRECTAMENTE "<<endl;
 }
 
 void modificarSocio()
@@ -118,7 +118,7 @@ void modificarSocio()
     }
 
     // 2. Mostrar datos actuales
-    cout << "\nDATOS ACTUALES DEL SOCIO:" << endl;
+    cout << "DATOS ACTUALES DEL SOCIO:" << endl;
     cout << "=========================" << endl;
     obj.mostrar();
     cout << "=========================" << endl;
@@ -134,7 +134,8 @@ void modificarSocio()
 
     // 3. Submenú interactivo con todos los campos de la clase socio
     int opcCampo;
-    cout << "\nSELECCIONE EL CAMPO A MODIFICAR:" << endl;
+    cout << "SELECCIONE EL CAMPO A MODIFICAR:" << endl;
+    cout << "=================================="<<endl;
     cout << "1 - NOMBRE" << endl;
     cout << "2 - APELLIDO" << endl;
     cout << "3 - TELEFONO" << endl;
@@ -142,10 +143,11 @@ void modificarSocio()
     cout << "5 - FECHA DE NACIMIENTO" << endl;
     cout << "6 - TIPO DE SOCIO" << endl;
     cout << "0 - CANCELAR" << endl;
-    cout << "OPCION: ";
+    cout<<"===================================="<<endl;
+    cout<<"INGRESE UNA OPCION: ";
     cin >> opcCampo;
 
-    cin.ignore(); // Limpia el residuo del enter en el buffer
+    cin.ignore();
 
     switch (opcCampo)
     {
@@ -242,11 +244,11 @@ void modificarSocio()
     // 4. Guardar los cambios sobreescribiendo en el archivo binario
     if (arc.modificarRegistro(obj, pos))
     {
-        cout << "\nSOCIO MODIFICADO CORRECTAMENTE EN EL SISTEMA." << endl;
+        cout << "SOCIO MODIFICADO CORRECTAMENTE EN EL SISTEMA." << endl;
     }
     else
     {
-        cout << "\nERROR AL INTENTAR GUARDAR LOS CAMBIOS EN EL ARCHIVO." << endl;
+        cout << "ERROR AL INTENTAR GUARDAR LOS CAMBIOS EN EL ARCHIVO." << endl;
     }
 }
 
@@ -257,7 +259,7 @@ void listarSocio()
     if (cant<=0)
     {
 
-        cout<<"no hay socios ingresados: "<<endl;
+        cout<<"NO HAY SOCIOS INGRESADOS"<<endl;
         return;
     }
     for(int i =0; i<cant; i++)

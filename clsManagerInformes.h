@@ -5,6 +5,7 @@
 #include "clsCuota.h"
 #include "clsActividadSocio.h"
 #include"clsManagerSocio.h"
+#include "clsManagerCouta.h"
 #include"clsManagerActividad.h"
 //---------------------------
 #include "clsArchivoSocio.h"
