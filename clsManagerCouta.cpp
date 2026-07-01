@@ -12,18 +12,25 @@ void menuCuota()
     while(true)
     {
         system("cls");
-        cout<<"MENU CUOTA"<<endl;
-        cout<<"======================="<<endl;
-        cout<<"1 - ALTA"<<endl;
-        cout<<"2 - BAJA"<<endl;
-        cout<<"3 - MODIFICACION"<<endl;
-        cout<<"4 - LISTADO"<<endl;
-        cout<<"5 - LISTADO: POR MONTO"<<endl;
-        cout<<"0 - VOLVER AL MENU PRINCIPAL"<<endl;
-        cout<<"======================="<<endl;
-        cout<<"INGRESE UNA OPCION: ";
-        cin>>opc;
+        blanco();
+        cout << "MENU CUOTA" << endl;
+        negro();
+        cout << "=======================" << endl;
+        blanco();
+        cout << "1 - ALTA" << endl;
+        cout << "2 - BAJA" << endl;
+        cout << "3 - MODIFICACION" << endl;
+        cout << "4 - LISTADO" << endl;
+        cout << "5 - LISTADO: POR MONTO" << endl;
+        cout << "0 - VOLVER AL MENU PRINCIPAL" << endl;
+        negro();
+        cout << "=======================" << endl;
+        blanco();
+        cout << "INGRESE UNA OPCION: ";
+        cin >> opc;
+
         system("cls");
+
         switch(opc)
         {
         case 1:
@@ -48,32 +55,45 @@ void menuCuota()
     }
 }
 
-// Función auxiliar para listar pagos de un socio específico
-/// revisar en que se puede usar
+// FUNCION AUXILIAR PARA LISTAR PAGOS DE UN SOCIO ESPECIFICO
 void listarPagosSocio(int idSocio) {
     archivoCuota arc;
     int cant = arc.contarRegistros();
     bool encontro = false;
 
-    cout << "HISTORIAL DE PAGOS DEL SOCIO " << idSocio << " ---" << endl;
+    blanco();
+    cout << "HISTORIAL DE PAGOS DEL SOCIO ";
+    negro();
+    cout << idSocio;
+    blanco();
+    cout << " ---" << endl;
+    negro();
+    cout << "=========================================" << endl;
+
     for(int i = 0; i < cant; i++) {
         cuota obj = arc.leerRegistro(i);
-        // Filtramos por ID y estado activo
+        // FILTRAMOS POR ID Y ESTADO ACTIVO
         if(obj.getIdsocio() == idSocio && obj.getEstado()) {
             obj.mostrar();
             encontro = true;
         }
     }
-    if(!encontro) cout << "NO HAY PAGOS REGISTRADOS DE ESTE SOCIO." << endl;
+
+    if(!encontro) {
+        rojo();
+        cout << "ERROR: NO HAY PAGOS REGISTRADOS DE ESTE SOCIO." << endl;
+        blanco();
+    }
 }
 
-// 3. CORRECCIÓN: altaCuota con la matemática y validación de tope
+// 3. CORRECCION: ALTACUOTA CON LA MATEMATICA Y VALIDACION DE TOPE
 void altaCuota() {
     int idSocio;
+    blanco();
     cout << "INGRESE EL ID DEL SOCIO: ";
     cin >> idSocio;
 
-    // VALIDACIÓN: Comprobar manualmente si existe inscripción activa
+    // VALIDACION: COMPROBAR MANUALMENTE SI EXISTE INSCRIPCION ACTIVA
     archivoActividadesSocio arcActSocio;
     int cantIns = arcActSocio.contarRegistros();
     bool tieneActividad = false;
@@ -87,8 +107,10 @@ void altaCuota() {
     }
 
     if (!tieneActividad) {
+        rojo();
         cout << "ERROR: EL SOCIO NO ESTA INSCRIPTO A NINGUNA ACTIVIDAD." << endl;
-        cout << "NO SE PUDO REGISTRA CUOTA." << endl;
+        cout << "NO SE PUDO REGISTRAR CUOTA." << endl;
+        blanco();
         return;
     }
 
@@ -97,39 +119,66 @@ void altaCuota() {
     float totalPagado = obtenerTotalPagadoSocio(idSocio);
     float deudaPendiente = deudaHistorica - totalPagado;
 
+    negro();
     cout << "--------------------------------------------------" << endl;
-    cout << "DEUDA TOTAL ACUMULADA HISTORICA: $" << deudaHistorica << endl;
-    cout << "TOTAL YA ABONADO HASTA AHORA:    $" << totalPagado << endl;
-    cout << "SALDO PENDIENTE ACTUAL:          $" << deudaPendiente << endl;
+    blanco();
+    cout << "DEUDA TOTAL ACUMULADA HISTORICA: ";
+    violeta();
+    cout << "$" << deudaHistorica << endl;
+    blanco();
+    cout << "TOTAL YA ABONADO HASTA AHORA:    ";
+    violeta();
+    cout << "$" << totalPagado << endl;
+    blanco();
+    cout << "SALDO PENDIENTE ACTUAL:          ";
+    violeta();
+    cout << "$" << deudaPendiente << endl;
+    negro();
     cout << "--------------------------------------------------" << endl;
 
     if (deudaPendiente <= 0) {
+        amarillo();
         cout << "EL SOCIO NO TIENE SALDO PENDIENTE." << endl;
+        blanco();
         return;
     }
 
     cuota obj;
-    obj.cargar(idSocio); // Nota: Esta función ya pide el monto dentro de tu clase cuota
+    obj.cargar(idSocio); // NOTA: ESTA FUNCION YA PIDE EL MONTO DENTRO DE TU CLASE CUOTA
 
-    // VALIDACIÓN: Comprobar que el importe cargado no supere el saldo pendiente
+    // VALIDACION: COMPROBAR QUE EL IMPORTE CARGADO NO SUPERE EL SALDO PENDIENTE
     if (obj.getImportePagado() > deudaPendiente) {
-        cout << "ERROR: EL MONTO INGRESADO DE $" << obj.getImportePagado()
-             << ", SUPERA EL SALDO PENDIENTE DE $" << deudaPendiente << "." << endl;
-        cout << "NO SE PUDO REGISTRA." << endl;
+        rojo();
+        cout << "ERROR: EL MONTO INGRESADO DE ";
+        violeta();
+        cout << "$" << obj.getImportePagado();
+        rojo();
+        cout << ", SUPERA EL SALDO PENDIENTE DE ";
+        violeta();
+        cout << "$" << deudaPendiente;
+        rojo();
+        cout << "." << endl;
+        cout << "NO SE PUDO REGISTRAR." << endl;
+        blanco();
         return;
     }
 
     if (arc.grabarRegistro(obj)) {
+        amarillo();
         cout << "CUOTA CARGADA CON EXITO" << endl;
+        blanco();
     } else {
+        rojo();
         cout << "ERROR AL GRABAR LA CUOTA" << endl;
+        blanco();
     }
 }
 
 void bajaCuota() {
-    // En un sistema contable, no borramos. ANULAMOS el pago mediante el ID del pago (o su posición).
-    // Aquí implementamos una lógica para anular un movimiento específico.
+    // EN UN SISTEMA CONTABLE, NO BORRAMOS. ANULAMOS EL PAGO MEDIANTE EL ID DEL PAGO (O SU POSICION).
+    // AQUI IMPLEMENTAMOS UNA LOGICA PARA ANULAR UN MOVIMIENTO ESPECIFICO.
     int pos;
+    blanco();
     cout << "INGRESE LA POSICION (INDICE) DEL PAGO A ANULAR: ";
     cin >> pos;
 
@@ -137,19 +186,24 @@ void bajaCuota() {
     cuota obj = arc.leerRegistro(pos);
 
     if(obj.getImportePagado() == -1) {
-        cout << "PAGO NO ENCONTRADO." << endl;
+        rojo();
+        cout << "ERROR: PAGO NO ENCONTRADO." << endl;
+        blanco();
         return;
     }
 
-    obj.setEstado(false); // Damos de baja el registro lógico
+    obj.setEstado(false); // DAMOS DE BAJA EL REGISTRO LOGICO
     if(arc.modificarRegistro(obj, pos)) {
+        amarillo();
         cout << "PAGO ANULADO CORRECTAMENTE." << endl;
+        blanco();
     }
 }
 
 void modificarCuota() {
-    // La modificación es delicada. Solo permitimos cambiar el importe si hubo error.
+    // LA MODIFICACION ES DELICADA. SOLO PERMITIMOS CAMBIAR EL IMPORTE SI HUBO ERROR.
     int pos;
+    blanco();
     cout << "INGRESE LA POSICION DEL PAGO A CORREGIR: ";
     cin >> pos;
 
@@ -157,26 +211,37 @@ void modificarCuota() {
     cuota obj = arc.leerRegistro(pos);
 
     if(obj.getImportePagado() == -1 || !obj.getEstado()) {
-        cout << "REGISTRO INVALIDO O DADO DE BAJA." << endl;
+        rojo();
+        cout << "ERROR: REGISTRO INVALIDO O DADO DE BAJA." << endl;
+        blanco();
         return;
     }
-    cout<<endl;
+
+    cout << endl;
     char confirmar;
+    amarillo();
     cout << "DESEA MODIFICAR ESTA CUOTA? (S/N): ";
+    blanco();
     cin >> confirmar;
 
     if (confirmar != 'S' && confirmar != 's')
     {
         return;
     }
+
     obj.mostrar();
+
+    blanco();
     cout << "INGRESE EL NUEVO IMPORTE: ";
+    violeta();
     float nuevoImp;
     cin >> nuevoImp;
     obj.setImportePagado(nuevoImp);
 
     if(arc.modificarRegistro(obj, pos)) {
+        amarillo();
         cout << "PAGO MODIFICADO CORRECTAMENTE." << endl;
+        blanco();
     }
 }
 
@@ -185,26 +250,41 @@ void listarCuota() {
     int cant = arc.contarRegistros();
 
     if(cant <= 0) {
-        cout << "NO HAY PAGOS EN EL SISTEMA." << endl;
+        rojo();
+        cout << "ERROR: NO HAY PAGOS EN EL SISTEMA." << endl;
+        blanco();
         return;
     }
 
+    amarillo();
     cout << "LISTADO COMPLETO DE MOVIMIENTOS:" << endl;
+    negro();
+    cout << "=======================================" << endl;
+
     for(int i = 0; i < cant; i++) {
         cuota obj = arc.leerRegistro(i);
         if(obj.getEstado()) {
-            cout << "[POSICION " << i << "]" << endl;
+            blanco();
+            cout << "[";
+            negro();
+            cout << "POSICION " << i;
+            blanco();
+            cout << "]" << endl;
+
             obj.mostrar();
-            cout<<endl;
-            cout<<"======================================="<<endl;
+            cout << endl;
+
+            negro();
+            cout << "=======================================" << endl;
         }
     }
+    blanco();
 }
 float calcularDeudaHistorica(int idSocio) {
     archivoSocio arcSocio;
     socio objSocio;
 
-    // 1. Obtener tipo de socio
+    // 1. OBTENER TIPO DE SOCIO
     int posSocio = arcSocio.buscarRegistros(idSocio);
     if (posSocio < 0) return 0;
     objSocio = arcSocio.leerRegistros(posSocio);
@@ -213,11 +293,11 @@ float calcularDeudaHistorica(int idSocio) {
     if(objSocio.getTipoSocio() == 2) valorMensual = 20000;
     else if(objSocio.getTipoSocio() == 3) valorMensual = 30000;
 
-    // 2. BUSCAR LA INSCRIPCIÓN MÁS ANTIGUA
+    // 2. BUSCAR LA INSCRIPCION MAS ANTIGUA
     archivoActividadesSocio arcInscripciones;
     int cantInscripciones = arcInscripciones.contarRegistros();
 
-    int mesMin = 13, anioMin = 3000; // Valores iniciales altos
+    int mesMin = 13, anioMin = 3000; // VALORES INITIALES ALTOS
     bool encontroAlguna = false;
 
     for(int i = 0; i < cantInscripciones; i++) {
@@ -227,7 +307,7 @@ float calcularDeudaHistorica(int idSocio) {
             int mes = aux.getFechaAlta().getMes();
             int anio = aux.getFechaAlta().getAnio();
 
-            // Si encontramos una fecha más chica (más vieja), la guardamos
+            // SI ENCONTRAMOS UNA FECHA MAS CHICA (MAS VIEJA), LA GUARDAMOS
             if(anio < anioMin || (anio == anioMin && mes < mesMin)) {
                 anioMin = anio;
                 mesMin = mes;
@@ -238,7 +318,7 @@ float calcularDeudaHistorica(int idSocio) {
 
     if (!encontroAlguna) return 0;
 
-    // 3. Cálculo de meses transcurridos desde esa fecha mínima
+    // 3. CALCULO DE MESES TRANSCURRIDOS DESDE ESA FECHA MINIMA
     time_t t = time(nullptr);
     tm* hoy = localtime(&t);
     int mesActual = hoy->tm_mon + 1;
@@ -253,13 +333,14 @@ float calcularDeudaHistorica(int idSocio) {
     return mesesTranscurridos * valorMensual;
 }
 
-// 2. CORRECCIÓN: Ahora calcula la DEUDA real (Deuda Histórica - Lo que ya pagó)
+// CORRECCION: AHORA CALCULA LA DEUDA REAL (DEUDA HISTORICA - LO QUE YA PAGO)
 float obtenerDeudaTotalSocio(int idSocio) {
     float deudaHistorica = calcularDeudaHistorica(idSocio);
     float totalPagado = obtenerTotalPagadoSocio(idSocio);
     return deudaHistorica - totalPagado;
 }
-// 1. NUEVA FUNCIÓN: Solo suma los billetes reales que el socio ingresó en caja
+
+// NUEVA FUNCION: SOLO SUMA LOS BILLETES REALES QUE EL SOCIO INGRESO EN CAJA
 float obtenerTotalPagadoSocio(int idSocio) {
     archivoCuota arc;
     float totalPagado = 0;
@@ -268,7 +349,7 @@ float obtenerTotalPagadoSocio(int idSocio) {
     for(int i = 0; i < cant; i++) {
         cuota aux = arc.leerRegistro(i);
         if(aux.getIdsocio() == idSocio && aux.getEstado() == true) {
-            totalPagado += aux.getImportePagado(); // Acá suma los 1000 pesos
+            totalPagado += aux.getImportePagado(); // ACA SUMA LOS 1000 PESOS
         }
     }
     return totalPagado;

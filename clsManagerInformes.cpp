@@ -1,6 +1,6 @@
 #include <iostream>
 #include"clsManagerInformes.h"
-
+#include <ctime>
 using namespace std;
 void informes()
 {
@@ -72,12 +72,29 @@ void recaudacionAnual()
     float total = 0;
     int anioBuscado;
 
-    blanco();
-    cout << "INGRESE EL ANIO A CONSULTAR: ";
-    cin >> anioBuscado;
-    cout << endl;
+    time_t t;
+    t = time(NULL);
+    tm *hoy = localtime(&t);
+    int anioActual = hoy->tm_year + 1900;
 
-    for(int i=0; i<cant; i++)
+    while (true) {
+        blanco();
+        cout << "INGRESE EL ANIO A CONSULTAR: ";
+        cin >> anioBuscado;
+        cout << endl;
+        if (anioBuscado >= 2020 && anioBuscado<=anioActual ) {
+            break;
+        }
+        rojo();
+        cout << "ERROR: EL ANIO DE CONSULTA NO PUEDE SER MENOR AL ANIO 2020 O MAYOR AL ACTUAL. REINTENTE." << endl << endl;
+        blanco();
+        pausa();
+        system("cls");
+
+    }
+
+
+  for(int i=0; i<cant; i++)
     {
         cuota obj = arc.leerRegistro(i);
 

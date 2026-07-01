@@ -52,15 +52,32 @@ void cuota::cargar(int id) {
 }
 
 void cuota::mostrar() {
-blanco();
-    cout << "ID SOCIO: " << idSocio << endl;
+    blanco();
+    cout << "ID SOCIO: ";
+    amarillo();
+    cout << idSocio << endl;
+
+    blanco();
     cout << "FECHA DE PAGO: ";
     fechaPago.Mostrar();
     cout << endl;
 
-    cout << "DEUDA PREVIA AL PAGO: $" << montoEsperado << endl;
-    cout << "IMPORTE ABONADO:      $" << importePagado << endl;
-    cout << "SALDO PENDIENTE:      $" << (montoEsperado - importePagado) << endl;
+    blanco();
+    cout << "DEUDA PREVIA AL PAGO: ";
+    violeta();
+    cout << "$" << montoEsperado << endl;
+
+    blanco();
+    cout << "IMPORTE ABONADO:      ";
+    violeta();
+    cout << "$" << importePagado << endl;
+
+    blanco();
+    cout << "SALDO PENDIENTE:      ";
+    violeta();
+    cout << "$" << (montoEsperado - importePagado) << endl;
+
+    blanco();
 }
 void cuota::setIdsocio(int id)
 {

@@ -20,7 +20,7 @@ void actividadSocio::cargar() {
         cout << "INGRESE LA FECHA DE ALTA: " << endl;
         fechaAlta.Cargar();
 
-        if (fechaAlta.getAnio() >= 2020) {
+        if (fechaAlta.getAnio()>= 2020) {
             break;
         }
         rojo();
@@ -37,7 +37,13 @@ void actividadSocio::mostrar() {
     int pos = arcAct.buscarRegistros(idActividad);
     actividad act = arcAct.leerRegistros(pos);
 
-    cout << "ID ACTIVIDAD: " << idActividad << " | NOMBRE: " << act.getNombreActividad() << endl;
+    cout << "ID ACTIVIDAD: " ;
+    amarillo();
+    cout<< idActividad ;
+    negro();
+    cout<< " |";
+    blanco();
+    cout<<" NOMBRE: " << act.getNombreActividad() << endl;
     cout<< "FECHA DE INSCRIPCION: ";
     fechaAlta.Mostrar();
     cout<<endl;

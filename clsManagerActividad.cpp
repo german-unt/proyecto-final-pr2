@@ -9,17 +9,24 @@ void menuActividades()
     while(true)
     {
         system("cls");
-        cout<<"MENU ACTIVIDADES"<<endl;
-        cout<<"======================="<<endl;
-        cout<<"1 - ALTA"<<endl;
-        cout<<"2 - BAJA"<<endl;
-        cout<<"3 - MODIFICACION"<<endl;
-        cout<<"4 - LISTADO"<<endl;
-        cout<<"0 - VOLVER AL MENU PRINCIPAL"<<endl;
-        cout<<"======================="<<endl;
-        cout<<"INGRESE UNA OPCION: ";
-        cin>>opc;
+        blanco();
+        cout << "MENU ACTIVIDADES" << endl;
+        negro();
+        cout << "=======================" << endl;
+        blanco();
+        cout << "1 - ALTA" << endl;
+        cout << "2 - BAJA" << endl;
+        cout << "3 - MODIFICACION" << endl;
+        cout << "4 - LISTADO" << endl;
+        cout << "0 - VOLVER AL MENU PRINCIPAL" << endl;
+        negro();
+        cout << "=======================" << endl;
+        blanco();
+        cout << "INGRESE UNA OPCION: ";
+        cin >> opc;
+
         system("cls");
+
         switch(opc)
         {
         case 1:
@@ -40,7 +47,6 @@ void menuActividades()
         system("pause");
     }
 }
-
 int generarIdActividad(){
 archivoActividades arc;
 int cant = arc.contarRegistros();
@@ -54,12 +60,20 @@ return obj.getIdactividad()+1;
 void altaActividad()
 {
     int id = generarIdActividad();
-    cout<<"ID ASIGNADO: "<<id<<endl;
+
+    blanco();
+    cout << "ID ASIGNADO: ";
+    negro();
+    cout << id << endl;
+
     archivoActividades arc;
     actividad obj;
     obj.cargar(id);
     arc.grabarRegistros(obj);
-    cout<<"ACTIVIDAD CARGADA CORRECTAMENTE"<<endl;
+
+    amarillo();
+    cout << "ACTIVIDAD CARGADA CORRECTAMENTE" << endl;
+    blanco();
 }
 
 void bajaActividad()
@@ -67,84 +81,115 @@ void bajaActividad()
     int id;
     archivoActividades arc;
 
-    cout<<"INGRESE EL ID DE LA ACTIVIDAD: ";
-    cin>>id;
+    blanco();
+    cout << "INGRESE EL ID DE LA ACTIVIDAD: ";
+    cin >> id;
 
     int pos = arc.buscarRegistros(id);
     if(pos < 0)
     {
-        cout<<"EL ID NO EXISTE"<<endl;
+        rojo();
+        cout << "ERROR: EL ID NO EXISTE" << endl;
+        blanco();
         return;
     }
+
     actividad obj = arc.leerRegistros(pos);
     obj.setEstado(false);
-    arc.modificarRegistros(obj,pos);
+    arc.modificarRegistros(obj, pos);
 
-    cout<<"LA ACTIVIDAD HA SIDO DADA DE BAJA CORRECTAMENTE"<<endl;
+    amarillo();
+    cout << "LA ACTIVIDAD HA SIDO DADA DE BAJA CORRECTAMENTE" << endl;
+    blanco();
 }
 void modificarActividad()
 {
     int id;
-    cout<<"INGRESE EL ID DE LA ACTIVIDAD: ";
-    cin>>id;
+    blanco();
+    cout << "INGRESE EL ID DE LA ACTIVIDAD: ";
+    cin >> id;
+
     archivoActividades arc;
     int pos = arc.buscarRegistros(id);
-    if(pos<0)
+    if(pos < 0)
     {
-        cout<<"EL ID NO EXISTE"<<endl;
+        rojo();
+        cout << "ERROR: EL ID NO EXISTE" << endl;
+        blanco();
         return;
     }
+
     actividad obj = arc.leerRegistros(pos);
-    if(obj.getEstado()==false)
+    if(obj.getEstado() == false)
     {
         char opcion;
 
-        cout<<"LA ACTIVIDAD ESTA DADA DE BAJA"<<endl;
-        cout<<"DESEA REACTIVARLA? (S/N): ";
-        cin>>opcion;
+        amarillo();
+        cout << "LA ACTIVIDAD ESTA DADA DE BAJA" << endl;
+        cout << "DESEA REACTIVARLA? (S/N): ";
+        blanco();
+        cin >> opcion;
 
-    if(opcion=='S' || opcion=='s')
+        if(opcion == 'S' || opcion == 's')
         {
-    obj.setEstado(true);
-    arc.modificarRegistros(obj,pos);
-    cout<<"ACTIVIDAD REACTIVADA CORRECTAMENTE"<<endl;
+            obj.setEstado(true);
+            arc.modificarRegistros(obj, pos);
+            amarillo();
+            cout << "ACTIVIDAD REACTIVADA CORRECTAMENTE" << endl;
+            blanco();
         }
         return;
     }
+
     obj.mostrar();
     char opcion;
 
-    cout<<"DESEA MODIFICAR ESTA ACTIVIDAD? (S/N): ";
-    cin>>opcion;
+    amarillo();
+    cout << "DESEA MODIFICAR ESTA ACTIVIDAD? (S/N): ";
+    blanco();
+    cin >> opcion;
 
-    if(opcion!='S' && opcion!='s')
+    if(opcion != 'S' && opcion != 's')
     {
         return;
     }
-    cout<<"INGRESE LOS DATOS NUEVOS"<<endl;
+
+    blanco();
+    cout << "INGRESE LOS DATOS NUEVOS" << endl;
     obj.cargar(id);
-    arc.modificarRegistros(obj,pos);
-    cout<<"ACTIVIDAD MODIFICADA CORRECTAMENTE"<<endl;
+    arc.modificarRegistros(obj, pos);
+
+    amarillo();
+    cout << "ACTIVIDAD MODIFICADA CORRECTAMENTE" << endl;
+    blanco();
 }
 void listarActividad()
 {
     archivoActividades arc;
     int cant = arc.contarRegistros();
-    if (cant<=0)
+    if (cant <= 0)
     {
-
-        cout<<"NO HAY ACTIVIDADES REGISTRADAS "<<endl;
+        rojo();
+        cout << "ERROR: NO HAY ACTIVIDADES REGISTRADAS" << endl;
+        blanco();
         return;
     }
-    for(int i =0; i<cant; i++)
-    {
 
-        actividad obj=arc.leerRegistros(i);
-        if(obj.getEstado()==true)
+    amarillo();
+    cout << "LISTADO DE ACTIVIDADES:" << endl;
+    negro();
+    cout << "============================" << endl;
+
+    for(int i = 0; i < cant; i++)
+    {
+        actividad obj = arc.leerRegistros(i);
+        if(obj.getEstado() == true)
         {
             obj.mostrar();
-             cout<<endl;
-            cout<<"============================"<<endl;
+            cout << endl;
+            negro();
+            cout << "============================" << endl;
         }
     }
+    blanco();
 }

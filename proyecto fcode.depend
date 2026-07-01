@@ -761,17 +761,18 @@
 	<iostream>
 	<cstring>
 
-1782846600 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividad.cpp
+1782875894 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividad.cpp
 	<iostream>
 	"clsActividad.h"
 	"cargarCadena.h"
 	<cstring>
+	"estetico.h"
 
 1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsactividad.h
 
 1782783535 c:\users\oem\desktop\proyecto-final-pr2\cargarcadena.h
 
-1782833890 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividadsocio.cpp
+1782877877 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividadsocio.cpp
 	<iostream>
 	"clsActividadSocio.h"
 	"funciones.h"
@@ -861,7 +862,7 @@
 	<cstring>
 	"clsArchivoSocio.h"
 
-1782828075 source:c:\users\oem\desktop\proyecto-final-pr2\clscouta.cpp
+1782876760 source:c:\users\oem\desktop\proyecto-final-pr2\clscouta.cpp
 	<iostream>
 	"clsCuota.h"
 	"clsArchivoSocio.h"
@@ -875,7 +876,7 @@
 	"funciones.h"
 	<ctime>
 
-1782837719 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividad.cpp
+1782875870 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividad.cpp
 	<iostream>
 	"clsManagerActividad.h"
 
@@ -889,7 +890,7 @@
 
 1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.h
 
-1782826312 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
+1782876408 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
 	<iostream>
 	"clsManagerCouta.h"
 	"clsArchivoCuota.h"
@@ -901,9 +902,10 @@
 	"clsCuota.h"
 	"clsArchivoCuota.h"
 
-1782853187 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.cpp
+1782878371 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.cpp
 	<iostream>
 	"clsManagerInformes.h"
+	<ctime>
 
 1782837719 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagersocio.cpp
 	<iostream>
@@ -911,7 +913,7 @@
 	"estetico.h"
 	"funciones.h"
 
-1782846600 source:c:\users\oem\desktop\proyecto-final-pr2\clssocio.cpp
+1782875870 source:c:\users\oem\desktop\proyecto-final-pr2\clssocio.cpp
 	<iostream>
 	"clsSocio.h"
 	<cstring>

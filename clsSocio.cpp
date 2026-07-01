@@ -5,109 +5,117 @@
 #include "cargarCadena.h"
 using namespace std;
 void socio::cargar(int id){
-blanco();
+    blanco();
     if(id == -1){
-        cout<<"INGRESE EL ID DE SOCIO: ";
-        cin>>idSocio;
+        cout << "INGRESE EL ID DE SOCIO: ";
+        cin >> idSocio;
     }else{
         idSocio = id;
     }
-cout<<"INGRESE EL NOMBRE: ";
-cargarCadena(nombre,20);
-cout<<"INGRESE EL APELLIDO: ";
-cargarCadena(apellido,20);
-while(true){
-cout<<"INGRESE EL TELEFONO: ";
-cargarCadena(telefono,15);
 
-bool valido=true;
+    blanco();
+    cout << "INGRESE EL NOMBRE: ";
+    cargarCadena(nombre, 20);
+    cout << "INGRESE EL APELLIDO: ";
+    cargarCadena(apellido, 20);
 
-for(int i=0; telefono[i]!='\0'; i++){
+    while(true){
+        blanco();
+        cout << "INGRESE EL TELEFONO: ";
+        cargarCadena(telefono, 15);
 
-if(telefono[i]<'0' || telefono[i]>'9'){
-    valido=false;
+        bool valido = true;
+
+        for(int i = 0; telefono[i] != '\0'; i++){
+            if(telefono[i] < '0' || telefono[i] > '9'){
+                valido = false;
+            }
+        }
+        if(valido){
+            break;
+        }
+        amarillo();
+        cout << "EL TELEFONO SOLO PUEDE CONTENER NUMEROS" << endl;
+        blanco();
     }
-}
-if(valido){
-    break;
+
+    blanco();
+    cout << "INGRESE LA FECHA DE NACIMIENTO: " << endl;
+    fechaNacimiento.Cargar();
+
+    amarillo();
+    cout << "TIPOS DE SOCIO" << endl;
+    blanco();
+    cout << "1 - BASICO" << endl;
+    cout << "2 - INTERMEDIO" << endl;
+    cout << "3 - PREMIUM" << endl;
+
+    while(true){
+        blanco();
+        cout << "INGRESE EL TIPO DE SOCIO: ";
+        cin >> tipoSocio;
+
+        if(tipoSocio >= 1 && tipoSocio <= 3){
+            break;
+        }
+        rojo();
+        cout << "ERROR: TIPO DE SOCIO INVALIDO" << endl;
+        blanco();
     }
-amarillo();
-cout<<"EL TELEFONO SOLO PUEDE CONTENER NUMEROS"<<endl;
-blanco();
-}
-cout<<"INGRESE LA FECHA DE NACIMIENTO: "<<endl;
-fechaNacimiento.Cargar();
-cout<<"TIPOS DE SOCIO"<<endl;
-cout<<"1 - BASICO"<<endl;
-cout<<"2 - INTERMEDIO"<<endl;
-cout<<"3 - PREMIUM"<<endl;
 
-while(true){
-cout<<"INGRESE EL TIPO DE SOCIO: ";
-cin>>tipoSocio;
+    while(true){
+        blanco();
+        cout << "INGRESE EL EMAIL: ";
+        cargarCadena(email, 50);
 
-if(tipoSocio>=1 && tipoSocio<=3){
-    break;
+        bool tieneArroba = false;
+
+        for(int i = 0; email[i] != '\0'; i++){
+            if(email[i] == '@'){
+                tieneArroba = true;
+            }
+        }
+
+        if(tieneArroba){
+            break;
+        }
+        amarillo();
+        cout << "EL EMAIL DEBE CONTENER @. REINGRESE MAIL" << endl;
+        blanco();
     }
-rojo();
-cout<<"ERROR: TIPO DE SOCIO INVALIDO"<<endl;
-blanco();
-}
-while(true){
-
-cout<<"INGRESE EL EMAIL: ";
-cargarCadena(email,50);
-
-bool tieneArroba=false;
-
-for(int i=0; email[i]!='\0'; i++){
-
-if(email[i]=='@'){
-    tieneArroba=true;
-    }
-}
-
-if(tieneArroba){
-    break;
-}
-amarillo();
-cout<<"EL EMAIL DEBE CONTENER @. REINGRESE MAIL"<<endl;
-blanco();
-}
-estado=true;
+    estado = true;
 }
 
 void socio::mostrar(){
-blanco();
-cout<<"ID DEL SOCIO: "<<idSocio<<endl<<endl;
-cout<<"NOMBRE: "<<nombre<<endl<<endl;
-cout<<"APELLIDO: "<<apellido<<endl;
-cout<<endl;
-cout<<"TELEFONO: "<<telefono<<endl;
-cout<<endl;
-cout<<"FECHA DE NACIMIENTO: ";
-cout<<endl;
-fechaNacimiento.Mostrar();
-cout<<endl;
-cout<<endl;
-cout<<"TIPO DE SOCIO: ";
-cout<<endl;
+    blanco();
+    cout << "ID DEL SOCIO: ";
+    amarillo();
+    cout << idSocio << endl << endl;
 
-if(tipoSocio==1){
-cout<<"BASICO";
-}
-else if(tipoSocio==2){
-cout<<"INTERMEDIO";
-}
-else{
-cout<<"PREMIUM";
-}
-cout<<endl;
-cout<<endl;
+    blanco();
+    cout << "NOMBRE: " << nombre << endl << endl;
+    cout << "APELLIDO: " << apellido << endl << endl;
+    cout << "TELEFONO: " << telefono << endl << endl;
+    cout << "FECHA DE NACIMIENTO: " << endl;
+    fechaNacimiento.Mostrar();
+    cout << endl << endl;
 
-cout<<"EMAIL: "<<email<<endl;
-}
+    blanco();
+    cout << "TIPO DE SOCIO: " << endl;
+    if(tipoSocio == 1){
+        cout << "BASICO";
+    }
+    else if(tipoSocio == 2){
+        cout << "INTERMEDIO";
+    }
+    else{
+        cout << "PREMIUM";
+    }
+    cout << endl << endl;
 
+    blanco();
+    cout << "EMAIL: " << email << endl;
+}
 
 void socio::setIdSocio(int id){
 idSocio=id;
