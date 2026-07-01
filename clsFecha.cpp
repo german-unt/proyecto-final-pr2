@@ -43,81 +43,83 @@ int Fecha::getAnio()
 
 void Fecha::Cargar()
 {
-
     time_t t;
-    t=time(NULL);
+    t = time(NULL);
+    tm *hoy = localtime(&t);
 
-    tm *hoy=localtime(&t);
-
-    int diaActual=hoy->tm_mday;
-    int mesActual=hoy->tm_mon+1;
-    int anioActual=hoy->tm_year+1900;
+    int diaActual = hoy->tm_mday;
+    int mesActual = hoy->tm_mon + 1;
+    int anioActual = hoy->tm_year + 1900;
 
     while(true)
     {
+        blanco();
+        cout << "DIA: ";
+        cin >> dia;
 
-        cout<<"DIA: ";
-        cin>>dia;
+        cout << "MES: ";
+        cin >> mes;
 
-        cout<<"MES: ";
-        cin>>mes;
+        cout << "ANIO: ";
+        cin >> anio;
 
-        cout<<"ANIO: ";
-        cin>>anio;
-
-        if(mes<1 || mes>12)
+        if(mes < 1 || mes > 12)
         {
-            cout<<"MES INVALIDO"<<endl;
+            rojo();
+            cout << "ERROR: MES INVALIDO" << endl;
+            blanco();
             continue;
         }
 
         int maxDias;
 
-        if(mes==4 || mes==6 || mes==9 || mes==11)
+        if(mes == 4 || mes == 6 || mes == 9 || mes == 11)
         {
-            maxDias=30;
+            maxDias = 30;
         }
         else
         {
-
-            if(mes==2)
+            if(mes == 2)
             {
-
-                if((anio%4==0 && anio%100!=0) || anio%400==0)
+                if((anio % 4 == 0 && anio % 100 != 0) || anio % 400 == 0)
                 {
-                    maxDias=29;
+                    maxDias = 29;
                 }
                 else
                 {
-                    maxDias=28;
+                    maxDias = 28;
                 }
-
             }
             else
             {
-                maxDias=31;
+                maxDias = 31;
             }
-
         }
 
-        if(dia<1 || dia>maxDias)
+        if(dia < 1 || dia > maxDias)
         {
-            cout<<"DIA INVALIDO"<<endl;
+            rojo();
+            cout << "ERROR: DIA INVALIDO" << endl;
+            blanco();
             continue;
         }
 
-        if (anio<1900 || anio>anioActual) {
-            cout << "ANIO INVALIDO" << endl;
+        if (anio < 1900 || anio > anioActual)
+        {
+            rojo();
+            cout << "ERROR: ANIO INVALIDO" << endl;
+            blanco();
             continue;
         }
 
+        Fecha fechaIngresada(dia, mes, anio);
+        Fecha fechaActual(diaActual, mesActual, anioActual);
 
-        Fecha fechaIngresada(dia,mes,anio);
-        Fecha fechaActual(diaActual,mesActual,anioActual);
-
-        if(fechaIngresada>fechaActual)
+        if(fechaIngresada > fechaActual)
         {
-            cout<<"NO SE PUEDE INGRESAR UNA FECHA MAYOR A LA ACTUAL"<<endl;
+            rojo();
+            cout << "ERROR: NO SE PUEDE INGRESAR UNA FECHA MAYOR A LA ACTUAL" << endl;
+            blanco();
             continue;
         }
 
@@ -127,7 +129,16 @@ void Fecha::Cargar()
 
 void Fecha::Mostrar()
 {
-    cout<<dia<<"/"<<mes<<"/"<<anio;
+    blanco();
+    cout << dia;
+    negro();
+    cout << "/";
+    blanco();
+    cout << mes;
+    negro();
+    cout << "/";
+    blanco();
+    cout << anio;
 }
 int Fecha::obtenerValor()
 {

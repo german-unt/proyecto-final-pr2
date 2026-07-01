@@ -2,6 +2,7 @@
 #include "clsManagerCouta.h"
 #include "clsArchivoCuota.h"
 #include "clsCuota.h"
+#include "funciones.h"
 #include <ctime>
 using namespace std;
 
@@ -17,6 +18,7 @@ void menuCuota()
         cout<<"2 - BAJA"<<endl;
         cout<<"3 - MODIFICACION"<<endl;
         cout<<"4 - LISTADO"<<endl;
+        cout<<"5 - LISTADO: POR MONTO"<<endl;
         cout<<"0 - VOLVER AL MENU PRINCIPAL"<<endl;
         cout<<"======================="<<endl;
         cout<<"INGRESE UNA OPCION: ";
@@ -35,6 +37,9 @@ void menuCuota()
             break;
         case 4:
             listarCuota();
+            break;
+        case 5:
+            listadoCuotaMonto();
             break;
         case 0:
             return;

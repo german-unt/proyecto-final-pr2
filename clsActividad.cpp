@@ -8,7 +8,7 @@ void actividad::cargar(int id){
     if(id == -1){
         cout << "INGRESE EL ID de Actividad: ";
         cin >> idActividad;
-        cin.ignore(); // Limpia el buffer después de un cin numérico
+        cin.ignore();
     } else {
         idActividad = id;
     }

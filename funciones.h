@@ -13,17 +13,13 @@
 #include"clsArchivoCuota.h"
 #include"clsArchivoActividadesSocio.h"
 #include"clsArchivoActividades.h"
+#include "estetico.h"
 void menuPrincipal();
 
-void listados();
-
-void listadoSociosApellido();
+void listadoSociosApellido();//borrar .dat
 void listadoSociosTipo();
-//void listadoCuotaSocio();
 void listadoCuotaMonto();
-//void listadoActividadXid();
-void listadoParticipacionesSocio();
-void listadoParticipacionesActividad();
+
 
 void consultas();
 void consultasSocios();
@@ -33,4 +29,7 @@ void rangoDeFechas();
 void consultaXSocio();
 void consultaResumen();
 void menuConsultaActividades();
+
+
+
 #endif // FUNCIONES_H_INCLUDED

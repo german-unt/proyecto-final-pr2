@@ -1,10 +1,11 @@
 #include<iostream>
 #include"clsSocio.h"
-#include<cstring>
+#include <cstring>
 #include "funciones.h"
 #include "cargarCadena.h"
 using namespace std;
 void socio::cargar(int id){
+blanco();
     if(id == -1){
         cout<<"INGRESE EL ID DE SOCIO: ";
         cin>>idSocio;
@@ -30,8 +31,9 @@ if(telefono[i]<'0' || telefono[i]>'9'){
 if(valido){
     break;
     }
-
+amarillo();
 cout<<"EL TELEFONO SOLO PUEDE CONTENER NUMEROS"<<endl;
+blanco();
 }
 cout<<"INGRESE LA FECHA DE NACIMIENTO: "<<endl;
 fechaNacimiento.Cargar();
@@ -47,8 +49,9 @@ cin>>tipoSocio;
 if(tipoSocio>=1 && tipoSocio<=3){
     break;
     }
-
-cout<<"TIPO DE SOCIO INVALIDO"<<endl;
+rojo();
+cout<<"ERROR: TIPO DE SOCIO INVALIDO"<<endl;
+blanco();
 }
 while(true){
 
@@ -67,18 +70,17 @@ if(email[i]=='@'){
 if(tieneArroba){
     break;
 }
-
-cout<<"EL EMAIL DEBE CONTENER @"<<endl;
+amarillo();
+cout<<"EL EMAIL DEBE CONTENER @. REINGRESE MAIL"<<endl;
+blanco();
 }
 estado=true;
 }
 
 void socio::mostrar(){
-cout<<endl;
-cout<<"ID DEL SOCIO: "<<idSocio<<endl;
-cout<<endl;
-cout<<"NOMBRE: "<<nombre<<endl;
-cout<<endl;
+blanco();
+cout<<"ID DEL SOCIO: "<<idSocio<<endl<<endl;
+cout<<"NOMBRE: "<<nombre<<endl<<endl;
 cout<<"APELLIDO: "<<apellido<<endl;
 cout<<endl;
 cout<<"TELEFONO: "<<telefono<<endl;
@@ -102,8 +104,11 @@ cout<<"PREMIUM";
 }
 cout<<endl;
 cout<<endl;
+
 cout<<"EMAIL: "<<email<<endl;
 }
+
+
 void socio::setIdSocio(int id){
 idSocio=id;
 }

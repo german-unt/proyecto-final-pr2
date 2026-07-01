@@ -21,22 +21,29 @@ using namespace std;
 
 void menuPrincipal()
 {
+    rlutil::setBackgroundColor(rlutil::LIGHTBLUE);
+    rlutil::setColor(rlutil::WHITE);
     int opc;
     while(true)
     {
         system("cls");
-        cout<<"*BIENVENIDO A FC-CODE*"<<endl;
+        rlutil::setColor(rlutil::WHITE);
+
+        cout<<"<<BIENVENIDO A FC-CODE>>"<<endl;
         cout<<"   MENU PRINCIPAL   "<<endl;
-        cout<<"======================="<<endl;
+        rlutil::setColor(rlutil::BLACK);
+        cout<<"================================"<<endl;
+        blanco();
         cout<<"1 - SOCIOS"<<endl;
         cout<<"2 - ACTIVIDADES"<<endl;
         cout<<"3 - INSCRIPCION A ACTIVIDADES"<<endl;
         cout<<"4 - CUOTA"<<endl;
-        cout<<"5 - LISTADOS "<<endl;
-        cout<<"6 - INFORMES"<<endl;
-        cout<<"7 - CONSULTAS"<<endl;
+        cout<<"5 - INFORMES"<<endl;
+        cout<<"6 - CONSULTAS"<<endl;
         cout<<"0 - SALIR"<<endl;
-        cout<<"======================="<<endl;
+       negro();
+        cout<<"================================"<<endl;
+        blanco();
         cout<<"INGRESE UNA OPCION: ";
         cin>>opc;
         system("cls");
@@ -55,12 +62,9 @@ void menuPrincipal()
             menuCuota();
             break;
         case 5:
-            listados();
-            break;
-        case 6:
             informes();
             break;
-        case 7:
+        case 6:
             consultas();
             break;
         case 0:
@@ -68,64 +72,7 @@ void menuPrincipal()
         }
     }
 }
-void listados()
-{
-    int opc;
 
-    while(true)
-    {
-        system("cls");
-
-        cout<<"MENU LISTADOS"<<endl;
-        cout<<"=========================="<<endl;
-        cout<<"1 - Socios por apellido"<<endl;
-        cout<<"2 - Socios por tipo"<<endl;
-        cout<<"4 - Cuotas por monto"<<endl;
-        cout<<"7-  Participaciones por ID de actividad"<<endl;
-        cout<<"0 - Volver"<<endl;
-        cout<<"======================="<<endl;
-        cout<<"INGRESE UNA OPCION: ";
-        cin>>opc;
-
-        system("cls");
-
-        switch(opc)
-        {
-        case 1:
-            listadoSociosApellido();
-            break;
-
-        case 2:
-            listadoSociosTipo();
-            break;
-
-        case 3:
-           // listadoCuotaSocio();
-            break;
-
-        case 4:
-            listadoCuotaMonto();
-            break;
-
-        case 5:
-           // listadoActividadXid();
-            break;
-
-        case 6:
-            //listadoParticipacionesSocio();
-            break;
-
-        case 7:
-            listadoParticipacionesActividad();
-            break;
-
-        case 0:
-            return;
-        }
-
-        system("pause");
-    }
-}
 void consultas()
 {
     int opc;
@@ -133,14 +80,18 @@ void consultas()
     while(true)
     {
         system("cls");
-
+        blanco();
         cout<<"MENU CONSULTAS"<<endl;
-        cout<<"=========================="<<endl;
+        negro();
+        cout<<"=============================="<<endl;
+        blanco();
         cout<<"1 - CONSULTA DE SOCIOS"<<endl;
         cout<<"2 - CONSULTA DE ACTIVIDADES"<<endl;
         cout<<"3 - CONSULTA DE ESTADO"<<endl;
         cout<<"0 - SALIR"<<endl;
-        cout<<"======================="<<endl;
+        negro();
+        cout<<"=============================="<<endl;
+        blanco();
         cout<<"INGRESE UNA OPCION: ";
 
         cin>>opc;
@@ -163,7 +114,6 @@ void consultas()
         case 0:
             return;
         }
-        system("pause");
     }
 }
 void consultasSocios()
@@ -172,19 +122,23 @@ void consultasSocios()
     int opc;
     while(true)
     {
-        system("cls");
-
+       system("cls");
+        blanco();
         cout<<"CONSULTAS SOCIOS"<<endl;
-        cout<<"=========================="<<endl;
+        negro();
+        cout<<"=============================="<<endl;
+        blanco();
         cout<<"1 - CONSULTA POR RANGO DE FECHAS"<<endl;
         cout<<"2 - CONSULTA POR ID DE SOCIO"<<endl;
         cout<<"0 - SALIR"<<endl;
-        cout<<"======================="<<endl;
+        negro();
+        cout<<"=============================="<<endl;
+        blanco();
         cout<<"INGRESE UNA OPCION: ";
 
         cin>>opc;
-        system("cls");
 
+        system("cls");
         switch(opc)
         {
         case 1:
@@ -198,7 +152,7 @@ void consultasSocios()
         case 0:
             return;
         }
-        system("pause");
+        pausa();
 
     }
 }
@@ -210,13 +164,17 @@ void menuConsultaActividades()
     while(true)
     {
         system("cls");
-
+        blanco();
         cout<<"CONSULTAS DE ACTIVIDADES"<<endl;
-        cout<<"=========================="<<endl;
+        negro();
+        cout<<"=============================="<<endl;
+        blanco();
         cout<<"1 - CONSULTA POR ACTIVIDAD"<<endl;
         cout<<"2 - CONSULTA POR RESUMEN"<<endl;
         cout<<"0 - SALIR"<<endl;
-        cout<<"======================="<<endl;
+        negro();
+        cout<<"=============================="<<endl;
+        blanco();
         cout<<"INGRESE UNA OPCION: ";
 
         cin>>opc;
@@ -231,38 +189,75 @@ void menuConsultaActividades()
         case 2:
             consultaResumen();
             break;
-
         case 0:
             return;
         }
-        system("pause");
+        pausa();
     }
 }
 
-///ordenar socios por apellido (ARREGLAR ES TEMA DE LA MAYUSCULAS QUE AFECTAN EL ORDEN).
+///ordenar socios por apellido
 void listadoSociosApellido()
 {
     archivoSocio arc;
-
     int cant = arc.contarRegistros();
 
-    socio *vec = new socio[cant];
-
-    for(int i=0; i<cant; i++)
+    if (cant <= 0)
     {
-        vec[i]=arc.leerRegistros(i);
+        amarillo();
+        cout << "NO HAY SOCIOS REGISTRADOS EN EL SISTEMA." << endl;
+        blanco();
+        return;
     }
 
-    for(int i=0; i<cant-1; i++)
+    socio *vec = new socio[cant];
+    int cantActivos = 0;
+
+    // Cargar únicamente los socios activos para evitar procesar registros basura
+    for(int i=0; i<cant; i++)
     {
-
-        for(int j=i+1; j<cant; j++)
+        socio obj = arc.leerRegistros(i);
+        if(obj.getEstado())
         {
+            vec[cantActivos] = obj;
+            cantActivos++;
+        }
+    }
 
-            if(strcmp(vec[i].getApellido(),
-                      vec[j].getApellido())>0)
+    // Si no queda ningún socio activo, liberamos memoria y salimos
+    if (cantActivos == 0)
+    {
+        amarillo();
+        cout << "NO HAY SOCIOS ACTIVOS PARA LISTAR." << endl;
+        blanco();
+        delete[] vec;
+        return;
+    }
+
+    // Ordenar los socios activos
+    for(int i=0; i<cantActivos-1; i++)
+    {
+        for(int j=i+1; j<cantActivos; j++)
+        {
+            // Creamos copias temporales de los apellidos para estandarizarlos
+            char auxI[20];
+            char auxJ[20];
+            strcpy(auxI, vec[i].getApellido());
+            strcpy(auxJ, vec[j].getApellido());
+
+            // Convertimos manualmente a mayúsculas para asegurar un orden alfabético real
+            for(int k=0; auxI[k] != '\0'; k++)
             {
+                if(auxI[k] >= 'a' && auxI[k] <= 'z') auxI[k] -= 32;
+            }
+            for(int k=0; auxJ[k] != '\0'; k++)
+            {
+                if(auxJ[k] >= 'a' && auxJ[k] <= 'z') auxJ[k] -= 32;
+            }
 
+            // Comparación limpia y justa
+            if(strcmp(auxI, auxJ) > 0)
+            {
                 socio aux=vec[i];
                 vec[i]=vec[j];
                 vec[j]=aux;
@@ -270,31 +265,35 @@ void listadoSociosApellido()
         }
     }
 
-    for(int i=0; i<cant; i++)
+    //  Mostrar el listado ya depurado y ordenado correctamente
+    for(int i=0; i<cantActivos; i++)
     {
-
-        if(vec[i].getEstado())
-        {
-
-            vec[i].mostrar();
-            cout<<endl;
-        }
+        blanco();
+        vec[i].mostrar();
+        negro();
+        cout<<"====================================="<<endl;
+        blanco();
+        cout<<endl;
     }
 
     delete[] vec;
-}
 
+}
 void listadoSociosTipo() {
     archivoSocio arc;
     int cant = arc.contarRegistros();
-    if(cant <= 0) { cout << "No hay socios para listar." << endl; return; }
+    if(cant <= 0) {
+            amarillo();
+            cout << "NO HAY SOCIOS PARA LISTAR" << endl;
+            blanco();
+        return; }
 
     socio *vec = new socio[cant];
     for(int i = 0; i < cant; i++) {
         vec[i] = arc.leerRegistros(i);
     }
 
-    // Ordenamiento (Burbujeo)
+    // Ordenamiento BURBUJA
     for(int i = 0; i < cant - 1; i++) {
         for(int j = i + 1; j < cant; j++) {
             if(vec[i].getTipoSocio() > vec[j].getTipoSocio()) {
@@ -311,255 +310,89 @@ void listadoSociosTipo() {
 
     for(int i = 0; i < cant; i++) {
         if(vec[i].getEstado()) {
-            // Si cambia el tipo, imprimimos una nueva cabecera
+            // SI SE CAMBIA EL TIPO DE SOCIO:
             if(vec[i].getTipoSocio() != tipoActual) {
                 tipoActual = vec[i].getTipoSocio();
-                cout << "\n========================================" << endl;
-                cout << "TIPO DE SOCIO: " << nombresTipos[tipoActual] << endl;
+                cout<<endl;
+                negro();
                 cout << "========================================" << endl;
+                amarillo();
+                cout << "TIPO DE SOCIO: " << nombresTipos[tipoActual] << endl<<endl;
+                blanco();
             }
 
-            // Listado resumido en una sola línea
-            cout <<"ID: "<< vec[i].getIdsocio() << " -> "
-                 << vec[i].getApellido() << ", "
+            // INFO DE LOS SOCIOS LISTADOS:
+            cout <<"ID: "<< vec[i].getIdsocio();
+            negro();
+            cout << " -> ";
+            blanco();
+            cout<< vec[i].getApellido() << ", "
                  << vec[i].getNombre() << endl;
         }
     }
 
     delete[] vec;
 }
-///ordenar cuota por id de socio.
-/*
-void listadoCuotaSocio()
-{
 
-    archivoCuota arc;
-
-    int cant=arc.contarRegistros();
-
-    cuota *vec=new cuota[cant];
-
-    for(int i=0; i<cant; i++)
-    {
-        vec[i]=arc.leerRegistro(i);
-    }
-
-    for(int i=0; i<cant-1; i++)
-    {
-
-        for(int j=i+1; j<cant; j++)
-        {
-
-            if(vec[i].getIdsocio()>
-                    vec[j].getIdsocio())
-            {
-
-                cuota aux=vec[i];
-                vec[i]=vec[j];
-                vec[j]=aux;
-            }
-        }
-    }
-
-    for(int i=0; i<cant; i++)
-    {
-
-        if(vec[i].getEstado())
-        {
-
-            vec[i].mostrar();
-            cout<<endl;
-        }
-    }
-
-    delete[] vec;
-}
-
-*/
 ///ordenar por monto PAGADO
 
-void listadoCuotaMonto()
-{
-
+void listadoCuotaMonto() {
     archivoCuota arc;
-
-    int cant=arc.contarRegistros();
-
-    cuota *vec=new cuota[cant];
-
-    for(int i=0; i<cant; i++)
-    {
-        vec[i]=arc.leerRegistro(i);
-    }
-
-    for(int i=0; i<cant-1; i++)
-    {
-
-        for(int j=i+1; j<cant; j++)
-        {
-
-            if(vec[i].getImportePagado()>
-                    vec[j].getImportePagado())
-            {
-
-                cuota aux=vec[i];
-                vec[i]=vec[j];
-                vec[j]=aux;
-            }
-        }
-    }
-
-    for(int i=0; i<cant; i++)
-    {
-
-        if(vec[i].getEstado())
-        {
-
-            vec[i].mostrar();
-            cout<<endl;
-        }
-    }
-
-    delete[] vec;
-}
-/*
-void listadoParticipacionesSocio()
-{
-
-    archivoActividadesSocio arc;
-
-    int cant=arc.contarRegistros();
-
-    actividadSocio *vec=new actividadSocio[cant];
-
-    for(int i=0; i<cant; i++)
-    {
-        vec[i]=arc.leerRegistro(i);
-    }
-
-    for(int i=0; i<cant-1; i++)
-    {
-
-        for(int j=i+1; j<cant; j++)
-        {
-
-            if(vec[i].getIdSocio()>
-                    vec[j].getIdSocio())
-            {
-
-                actividadSocio aux=vec[i];
-                vec[i]=vec[j];
-                vec[j]=aux;
-            }
-        }
-    }
-
-    for(int i=0; i<cant; i++)
-    {
-
-        if(vec[i].getEstado())
-        {
-
-            vec[i].mostrar();
-            cout<<endl;
-        }
-    }
-
-    delete[] vec;
-}
-
-*/
-
-void listadoParticipacionesActividad()
-{
-
-    archivoActividadesSocio arc;
-
-    int cant=arc.contarRegistros();
-
-    actividadSocio *vec=new actividadSocio[cant];
-
-    for(int i=0; i<cant; i++)
-    {
-        vec[i]=arc.leerRegistro(i);
-    }
-
-    for(int i=0; i<cant-1; i++)
-    {
-
-        for(int j=i+1; j<cant; j++)
-        {
-
-            if(vec[i].getIdactividad()>
-                    vec[j].getIdactividad())
-            {
-
-                actividadSocio aux=vec[i];
-                vec[i]=vec[j];
-                vec[j]=aux;
-            }
-        }
-    }
-
-    for(int i=0; i<cant; i++)
-    {
-
-        if(vec[i].getEstado())
-        {
-
-            vec[i].mostrar();
-            cout<<endl;
-        }
-    }
-
-    delete[] vec;
-}
-/*
-void listadoActividadXid()
-{
-
-    archivoActividades arc;
-
     int cant = arc.contarRegistros();
 
-    actividad *vec = new actividad[cant];
-
-    for(int i=0; i<cant; i++)
-    {
-        vec[i]=arc.leerRegistros(i);
+    if (cant <= 0) {
+        amarillo();
+        cout << "NO HAY CUOTAS REGISTRADAS." << endl;
+        blanco();
+        return;
     }
 
-    for(int i=0; i<cant-1; i++)
-    {
+    //Cargamos las cuotas
+    cuota *vec = new cuota[cant];
+    int cantActivos = 0;
 
-        for(int j=i+1; j<cant; j++)
-        {
+    for (int i = 0; i < cant; i++) {
+        cuota aux = arc.leerRegistro(i);
+        if (aux.getEstado() == true) {
+            vec[cantActivos] = aux;
+            cantActivos++;
+        }
+    }
 
-            if(vec[i].getIdactividad() >
-                    vec[j].getIdactividad())
-            {
+    if (cantActivos == 0) {
+        amarillo();
+        cout << "NO HAY CUOTAS ACTIVAS PARA MOSTRAR." << endl;
+        blanco();
+        delete[] vec;
+        return;
+    }
 
-                actividad aux=vec[i];
-                vec[i]=vec[j];
-                vec[j]=aux;
+    //Ordenamiento Burbuja de MENOR a MAYOR
+    for (int i = 0; i < cantActivos - 1; i++) {
+        for (int j = i + 1; j < cantActivos; j++) {
+            if (vec[i].getImportePagado() > vec[j].getImportePagado()) {
+                cuota aux = vec[i];
+                vec[i] = vec[j];
+                vec[j] = aux;
             }
         }
     }
 
-    for(int i=0; i<cant; i++)
-    {
+    // Mostrar el vector ordenado
+    blanco();
+    cout << "--- LISTADO DE CUOTAS POR MONTO (MIN A MAX) ---" << endl;
 
-        if(vec[i].getEstado())
-        {
+    for (int i = 0; i < cantActivos; i++) {
+        blanco();
+        vec[i].mostrar();
 
-            vec[i].mostrar();
-            cout<<endl;
-        }
+        negro();
+        cout << "-----------------------------------------------" << endl;
     }
 
+    blanco();
     delete[] vec;
 }
-*/
 
 ///consulta rango de fechas (no anda)
 void rangoDeFechas()
@@ -569,7 +402,7 @@ void rangoDeFechas()
 
     Fecha primeraFecha;
     Fecha segundaFecha;
-
+blanco();
     cout << "INGRESE LA PRIMER FECHA: ";
     primeraFecha.Cargar();
 
@@ -591,10 +424,11 @@ void rangoDeFechas()
             cantidad++;
         }
     }
-
+blanco();
     cout << "LA CANTIDAD DE SOCIOS POR EL RANGO DE FECHA SOLICITADO ES: "
          << cantidad << endl;
 }
+
 ///consultaXSocio
 void consultaXSocio()
 {
@@ -603,7 +437,7 @@ void consultaXSocio()
     bool encontrado=false;
     int cant=arc.contarRegistros();
     int id;
-
+blanco();
     cout<<"INGRESE EL ID DEL SOCIO: ";
     cin>>id;
 
@@ -614,13 +448,15 @@ void consultaXSocio()
 
         if((obj.getIdsocio()==id) && (obj.getEstado()==true))
         {
+            blanco();
             obj.mostrar();
             encontrado=true;
         }
     }
     if(!encontrado)
-    {
+    {   amarillo();
         cout << "NO EXISTE NINGUN SOCIO CON ESE ID." << endl;
+        blanco();
     }
 }
 void consultaXActividad()
@@ -630,6 +466,7 @@ void consultaXActividad()
     bool encontrado=false;
     int cant=arc.contarRegistros();
     int id;
+    blanco();
     cout<<"INGRESE EL ID DE LA ACTIVIDAD: ";
     cin>>id;
 
@@ -639,7 +476,15 @@ void consultaXActividad()
 
     if((obj.getIdactividad()==id) && (obj.getEstado()==true))
         {
+            blanco();
+            cout<<endl;
+            negro();
+            cout<<"====================================="<<endl;
+            blanco();
             obj.mostrar();
+            negro();
+            cout<<"====================================="<<endl;
+            blanco();
             encontrado=true;
         }
 
@@ -647,8 +492,11 @@ void consultaXActividad()
 
     if(!encontrado)
     {
+        amarillo();
         cout << "NO SE ENCONTRO NINGUNA ACTIVIDAD " << endl;
+        blanco();
     }
+
 
 }
 ///modificado deberia andar ahora
@@ -657,6 +505,7 @@ void consultaResumen()
     cuota obj;
     archivoCuota arc;
     int mes;
+    blanco();
     cout << "INGRESE EL MES A RESUMIR: ";
     cin >> mes;
     float total = 0;
@@ -667,11 +516,16 @@ void consultaResumen()
         obj = arc.leerRegistro(i);
         if(obj.getFechaPago().getMes() == mes && obj.getEstado() == true)
         {
-            // Aca sumamos la plata real que entro, no el montoEsperado
+            // Aca sumamos la plata real que entro
             total += obj.getImportePagado();
         }
     }
-    cout << "RECAUDACION TOTAL DEL MES: $" << total << endl;
+    blanco();
+    cout << "RECAUDACION TOTAL DEL MES: ";
+    violeta();
+    cout<<"$";
+    cout<<total << endl;
+    blanco();
 }
 
 void consultasDeEstado()
@@ -681,6 +535,7 @@ void consultasDeEstado()
     bool encontrado=false;
     int cant= arc.contarRegistros();
     int id;
+    blanco();
     cout<<"INGRESE EL ID DEL SOCIO: ";
     cin>>id;
 
@@ -688,22 +543,31 @@ void consultasDeEstado()
     {
         obj=arc.leerRegistros(i);
 
-
+        amarillo();
         if((obj.getIdsocio()==id) && (obj.getEstado()==true))
         {
+            cout<<endl;
             cout<<"EL SOCIO ESTA ACTIVO"<<endl;
+            cout<<endl;
+            blanco();
+            obj.mostrar();
             encontrado=true;
+            blanco();
             return;
         }
         else if((obj.getIdsocio()==id) && (obj.getEstado()==false))
-        {
+        {   cout<<endl;
             cout<<"EL SOCIO ESTA INACTIVO "<<endl;
-
+            blanco();
             return;
         }
+
     }
     if(!encontrado)
     {
+        rojo();
+        cout<<endl;
         cout << "NO EXISTE NINGUN SOCIO." << endl;
+        blanco();
     }
 }

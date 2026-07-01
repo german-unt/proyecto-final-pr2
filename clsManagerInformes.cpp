@@ -9,9 +9,11 @@ void informes()
     while(true)
     {
         system("cls");
-
+        blanco();
         cout<<"MENU INFORMES"<<endl;
+        negro();
         cout<<"=========================="<<endl;
+        blanco();
         cout<<"1 - Recaudacion anual"<<endl;
         cout<<"2 - Recaudacion por actividad"<<endl;
         cout<<"3 - Porcentaje de inscripciones por cada actividad"<<endl;
@@ -19,7 +21,9 @@ void informes()
         cout<<"5 - Ranking de actividades"<<endl;
         cout<<"6 - Listar socios con deudas pendientes"<<endl;
         cout<<"0 - SALIR"<<endl;
+        negro();
         cout<<"=========================="<<endl;
+        blanco();
         cout<<"INGRESE UNA OPCION: ";
 
         cin>>opc;
@@ -56,33 +60,48 @@ void informes()
             return;
         }
 
-        system("pause");
+        pausa();
     }
 }
 
-///INFORME : RECAUDACION ANUAL
+///INFORME : RECAUDACION ANUAL FILTRADA POR ANIO
 void recaudacionAnual()
 {
     archivoCuota arc;
-
     int cant = arc.contarRegistros();
+    float total = 0;
+    int anioBuscado;
 
-    float total=0;
+    blanco();
+    cout << "INGRESE EL ANIO A CONSULTAR: ";
+    cin >> anioBuscado;
+    cout << endl;
 
     for(int i=0; i<cant; i++)
     {
-
         cuota obj = arc.leerRegistro(i);
 
-        if(obj.getEstado()==true)
+        ///VALIDACION DE ESTADO Y ANIO BUSCADO
+        if(obj.getEstado() == true && obj.getFechaPago().getAnio() == anioBuscado)
         {
-
             total += obj.getImportePagado();
         }
     }
+
+    negro();
     cout<<"- - - - - - - - - - - - - - - - - - - - - -"<<endl<<endl;
-    cout<<"-> RECAUDACION ANUAL: $"<<total<<endl<<endl;
+    cout<<"->";
+    amarillo();
+    cout<<" RECAUDACION TOTAL DEL ANIO ";
+    blanco();
+    cout<< anioBuscado;
+    cout<< ":";
+    violeta();
+    cout<<" $";
+    cout<<total<<endl<<endl;
+    negro();
     cout<<"- - - - - - - - - - - - - - - - - - - - - -"<<endl;
+    blanco();
 }
 ///INFORME :RECAUDACION POR ACTIVIDAD
 void recaudacionXActividad()
@@ -126,8 +145,17 @@ void recaudacionXActividad()
         }
 
         if(act.getEstado()==true){
-        cout<<"ACTIVIDAD: "<<act.getNombreActividad()<<endl;
-        cout<<"RECAUDACION: $"<<total<<endl<<endl;
+        blanco();
+        cout<<"ACTIVIDAD: ";
+        amarillo();
+        cout<<act.getNombreActividad()<<endl;
+        blanco();
+        cout<<"RECAUDACION:";
+        violeta();
+        cout<<" $"<<total<<endl<<endl;
+        negro();
+        cout << "==================================" << endl;
+        blanco();
     }
     }
 }
@@ -184,9 +212,18 @@ void porcentajeInscripciones()
             porcentaje = cantidad * 100.0 / total;
         }
         if(act.getEstado()==true){
-        cout<<"ACTIVIDAD: "<<act.getNombreActividad()<<endl;
-        cout<<"PORCENTAJE DE INSCRIPCIONES: "<<porcentaje<<"%"<<endl;
+        blanco();
+        cout<<"ACTIVIDAD: ";
+        amarillo();
+        cout<<act.getNombreActividad()<<endl;
+        blanco();
+        cout<<"PORCENTAJE DE INSCRIPCIONES: ";
+        amarillo();
+        cout<<porcentaje<<"%"<<endl;
         cout<<endl;
+        negro();
+        cout << "===================================================" << endl<<endl;
+        blanco();
     }
     }
 }
@@ -243,9 +280,15 @@ void listarActividadesDeSocio()
 
             if(act.getIdactividad()!=-1)
             {
-
+                cout<<endl;
+                negro();
+                cout << "==================================" << endl<<endl;
+                blanco();
                 act.mostrar();
                 cout<<endl;
+                negro();
+                cout << "==================================" << endl;
+                blanco();
 
                 encontro=true;
             }
@@ -253,8 +296,9 @@ void listarActividadesDeSocio()
     }
 
     if(!encontro)
-    {
+    {amarillo();
         cout<<"EL SOCIO NO TIENE ACTIVIDADES REGISTRADAS"<<endl;
+     blanco();
     }
 }
 
@@ -268,8 +312,9 @@ void ranking()
     int cantActi= arcActivida.contarRegistros();
 
     if(cantActi<=0)
-    {
+    { rojo();
         cout<< "ERROR: NO HAY ACTIVIDADES REGISTRADAS"<<endl;    /// VALIDACION DE REGISTROS
+        blanco();
         return;
     }
 
@@ -321,9 +366,16 @@ void ranking()
     for(int i=0; i<cantActi; i++)
     {
         if (VcontarActividad[i]>0)
-        {
-            cout<< "#"<<i+1<<" : "<<VranquearActividad[i].getNombreActividad()<<". TOTAL INSCRIPTOS: "<<VcontarActividad[i]<<endl;
-            cout<<"- - - - - - - - - - - - - - - "<<endl;
+        {   amarillo();
+            cout<<endl;
+            cout<< "#"<<i+1;
+            blanco();
+            cout<<" : "<<VranquearActividad[i].getNombreActividad()<<". TOTAL INSCRIPTOS: ";
+            amarillo();
+            cout<<VcontarActividad[i]<<endl<<endl;
+            negro();
+            cout << "============================================" << endl;
+            blanco();
 
         }
     }
@@ -336,10 +388,9 @@ void ranking()
 void deudores() {
     archivoSocio arcSocio;
     int cantSocios = arcSocio.contarRegistros();
-
-    cout << "SOCIOS CON DEUDAS PENDIENTES: " << endl;
-    cout << "------------------------------" << endl;
-
+    amarillo();
+    cout << "SOCIOS CON DEUDAS PENDIENTES: " << endl<<endl;
+    blanco();
     for (int i = 0; i < cantSocios; i++) {
         socio obj = arcSocio.leerRegistros(i);
 
@@ -349,11 +400,25 @@ void deudores() {
             float deudaActual = obtenerDeudaTotalSocio(obj.getIdsocio());
 
             if (deudaActual > 0) {
-                cout << "ID: " << obj.getIdsocio()
-                     << " | SOCIO: " << obj.getNombre() << " " << obj.getApellido()
-                     << " | DEUDA TOTAL: $" << deudaActual << endl;
+                cout << "ID: " << obj.getIdsocio();
+                negro();
+                cout<< " | ";
+                blanco();
+                cout<<"SOCIO: " << obj.getNombre() << " " << obj.getApellido();
+                negro();
+                cout<< " |";
+                blanco();
+                cout<<" DEUDA TOTAL: ";
+                violeta();
+                cout<<"$" << deudaActual << endl;
+                blanco();
+            negro();
+            cout << "=============================================================" << endl;
+            blanco();
             }
+
         }
+
     }
 
 }

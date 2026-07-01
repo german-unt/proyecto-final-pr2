@@ -757,33 +757,33 @@
 
 1781780715 c:\users\alumno\desktop\proyecto-final-pr2\clsmanageractividadsocio.h
 
-1781752078 source:c:\users\oem\desktop\proyecto-final-pr2\cargarcadena.cpp
+1782783535 source:c:\users\oem\desktop\proyecto-final-pr2\cargarcadena.cpp
 	<iostream>
 	<cstring>
 
-1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividad.cpp
+1782846600 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividad.cpp
 	<iostream>
 	"clsActividad.h"
 	"cargarCadena.h"
 	<cstring>
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsactividad.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsactividad.h
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\cargarcadena.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\cargarcadena.h
 
-1782499012 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividadsocio.cpp
+1782833890 source:c:\users\oem\desktop\proyecto-final-pr2\clsactividadsocio.cpp
 	<iostream>
 	"clsActividadSocio.h"
 	"funciones.h"
 	"clsArchivoSocio.h"
 	"clsFecha.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsactividadsocio.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsactividadsocio.h
 	"clsFecha.h"
 
-1781879983 c:\users\oem\desktop\proyecto-final-pr2\clsfecha.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsfecha.h
 
-1781878906 c:\users\oem\desktop\proyecto-final-pr2\funciones.h
+1782864766 c:\users\oem\desktop\proyecto-final-pr2\funciones.h
 	"funciones.h"
 	"clsActividad.h"
 	"clsSocio.h"
@@ -796,29 +796,30 @@
 	"clsArchivoCuota.h"
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoActividades.h"
+	"estetico.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clssocio.h
+1782824522 c:\users\oem\desktop\proyecto-final-pr2\clssocio.h
 	"clsFecha.h"
 
-1782131558 c:\users\oem\desktop\proyecto-final-pr2\clscuota.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clscuota.h
 	"clsFecha.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsmanagersocio.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsmanagersocio.h
 	"clsSocio.h"
 	"clsArchivoSocio.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsarchivosocio.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsarchivosocio.h
 	"clsSocio.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividad.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividad.h
 	"clsActividad.h"
 	"clsArchivoActividades.h"
 
-1782310964 c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividades.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividades.h
 	"funciones.h"
 	"clsActividad.h"
 
-1782736309 c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.h
 	"clsActividad.h"
 	"clsSocio.h"
 	"clsCuota.h"
@@ -831,15 +832,15 @@
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoActividades.h"
 
-1781752078 c:\users\oem\desktop\proyecto-final-pr2\clsarchivocuota.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsarchivocuota.h
 	"funciones.h"
 	"clsCuota.h"
 
-1782686789 c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividadessocio.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividadessocio.h
 	"funciones.h"
 	"clsActividadSocio.h"
 
-1782310990 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividades.cpp
+1782783535 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivoactividades.cpp
 	<iostream>
 	<cstring>
 	"clsArchivoActividades.h"
@@ -855,64 +856,69 @@
 	<cstring>
 	"clsArchivoCuota.h"
 
-1781752078 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivosocio.cpp
+1782824530 source:c:\users\oem\desktop\proyecto-final-pr2\clsarchivosocio.cpp
 	<iostream>
 	<cstring>
 	"clsArchivoSocio.h"
 
-1782695256 source:c:\users\oem\desktop\proyecto-final-pr2\clscouta.cpp
+1782828075 source:c:\users\oem\desktop\proyecto-final-pr2\clscouta.cpp
 	<iostream>
 	"clsCuota.h"
 	"clsArchivoSocio.h"
 	"clsSocio.h"
 	"clsManagerCouta.h"
+	"estetico.h"
 
-1781879983 source:c:\users\oem\desktop\proyecto-final-pr2\clsfecha.cpp
+1782861649 source:c:\users\oem\desktop\proyecto-final-pr2\clsfecha.cpp
 	<iostream>
 	"clsFecha.h"
 	"funciones.h"
 	<ctime>
 
-1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividad.cpp
+1782837719 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividad.cpp
 	<iostream>
 	"clsManagerActividad.h"
 
-1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.cpp
+1782860147 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.cpp
 	<iostream>
+	"funciones.h"
 	"clsManagerActividadSocio.h"
 	"clsActividadSocio.h"
 	"clsArchivoActividadesSocio.h"
 	"clsArchivoSocio.h"
 
-1782307058 c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsmanageractividadsocio.h
 
-1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
+1782826312 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.cpp
 	<iostream>
 	"clsManagerCouta.h"
 	"clsArchivoCuota.h"
 	"clsCuota.h"
+	"funciones.h"
 	<ctime>
 
-1782694258 c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.h
+1782783535 c:\users\oem\desktop\proyecto-final-pr2\clsmanagercouta.h
 	"clsCuota.h"
 	"clsArchivoCuota.h"
 
-1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.cpp
+1782853187 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagerinformes.cpp
 	<iostream>
 	"clsManagerInformes.h"
 
-1782742424 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagersocio.cpp
+1782837719 source:c:\users\oem\desktop\proyecto-final-pr2\clsmanagersocio.cpp
 	<iostream>
 	"clsManagerSocio.h"
+	"estetico.h"
+	"funciones.h"
 
-1782742403 source:c:\users\oem\desktop\proyecto-final-pr2\clssocio.cpp
+1782846600 source:c:\users\oem\desktop\proyecto-final-pr2\clssocio.cpp
 	<iostream>
 	"clsSocio.h"
 	<cstring>
 	"funciones.h"
 	"cargarCadena.h"
 
-1782743206 source:c:\users\oem\desktop\proyecto-final-pr2\funciones.cpp
+1782846600 source:c:\users\oem\desktop\proyecto-final-pr2\funciones.cpp
 	<iostream>
 	<cstring>
 	"funciones.h"
@@ -935,4 +941,27 @@
 1781752078 source:c:\users\oem\desktop\proyecto-final-pr2\main.cpp
 	<iostream>
 	"funciones.h"
+
+1782764995 c:\users\oem\desktop\proyecto-final-pr2\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1782829620 c:\users\oem\desktop\proyecto-final-pr2\estetico.h
+	"funciones.h"
+	"rlutil.h"
+
+1782861970 source:c:\users\oem\desktop\proyecto-final-pr2\estetico.cpp
+	<iostream>
+	<cstdlib>
+	"estetico.h"
 

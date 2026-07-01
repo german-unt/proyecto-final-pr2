@@ -3,7 +3,7 @@
 #include "clsArchivoSocio.h"
 #include "clsSocio.h"
 #include "clsManagerCouta.h"
-
+#include "estetico.h"
 using namespace std;
 
 void cuota::cargar(int id) {
@@ -52,16 +52,15 @@ void cuota::cargar(int id) {
 }
 
 void cuota::mostrar() {
+blanco();
     cout << "ID SOCIO: " << idSocio << endl;
     cout << "FECHA DE PAGO: ";
     fechaPago.Mostrar();
     cout << endl;
 
-    // 3. Mostramos los datos históricos (estáticos), no los calculados al vuelo
     cout << "DEUDA PREVIA AL PAGO: $" << montoEsperado << endl;
     cout << "IMPORTE ABONADO:      $" << importePagado << endl;
     cout << "SALDO PENDIENTE:      $" << (montoEsperado - importePagado) << endl;
-    cout << "---------------------------------------" << endl;
 }
 void cuota::setIdsocio(int id)
 {
