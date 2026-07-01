@@ -114,6 +114,7 @@ void consultas()
         case 0:
             return;
         }
+        pausa();
     }
 }
 void consultasSocios()
